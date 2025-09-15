@@ -1,0 +1,1 @@
+. "/home/ros2/Documents/beamtrail/Cinema-microservice/build/build/Release/generators/conanrunenv-release-x86_64.sh"
