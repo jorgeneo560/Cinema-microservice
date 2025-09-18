@@ -36,7 +36,7 @@ print_error() {
 # Function to cleanup containers
 cleanup() {
     print_status "Cleaning up containers..."
-    docker-compose down --remove-orphans 2>/dev/null || true
+    docker compose down --remove-orphans 2>/dev/null || true
     docker container prune -f 2>/dev/null || true
 }
 
@@ -50,20 +50,20 @@ check_docker() {
     print_success "Docker is running"
 }
 
-# Function to check if docker-compose is available
+# Function to check if docker compose is available
 check_docker_compose() {
-    print_status "Checking docker-compose availability..."
-    if ! command -v docker-compose >/dev/null 2>&1; then
-        print_error "docker-compose not found. Please install docker-compose."
+    print_status "Checking docker compose availability..."
+    if ! command -v docker compose >/dev/null 2>&1; then
+        print_error "docker compose not found. Please install docker compose."
         exit 1
     fi
-    print_success "docker-compose is available"
+    print_success "docker compose is available"
 }
 
 # Function to build Docker images
 build_images() {
     print_status "Building Docker images..."
-    if docker-compose build; then
+    if docker compose build; then
         print_success "Docker images built successfully"
     else
         print_error "Failed to build Docker images"
@@ -74,18 +74,18 @@ build_images() {
 # Function to start the server
 start_server() {
     print_status "Starting Cinema server..."
-    docker-compose up -d cinema-server
+    docker compose up -d cinema-server
     
     # Wait for server to start
     print_status "Waiting for server to start (10 seconds)..."
     sleep 10
     
     # Check if server container is running
-    if docker-compose ps cinema-server | grep -q "Up"; then
+    if docker compose ps cinema-server | grep -q "Up"; then
         print_success "Cinema server is running"
     else
         print_error "Cinema server failed to start"
-        docker-compose logs cinema-server
+        docker compose logs cinema-server
         exit 1
     fi
 }
@@ -100,7 +100,7 @@ test_server_connectivity() {
     else
         print_warning "Server might not be listening on port 8080"
         print_status "Server logs:"
-        docker-compose logs cinema-server | tail -10
+        docker compose logs cinema-server | tail -10
     fi
     
     # Test WebSocket connection using wscat
@@ -117,7 +117,7 @@ run_client_interactive() {
     print_status "Starting Cinema client interactively..."
     print_warning "You can now interact with the client. Type 'exit' to quit."
     echo
-    docker-compose run --rm cinema-client ./build/client/cinema_client
+    docker compose run --rm cinema-client ./build/client/cinema_client
 }
 
 # Function to run automated client test
@@ -137,7 +137,7 @@ EOF
     
     # Copy test script to container and run it
     docker cp test_client.sh cinema-client:/app/test_client.sh 2>/dev/null || true
-    docker-compose run --rm cinema-client bash -c "chmod +x test_client.sh && ./test_client.sh" || true
+    docker compose run --rm cinema-client bash -c "chmod +x test_client.sh && ./test_client.sh" || true
     
     # Cleanup
     rm -f test_client.sh
@@ -146,11 +146,11 @@ EOF
 # Function to show running containers
 show_status() {
     print_status "Current container status:"
-    docker-compose ps
+    docker compose ps
     echo
     
     print_status "Server logs (last 10 lines):"
-    docker-compose logs --tail=10 cinema-server
+    docker compose logs --tail=10 cinema-server
     echo
 }
 
@@ -200,10 +200,10 @@ run_comprehensive_test() {
     echo
     print_success "🎉 Docker test completed!"
     print_status "To manually interact with containers:"
-    echo "  docker-compose exec cinema-server bash     # Access server container"
-    echo "  docker-compose run --rm cinema-client bash # Access client container"
-    echo "  docker-compose logs cinema-server          # View server logs"
-    echo "  docker-compose down                        # Stop all containers"
+    echo "  docker compose exec cinema-server bash     # Access server container"
+    echo "  docker compose run --rm cinema-client bash # Access client container"
+    echo "  docker compose logs cinema-server          # View server logs"
+    echo "  docker compose down                        # Stop all containers"
 }
 
 # Function to show help
@@ -240,7 +240,7 @@ case "${1:-test}" in
         ;;
     client)
         print_status "Running client interactively..."
-        docker-compose run --rm cinema-client ./build/client/cinema_client
+        docker compose run --rm cinema-client ./build/client/cinema_client
         ;;
     status)
         show_status

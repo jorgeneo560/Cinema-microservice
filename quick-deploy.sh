@@ -53,10 +53,10 @@ fi
 
 # Install Docker Compose if not present
 print_status "Checking Docker Compose installation..."
-if ! command -v docker-compose >/dev/null 2>&1; then
+if ! command -v docker compose >/dev/null 2>&1; then
     print_status "Installing Docker Compose..."
-    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
+    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker compose
+    sudo chmod +x /usr/local/bin/docker compose
     print_success "Docker Compose installed successfully"
 else
     print_success "Docker Compose is already installed"
@@ -76,14 +76,14 @@ if [ "$1" == "git" ] || [ "$1" == "clone" ]; then
     cd cinema-microservice
     print_success "Repository cloned successfully"
 
-# Option 2: Download docker-compose file only
+# Option 2: Download docker compose file only
 else
     print_status "Setting up deployment environment..."
     mkdir -p cinema-microservice
     cd cinema-microservice
     
-    # Download deployment docker-compose file
-    cat > docker-compose.yml << 'EOF'
+    # Download deployment docker compose file
+    cat > docker compose.yml << 'EOF'
 version: '3.8'
 
 services:
@@ -124,13 +124,13 @@ fi
 
 # Pull images
 print_status "Pulling Docker images..."
-if docker-compose pull >/dev/null 2>&1; then
+if docker compose pull >/dev/null 2>&1; then
     print_success "Images pulled successfully"
 else
     print_warning "Could not pull images from registry. Will try to build locally if source is available."
     if [ -f "Dockerfile.server" ] && [ -f "Dockerfile.client" ]; then
         print_status "Building images locally..."
-        docker-compose build
+        docker compose build
         print_success "Images built locally"
     else
         print_error "No images available and no source to build from"
@@ -144,21 +144,21 @@ print_status "Creating convenience scripts..."
 cat > start-server.sh << 'EOF'
 #!/bin/bash
 echo "Starting Cinema Server..."
-docker-compose up -d cinema-server
-echo "Server started! Check status with: docker-compose ps"
-echo "View logs with: docker-compose logs -f cinema-server"
+docker compose up -d cinema-server
+echo "Server started! Check status with: docker compose ps"
+echo "View logs with: docker compose logs -f cinema-server"
 EOF
 
 cat > start-client.sh << 'EOF'
 #!/bin/bash
 echo "Starting Cinema Client..."
-docker-compose run --rm cinema-client ./build/client/cinema_client
+docker compose run --rm cinema-client ./build/client/cinema_client
 EOF
 
 cat > stop-all.sh << 'EOF'
 #!/bin/bash
 echo "Stopping Cinema Microservice..."
-docker-compose down
+docker compose down
 echo "All services stopped."
 EOF
 
@@ -166,7 +166,7 @@ cat > view-logs.sh << 'EOF'
 #!/bin/bash
 echo "Cinema Server Logs:"
 echo "=================="
-docker-compose logs cinema-server
+docker compose logs cinema-server
 EOF
 
 chmod +x *.sh
@@ -175,20 +175,20 @@ print_success "Convenience scripts created"
 
 # Test the deployment
 print_status "Testing deployment..."
-docker-compose up -d cinema-server
+docker compose up -d cinema-server
 sleep 10
 
-if docker-compose ps | grep -q "Up"; then
+if docker compose ps | grep -q "Up"; then
     print_success "Server started successfully!"
     
     # Quick client test
     print_status "Running quick client test..."
-    timeout 15s docker-compose run --rm cinema-client bash -c "echo '4' | ./build/client/cinema_client" >/dev/null 2>&1 && \
+    timeout 15s docker compose run --rm cinema-client bash -c "echo '4' | ./build/client/cinema_client" >/dev/null 2>&1 && \
         print_success "Client test successful!" || \
         print_warning "Client test completed (check logs if issues persist)"
 else
     print_error "Server failed to start"
-    docker-compose logs cinema-server
+    docker compose logs cinema-server
     exit 1
 fi
 
@@ -204,10 +204,10 @@ echo "  ./stop-all.sh         - Stop all services"
 echo "  ./view-logs.sh        - View server logs"
 echo
 print_status "Manual commands:"
-echo "  docker-compose up -d                                    - Start server in background"
-echo "  docker-compose run --rm cinema-client ./build/client/cinema_client  - Run client"
-echo "  docker-compose logs cinema-server                       - View server logs"
-echo "  docker-compose down                                      - Stop all services"
+echo "  docker compose up -d                                    - Start server in background"
+echo "  docker compose run --rm cinema-client ./build/client/cinema_client  - Run client"
+echo "  docker compose logs cinema-server                       - View server logs"
+echo "  docker compose down                                      - Stop all services"
 echo
 print_status "Server is running on:"
 echo "  Local:    http://localhost:8080"
@@ -216,4 +216,4 @@ echo
 print_success "Setup complete! You can now run './start-client.sh' to start booking!"
 
 # Clean up
-docker-compose down >/dev/null 2>&1
+docker compose down >/dev/null 2>&1
