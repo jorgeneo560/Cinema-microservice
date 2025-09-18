@@ -5,8 +5,7 @@
 
 set -e  # Exit on any error
 
-echo "🐳 Cinema Microservice Docker Test"
-echo "=================================="
+echo " Cinema Microservice Docker Test"
 echo
 
 # Colors for output
@@ -170,7 +169,7 @@ run_comprehensive_test() {
     test_server_connectivity
     show_status
     
-    print_success "✅ Server tests completed successfully!"
+    print_success "Server tests completed successfully!"
     echo
     
     # Ask user about client testing
@@ -198,7 +197,7 @@ run_comprehensive_test() {
     esac
     
     echo
-    print_success "🎉 Docker test completed!"
+    print_success " Docker test completed!"
     print_status "To manually interact with containers:"
     echo "  docker compose exec cinema-server bash     # Access server container"
     echo "  docker compose run --rm cinema-client bash # Access client container"

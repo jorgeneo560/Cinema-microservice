@@ -1,17 +1,17 @@
-# Testing Cinema Microservice on Another PC
+ Testing Cinema Microservice on Another PC
 
-## Overview
+ Overview
 
 There are several ways to test your Cinema microservice on another PC:
 
-1. **Docker Hub Deployment** (Recommended - Easiest)
-2. **Git Clone + Local Build**
-3. **Binary Distribution**
-4. **Network Access to Running Server**
+1. Docker Hub Deployment (Recommended - Easiest)
+2. Git Clone + Local Build
+3. Binary Distribution
+4. Network Access to Running Server
 
-## Method 1: Docker Hub Deployment (Recommended) 🐳
+ Method 1: Docker Hub Deployment (Recommended) 
 
-### Step 1: Push Images to Docker Hub
+Step 1: Push Images to Docker Hub
 
 On your development machine:
 
@@ -28,7 +28,7 @@ docker push yourusername/cinema-server:latest
 docker push yourusername/cinema-client:latest
 ```
 
-### Step 2: Create Deployment docker-compose.yml
+ Step 2: Create Deployment docker-compose.yml
 
 Create a simplified docker-compose file for deployment:
 
@@ -82,9 +82,9 @@ docker-compose -f docker-compose.deploy.yml up -d cinema-server
 docker-compose -f docker-compose.deploy.yml run --rm cinema-client ./build/client/cinema_client
 ```
 
-## Method 2: Git Clone + Local Build 🔧
+ Method 2: Git Clone + Local Build 🔧
 
-### Prerequisites on Target PC
+ Prerequisites on Target PC
 
 ```bash
 # Install dependencies
@@ -95,7 +95,7 @@ sudo apt install -y git build-essential cmake python3 python3-pip docker.io dock
 pip3 install conan
 ```
 
-### Clone and Build
+ Clone and Build
 
 ```bash
 # Clone the repository
@@ -116,11 +116,11 @@ docker-compose up -d cinema-server
 docker-compose run --rm cinema-client ./build/client/cinema_client
 ```
 
-## Method 3: Network Access Testing 🌐
+ Method 3: Network Access Testing 
 
-### Server on Development PC, Client on Target PC
+ Server on Development PC, Client on Target PC
 
-**On Development PC (Server):**
+On Development PC (Server):
 
 ```bash
 # Start server accessible from network
@@ -134,7 +134,7 @@ docker run -d -p 8080:8080 --name cinema-server cinema-microservice_cinema-serve
 ip addr show | grep inet
 ```
 
-**On Target PC (Client):**
+On Target PC (Client):
 
 ```bash
 # Option 1: Using Docker
@@ -151,9 +151,9 @@ cd Cinema-microservice
 SERVER_HOST=192.168.1.100 SERVER_PORT=8080 ./build/client/cinema_client
 ```
 
-## Method 4: Complete Binary Distribution 📦
+ Method 4: Complete Binary Distribution 
 
-### Create Distribution Package
+Create Distribution Package
 
 On development PC:
 
@@ -193,7 +193,7 @@ cd ..
 tar -czf cinema-microservice-$(date +%Y%m%d).tar.gz cinema-distribution/
 ```
 
-### Deploy on Target PC
+Deploy on Target PC
 
 ```bash
 # Extract and run
@@ -207,9 +207,9 @@ cd cinema-distribution
 ./start-client.sh
 ```
 
-## Automated Testing Scripts
+Automated Testing Scripts
 
-### Create Remote Test Script
+Create Remote Test Script
 
 ```bash
 # test-remote.sh
@@ -222,9 +222,9 @@ echo "Testing Cinema Microservice at $SERVER_HOST:$SERVER_PORT"
 
 # Test server connectivity
 if nc -z $SERVER_HOST $SERVER_PORT; then
-    echo "✅ Server is reachable"
+    echo "Server is reachable"
 else
-    echo "❌ Server is not reachable"
+    echo "Server is not reachable"
     exit 1
 fi
 
@@ -234,7 +234,7 @@ if command -v wscat >/dev/null 2>&1; then
     timeout 10s wscat -c ws://$SERVER_HOST:$SERVER_PORT << 'EOF'
 get_data
 EOF
-    echo "✅ WebSocket test completed"
+    echo "WebSocket test completed"
 fi
 
 # Run automated client test
@@ -245,12 +245,12 @@ timeout 30s docker run --rm \
     yourusername/cinema-client:latest \
     bash -c "echo '1' | ./build/client/cinema_client"
 
-echo "✅ Remote test completed"
+echo "Remote test completed"
 ```
 
-## Network Configuration Tips
+Network Configuration Tips
 
-### Firewall Configuration
+Firewall Configuration
 
 ```bash
 # On server machine, allow incoming connections
@@ -260,7 +260,7 @@ sudo ufw allow 8080/tcp
 netstat -tlnp | grep 8080
 ```
 
-### Testing Network Connectivity
+Testing Network Connectivity
 
 ```bash
 # Test from client machine
@@ -272,9 +272,9 @@ nc -zv SERVER_IP 8080
 wscat -c ws://SERVER_IP:8080
 ```
 
-## Cloud Deployment Options
+Cloud Deployment Options
 
-### AWS EC2 / DigitalOcean / GCP
+#AWS EC2 / DigitalOcean / GCP
 
 ```bash
 # Install Docker on cloud instance
@@ -290,7 +290,7 @@ docker-compose -f docker-compose.deploy.yml up -d
 # Client: docker run -e SERVER_HOST=PUBLIC_IP yourusername/cinema-client
 ```
 
-### Docker Swarm (Multi-node)
+Docker Swarm (Multi-node)
 
 ```bash
 # Initialize swarm
@@ -303,11 +303,11 @@ docker stack deploy -c docker-compose.deploy.yml cinema
 docker service scale cinema_cinema-server=2
 ```
 
-## Troubleshooting Remote Testing
+Troubleshooting Remote Testing
 
-### Common Issues
+Common Issues
 
-1. **Connection Refused**
+1. Connection Refused
    ```bash
    # Check server binding
    docker logs cinema-server
@@ -316,7 +316,7 @@ docker service scale cinema_cinema-server=2
    docker port cinema-server
    ```
 
-2. **WebSocket Handshake Failed**
+2. WebSocket Handshake Failed
    ```bash
    # Check server logs for detailed error
    docker-compose logs cinema-server
@@ -325,14 +325,14 @@ docker service scale cinema_cinema-server=2
    docker run --rm yourusername/cinema-client env
    ```
 
-3. **Network Isolation**
+3. Network Isolation
    ```bash
    # Test basic connectivity
    ping SERVER_HOST
    telnet SERVER_HOST 8080
    ```
 
-### Debug Mode
+Debug Mode
 
 Add debug flags to client:
 
@@ -346,9 +346,9 @@ docker run -it --rm \
     ./build/client/cinema_client
 ```
 
-## Monitoring and Logs
+Monitoring and Logs
 
-### Server Monitoring
+Server Monitoring
 
 ```bash
 # Real-time logs
@@ -361,7 +361,7 @@ docker stats cinema-server
 curl -I http://SERVER_IP:8080
 ```
 
-### Performance Testing
+Performance Testing
 
 ```bash
 # Load testing with multiple clients
@@ -373,14 +373,14 @@ for i in {1..10}; do
 done
 ```
 
-## Summary
+Summary
 
-**Recommended Approach for Different Scenarios:**
+Recommended Approach for Different Scenarios:
 
-- **Quick Demo**: Method 1 (Docker Hub)
-- **Development Testing**: Method 2 (Git Clone)  
-- **Production**: Method 1 + Cloud deployment
-- **Offline Distribution**: Method 4 (Binary package)
-- **Network Testing**: Method 3 (Remote server)
+- Quick Demo: Method 1 (Docker Hub)
+- Development Testing: Method 2 (Git Clone)  
+- Production: Method 1 + Cloud deployment
+- Offline Distribution: Method 4 (Binary package)
+- Network Testing: Method 3 (Remote server)
 
 Choose the method that best fits your testing requirements and the target environment capabilities!

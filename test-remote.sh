@@ -121,7 +121,7 @@ print_success "Performance test completed in ${DURATION}s"
 # Summary
 echo
 echo "============================================================"
-print_success "✅ All remote tests completed successfully!"
+print_success " All remote tests completed successfully!"
 echo
 print_status "To run the client interactively:"
 echo "docker run -it --rm -e SERVER_HOST=$SERVER_HOST -e SERVER_PORT=$SERVER_PORT $CLIENT_IMAGE ./build/client/cinema_client"

@@ -1,8 +1,8 @@
-# Docker Testing Guide for Cinema Microservice
+Docker Testing Guide for Cinema Microservice
 
-## Quick Test Commands
+Quick Test Commands
 
-### 🚀 **Automated Complete Test**
+**Automated Complete Test**
 ```bash
 ./test_docker.sh
 ```
@@ -13,7 +13,7 @@ This runs a comprehensive test that:
 4. Tests connectivity
 5. Offers client testing options
 
-### 🔧 **Individual Test Commands**
+Individual Test Commands
 
 ```bash
 # Build Docker images only
@@ -32,9 +32,9 @@ This runs a comprehensive test that:
 ./test_docker.sh cleanup
 ```
 
-## Manual Testing Steps
+Manual Testing Steps
 
-### 1. **Build and Start Services**
+Build and Start Services
 ```bash
 # Build images
 docker-compose build
@@ -46,7 +46,7 @@ docker-compose up -d cinema-server
 docker-compose ps
 ```
 
-### 2. **Test Server Functionality**
+Test Server Functionality
 ```bash
 # Check server logs
 docker-compose logs cinema-server
@@ -58,7 +58,7 @@ docker exec cinema-server netstat -tln | grep 8080
 docker-compose exec cinema-server bash
 ```
 
-### 3. **Test Client Connectivity**
+Test Client Connectivity
 ```bash
 # Run client interactively
 docker-compose run --rm cinema-client ./build/client/cinema_client
@@ -68,7 +68,7 @@ docker-compose run --rm cinema-client bash
 # Then inside container: ./build/client/cinema_client
 ```
 
-### 4. **Test WebSocket Communication**
+Test WebSocket Communication
 ```bash
 # Test with wscat (WebSocket client)
 docker-compose run --rm cinema-client wscat -c ws://cinema-server:8080
@@ -78,9 +78,9 @@ docker run --rm --network cinema-microservice_cinema-network \
   appropriate/curl -s --max-time 5 http://cinema-server:8080
 ```
 
-## Expected Test Results
+Expected Test Results
 
-### ✅ **Successful Server Start**
+Successful Server Start
 ```
 Server logs should show:
 - "Starting WebSocket server on 0.0.0.0:8080"
@@ -88,7 +88,7 @@ Server logs should show:
 - Cinema data display with theaters and available seats
 ```
 
-### ✅ **Successful Client Connection**
+Successful Client Connection
 ```
 Client should display:
 - "Starting Cinema Client..."
@@ -100,7 +100,7 @@ Client should display:
   4. Exit
 ```
 
-### ✅ **Working WebSocket Communication**
+Working WebSocket Communication
 ```
 - Client can fetch cinema data (option 1)
 - Client can attempt booking (option 2)
@@ -108,9 +108,9 @@ Client should display:
 - Real-time updates work between multiple clients
 ```
 
-## Troubleshooting Common Issues
+Troubleshooting Common Issues
 
-### 🔧 **Server Won't Start**
+Server Won't Start
 ```bash
 # Check server build logs
 docker-compose build cinema-server --no-cache
@@ -122,7 +122,7 @@ docker-compose logs cinema-server
 docker-compose run --rm cinema-server bash
 ```
 
-### 🔧 **Client Can't Connect**
+Client Can't Connect
 ```bash
 # Verify network connectivity
 docker-compose run --rm cinema-client ping cinema-server
@@ -134,7 +134,7 @@ docker-compose run --rm cinema-client nc -zv cinema-server 8080
 docker-compose run --rm cinema-client wscat -c ws://cinema-server:8080
 ```
 
-### 🔧 **Build Failures**
+Build Failures
 ```bash
 # Clean build (removes cached layers)
 docker-compose build --no-cache
@@ -146,7 +146,7 @@ df -h
 docker info
 ```
 
-### 🔧 **Port Conflicts**
+Port Conflicts
 ```bash
 # Check if port 8080 is in use
 netstat -tln | grep 8080
@@ -157,9 +157,9 @@ lsof -i :8080
 sudo fuser -k 8080/tcp
 ```
 
-## Advanced Testing
+Advanced Testing
 
-### 🧪 **Multi-Client Testing**
+Multi-Client Testing
 ```bash
 # Terminal 1: Start server
 docker-compose up cinema-server
@@ -173,7 +173,7 @@ docker-compose run --rm cinema-client ./build/client/cinema_client
 # Test that booking in one client updates the other
 ```
 
-### 🧪 **Load Testing**
+Load Testing
 ```bash
 # Start multiple clients
 for i in {1..5}; do
@@ -183,7 +183,7 @@ for i in {1..5}; do
 done
 ```
 
-### 🧪 **Network Testing**
+Network Testing
 ```bash
 # Test network isolation
 docker network ls
@@ -193,9 +193,9 @@ docker network inspect cinema-microservice_cinema-network
 docker-compose run --rm cinema-client nslookup cinema-server
 ```
 
-## Performance Monitoring
+Performance Monitoring
 
-### 📊 **Resource Usage**
+Resource Usage
 ```bash
 # Monitor container resource usage
 docker stats
@@ -204,7 +204,7 @@ docker stats
 docker-compose ps
 ```
 
-### 📊 **Log Analysis**
+Log Analysis
 ```bash
 # Follow server logs in real-time
 docker-compose logs -f cinema-server
@@ -217,9 +217,9 @@ docker-compose logs cinema-server > server.log
 docker-compose logs cinema-client > client.log
 ```
 
-## Cleanup
+Cleanup
 
-### 🧹 **Full Cleanup**
+Full Cleanup
 ```bash
 # Stop and remove containers
 docker-compose down
@@ -235,19 +235,19 @@ docker rmi cinema-microservice_cinema-client
 docker system prune -f
 ```
 
-## Success Criteria
+Success Criteria
 
 Your Docker setup is working correctly if:
 
-1. ✅ Server container starts without errors
-2. ✅ Server listens on port 8080
-3. ✅ Client container can reach server
-4. ✅ WebSocket connection establishes successfully
-5. ✅ Client can fetch cinema data
-6. ✅ Client can attempt bookings
-7. ✅ Real-time updates work between clients
-8. ✅ Containers restart properly
-9. ✅ Logs show expected behavior
-10. ✅ No resource leaks or errors
+1. Server container starts without errors
+2. Server listens on port 8080
+3. Client container can reach server
+4. WebSocket connection establishes successfully
+5. Client can fetch cinema data
+6. Client can attempt bookings
+7. Real-time updates work between clients
+8. Containers restart properly
+9. Logs show expected behavior
+10. No resource leaks or errors
 
-Run `./test_docker.sh` to automatically verify all these criteria! 🚀
+Run `./test_docker.sh` to automatically verify all these criteria! 
