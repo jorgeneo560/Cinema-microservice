@@ -1,0 +1,60 @@
+\doxysection{Cinema\+UI.\+hpp}
+\hypertarget{CinemaUI_8hpp_source}{}\label{CinemaUI_8hpp_source}\index{client/lib/CinemaUI.hpp@{client/lib/CinemaUI.hpp}}
+\mbox{\hyperlink{CinemaUI_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cinema__Client_8hpp}{cinema\_Client.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00012}\mbox{\hyperlink{namespaceUIConstants}{00012}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceUIConstants}{UIConstants}}\ \{}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00013}\mbox{\hyperlink{namespaceUIConstants_ac4f4cd76e53bb3f739a37170a60342b6}{00013}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceUIConstants_ac4f4cd76e53bb3f739a37170a60342b6}{WIDE\_SEPARATOR\_WIDTH}}\ =\ 60;}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00014}\mbox{\hyperlink{namespaceUIConstants_ae384a7af1740e3b0e71d64685896833b}{00014}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceUIConstants_ae384a7af1740e3b0e71d64685896833b}{MEDIUM\_SEPARATOR\_WIDTH}}\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00015}\mbox{\hyperlink{namespaceUIConstants_aab056e8ae144b0404d4bd9853ceccf5c}{00015}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceUIConstants_aab056e8ae144b0404d4bd9853ceccf5c}{NARROW\_SEPARATOR\_WIDTH}}\ =\ 40;}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00016}\mbox{\hyperlink{namespaceUIConstants_a827ebde8e1bd089f9ec867b8776baf10}{00016}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceUIConstants_a827ebde8e1bd089f9ec867b8776baf10}{CLEAR\_SCREEN}}\ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[2J\(\backslash\)033[1;1H"{}};}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00017}\mbox{\hyperlink{namespaceUIConstants_af213768ecc2590a3197a9959b0dcb1ec}{00017}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceUIConstants_af213768ecc2590a3197a9959b0dcb1ec}{CINEMA\_ROWS}}\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00018}\mbox{\hyperlink{namespaceUIConstants_a257af83c094fe3942d44eef83e6d1d72}{00018}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceUIConstants_a257af83c094fe3942d44eef83e6d1d72}{SEATS\_PER\_ROW}}\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00019}\mbox{\hyperlink{namespaceUIConstants_a060b0db7b70aefe74200f0a875f88486}{00019}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceUIConstants_a060b0db7b70aefe74200f0a875f88486}{MAX\_SEAT\_NUMBER}}\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00020}\mbox{\hyperlink{namespaceUIConstants_a4771a967d78242d2e9b78fbb602794bb}{00020}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceUIConstants_a4771a967d78242d2e9b78fbb602794bb}{MIN\_SEAT\_NUMBER}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00029}\mbox{\hyperlink{classCinemaUI}{00029}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCinemaUI}{CinemaUI}}\ \{}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00030}00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{classCinemaUI_a0f4522b066ad53e11296f923180c060d}{CinemaUI}}();}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCinemaUI_a0610f429be32b3ba5990247257be41c2}{displayWelcome}}();}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCinemaUI_a87e3f26302c615f05fe89670ab2d9350}{showMainMenu}}();}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCinemaUI_af5aa381f91b761ca7282cc2c33abe61f}{viewMovies}}(\textcolor{keyword}{const}\ std::string\&\ cinemaData);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00058}00058\ \ \ \ \ std::string\ \mbox{\hyperlink{classCinemaUI_afa5699559e718f3b9b961bb04133f463}{performBooking}}(\textcolor{keyword}{const}\ std::vector<Shows>\&\ shows);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCinemaUI_a7256ecdaed7d867944b2c5df45823e3d}{showBookingHelp}}();}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCinemaUI_aae1c991fa7dda3161567b49043edd772}{showBookingResult}}(\textcolor{keywordtype}{bool}\ success);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCinemaUI_a2e10d6efc81fb16d2d1f91f3274ee7d4}{displayGoodbye}}();}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCinemaUI_a203e68f9647d74428d7cce463f89cd22}{waitForEnter}}();}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00081}00081\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00087}00087\ \ \ \ \ std::string\ selectTheater(\textcolor{keyword}{const}\ std::vector<Shows>\&\ shows);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00095}00095\ \ \ \ \ \mbox{\hyperlink{classShows}{Shows}}\ selectShow(\textcolor{keyword}{const}\ std::string\&\ theater,\ \textcolor{keyword}{const}\ std::vector<Shows>\&\ shows);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00102}00102\ \ \ \ \ std::vector<uint8\_t>\ selectSeats(\textcolor{keyword}{const}\ \mbox{\hyperlink{classShows}{Shows}}\&\ selectedShow);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordtype}{bool}\ confirmBooking(\textcolor{keyword}{const}\ \mbox{\hyperlink{classShows}{Shows}}\&\ selectedShow,\ \textcolor{keyword}{const}\ std::vector<uint8\_t>\&\ seats);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{void}\ displaySpecificShow(\textcolor{keyword}{const}\ \mbox{\hyperlink{classShows}{Shows}}\&\ selectedShow);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{void}\ showSeatLayout(\textcolor{keyword}{const}\ std::vector<uint8\_t>\&\ availableSeats);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00129}00129\ \ \ \ \ \textcolor{keywordtype}{int}\ getIntInput(\textcolor{keyword}{const}\ std::string\&\ prompt);}
+\DoxyCodeLine{\Hypertarget{CinemaUI_8hpp_source_l00130}00130\ \};}
+
+\end{DoxyCode}

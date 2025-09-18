@@ -1,0 +1,330 @@
+\doxysection{Cinema\+Client Class Reference}
+\hypertarget{classCinemaClient}{}\label{classCinemaClient}\index{CinemaClient@{CinemaClient}}
+
+
+Web\+Socket client for Cinema booking system.  
+
+
+
+
+{\ttfamily \#include $<$websocket\+\_\+client.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCinemaClient_a9bf5ecec92acfa234ef43b4445e4d661}{Cinema\+Client}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCinemaClient_abdafdc6675f38216403c0b82c7b9b058}{\texorpdfstring{$\sim$}{\string~}\+Cinema\+Client}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCinemaClient_a1f89a855f15fbe3b9a321927522e7a68}{connect}} (const std\+::string \&host, const std\+::string \&port)
+\begin{DoxyCompactList}\small\item\em Connect to Cinema server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCinemaClient_a08575ad7810a6a5ae067d4285c258b31}{disconnect}} ()
+\begin{DoxyCompactList}\small\item\em Disconnect from server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCinemaClient_a54069df6a3209421ff102d98b9f206fe}{is\+Connected}} () const
+\begin{DoxyCompactList}\small\item\em Check connection status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887}{send\+Message}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Send message to server. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classCinemaClient_a727eae2dcf7eff6b750338a87cd1627d}{get\+Last\+Response}} () const
+\begin{DoxyCompactList}\small\item\em Get last server response. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classCinemaClient_a0adfb58fe004d003d23f8c5485dc76e8}{get\+Last\+Booking\+Response}} () const
+\begin{DoxyCompactList}\small\item\em Get last booking response ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCinemaClient_a6f0cc74d3bac915baad0d19f98d8cb34}{parse\+And\+Update\+Shows}} (const std\+::string \&response)
+\begin{DoxyCompactList}\small\item\em Parse server response and update \doxylink{classShows}{Shows} data. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \mbox{\hyperlink{classCinemaClient_ae2639bd1a1bd0cabd48c7fe7bba103a5}{get\+Shows}} () const
+\begin{DoxyCompactList}\small\item\em Get current \doxylink{classShows}{Shows} data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Web\+Socket client for Cinema booking system. 
+
+Provides communication layer between Cinema client application and server. Handles connection management, message sending/receiving, and protocol parsing. Maintains local cache of \doxylink{classShows}{Shows} data synchronized with server.
+
+\begin{DoxyParagraph}{Thread Safety}
+This class is thread-\/safe. All public methods can be called from multiple threads. Internal message processing runs on a separate background thread.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Connection Lifecycle}
+
+\begin{DoxyEnumerate}
+\item Create \doxylink{classCinemaClient}{Cinema\+Client} instance
+\item Call \doxylink{classCinemaClient_a1f89a855f15fbe3b9a321927522e7a68}{connect()} to establish Web\+Socket connection
+\item Send messages via \doxylink{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887}{send\+Message()}
+\item Receive responses via \doxylink{classCinemaClient_a727eae2dcf7eff6b750338a87cd1627d}{get\+Last\+Response()}/get\+Last\+Booking\+Response()
+\item Get synchronized \doxylink{classShows}{Shows} data via \doxylink{classCinemaClient_ae2639bd1a1bd0cabd48c7fe7bba103a5}{get\+Shows()}
+\item Call \doxylink{classCinemaClient_a08575ad7810a6a5ae067d4285c258b31}{disconnect()} or destructor handles cleanup
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Protocol Support}
+
+\begin{DoxyItemize}
+\item Cinema data streams (theater/movie listings)
+\item Booking requests and responses ~\newline
+
+\item Real-\/time booking updates
+\item Automatic \doxylink{classShows}{Shows} data synchronization 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{websocket__client_8hpp_source}{websocket\+\_\+client.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCinemaClient_a9bf5ecec92acfa234ef43b4445e4d661}\label{classCinemaClient_a9bf5ecec92acfa234ef43b4445e4d661} 
+\index{CinemaClient@{CinemaClient}!CinemaClient@{CinemaClient}}
+\index{CinemaClient@{CinemaClient}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{CinemaClient()}{CinemaClient()}}
+{\footnotesize\ttfamily Cinema\+Client\+::\+Cinema\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\begin{DoxyPostcond}{Postcondition}
+Client is created but not connected 
+
+Background thread is not started 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+\Hypertarget{classCinemaClient_abdafdc6675f38216403c0b82c7b9b058}\label{classCinemaClient_abdafdc6675f38216403c0b82c7b9b058} 
+\index{CinemaClient@{CinemaClient}!````~CinemaClient@{\texorpdfstring{$\sim$}{\string~}CinemaClient}}
+\index{````~CinemaClient@{\texorpdfstring{$\sim$}{\string~}CinemaClient}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CinemaClient()}{\string~CinemaClient()}}
+{\footnotesize\ttfamily Cinema\+Client\+::\texorpdfstring{$\sim$}{\string~}\+Cinema\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+\begin{DoxyPostcond}{Postcondition}
+Stops message listener thread 
+
+Disconnects from server if connected 
+
+All resources are cleaned up 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCinemaClient_a1f89a855f15fbe3b9a321927522e7a68}\label{classCinemaClient_a1f89a855f15fbe3b9a321927522e7a68} 
+\index{CinemaClient@{CinemaClient}!connect@{connect}}
+\index{connect@{connect}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily bool Cinema\+Client\+::connect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{host,  }\item[{const std\+::string \&}]{port }\end{DoxyParamCaption})}
+
+
+
+Connect to Cinema server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & Server hostname or IP address \\
+\hline
+{\em port} & Server port number ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if connection successful, false otherwise 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+host and port must not be empty 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+On success\+: connected\+\_\+ is true, message listener started 
+
+On failure\+: connected\+\_\+ remains false 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+\Hypertarget{classCinemaClient_a08575ad7810a6a5ae067d4285c258b31}\label{classCinemaClient_a08575ad7810a6a5ae067d4285c258b31} 
+\index{CinemaClient@{CinemaClient}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily void Cinema\+Client\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disconnect from server. 
+
+\begin{DoxyPostcond}{Postcondition}
+connected\+\_\+ is false 
+
+Message listener thread is stopped 
+
+Web\+Socket connection is closed gracefully 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+
+Safe to call multiple times 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+\Hypertarget{classCinemaClient_a0adfb58fe004d003d23f8c5485dc76e8}\label{classCinemaClient_a0adfb58fe004d003d23f8c5485dc76e8} 
+\index{CinemaClient@{CinemaClient}!getLastBookingResponse@{getLastBookingResponse}}
+\index{getLastBookingResponse@{getLastBookingResponse}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{getLastBookingResponse()}{getLastBookingResponse()}}
+{\footnotesize\ttfamily std\+::string Cinema\+Client\+::get\+Last\+Booking\+Response (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get last booking response ~\newline
+ 
+
+\begin{DoxyReturn}{Returns}
+Last booking-\/specific server response (SUCCESS/\+ERROR messages) 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+
+Only returns responses containing SUCCESS\+: or ERROR\+: 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+\Hypertarget{classCinemaClient_a727eae2dcf7eff6b750338a87cd1627d}\label{classCinemaClient_a727eae2dcf7eff6b750338a87cd1627d} 
+\index{CinemaClient@{CinemaClient}!getLastResponse@{getLastResponse}}
+\index{getLastResponse@{getLastResponse}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{getLastResponse()}{getLastResponse()}}
+{\footnotesize\ttfamily std\+::string Cinema\+Client\+::get\+Last\+Response (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get last server response. 
+
+\begin{DoxyReturn}{Returns}
+Last received server message 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+
+Returns copy of last response for safety 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+\Hypertarget{classCinemaClient_ae2639bd1a1bd0cabd48c7fe7bba103a5}\label{classCinemaClient_ae2639bd1a1bd0cabd48c7fe7bba103a5} 
+\index{CinemaClient@{CinemaClient}!getShows@{getShows}}
+\index{getShows@{getShows}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{getShows()}{getShows()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ Cinema\+Client\+::get\+Shows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get current \doxylink{classShows}{Shows} data. 
+
+\begin{DoxyReturn}{Returns}
+Copy of current \doxylink{classShows}{Shows} vector 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+
+Returns snapshot of current data 
+
+Data is automatically synchronized with server 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00256}{256}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+\Hypertarget{classCinemaClient_a54069df6a3209421ff102d98b9f206fe}\label{classCinemaClient_a54069df6a3209421ff102d98b9f206fe} 
+\index{CinemaClient@{CinemaClient}!isConnected@{isConnected}}
+\index{isConnected@{isConnected}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{isConnected()}{isConnected()}}
+{\footnotesize\ttfamily bool Cinema\+Client\+::is\+Connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check connection status. 
+
+\begin{DoxyReturn}{Returns}
+true if connected to server, false otherwise 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+\Hypertarget{classCinemaClient_a6f0cc74d3bac915baad0d19f98d8cb34}\label{classCinemaClient_a6f0cc74d3bac915baad0d19f98d8cb34} 
+\index{CinemaClient@{CinemaClient}!parseAndUpdateShows@{parseAndUpdateShows}}
+\index{parseAndUpdateShows@{parseAndUpdateShows}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{parseAndUpdateShows()}{parseAndUpdateShows()}}
+{\footnotesize\ttfamily void Cinema\+Client\+::parse\+And\+Update\+Shows (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{response }\end{DoxyParamCaption})}
+
+
+
+Parse server response and update \doxylink{classShows}{Shows} data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em response} & Server response string to parse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+\doxylink{classShows}{Shows} data is updated with parsed information 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+
+Automatically called by message listener 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00187}{187}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+\Hypertarget{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887}\label{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887} 
+\index{CinemaClient@{CinemaClient}!sendMessage@{sendMessage}}
+\index{sendMessage@{sendMessage}!CinemaClient@{CinemaClient}}
+\doxysubsubsection{\texorpdfstring{sendMessage()}{sendMessage()}}
+{\footnotesize\ttfamily void Cinema\+Client\+::send\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Send message to server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Message string to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+Must be connected to server 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Message is sent via Web\+Socket 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+
+If not connected, error is logged and no action taken 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{websocket__client_8cpp_source}{websocket\+\_\+client.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/lib/\mbox{\hyperlink{websocket__client_8hpp}{websocket\+\_\+client.\+hpp}}\item 
+client/lib/\mbox{\hyperlink{websocket__client_8cpp}{websocket\+\_\+client.\+cpp}}\end{DoxyCompactItemize}

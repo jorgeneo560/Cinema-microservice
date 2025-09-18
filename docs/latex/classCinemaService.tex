@@ -1,0 +1,101 @@
+\doxysection{Cinema\+Service Class Reference}
+\hypertarget{classCinemaService}{}\label{classCinemaService}\index{CinemaService@{CinemaService}}
+
+
+Service for formatting cinema data for client communication.  
+
+
+
+
+{\ttfamily \#include $<$cinema.\+hpp$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classCinemaService_a82faa92b2b8f1d1034ba62eb8aca7405}{format\+Cinema\+Data}} (const std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&shows)
+\begin{DoxyCompactList}\small\item\em Format complete cinema data for client transmission. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classCinemaService_af31ecc9a1e94c274c67fee9f8f9b5a0e}{format\+Update\+Data}} (const std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&shows)
+\begin{DoxyCompactList}\small\item\em Format booking update data for client notification. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service for formatting cinema data for client communication. 
+
+Provides static methods to format \doxylink{classShows}{Shows} data into protocol-\/compliant strings for transmission to clients. Handles both initial data streams and booking update notifications.
+
+\begin{DoxyParagraph}{Output Format}
+Generates structured text output with theater grouping, movie listings, and seat availability information in a human-\/readable format. 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{cinema_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{cinema_8hpp_source}{cinema.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCinemaService_a82faa92b2b8f1d1034ba62eb8aca7405}\label{classCinemaService_a82faa92b2b8f1d1034ba62eb8aca7405} 
+\index{CinemaService@{CinemaService}!formatCinemaData@{formatCinemaData}}
+\index{formatCinemaData@{formatCinemaData}!CinemaService@{CinemaService}}
+\doxysubsubsection{\texorpdfstring{formatCinemaData()}{formatCinemaData()}}
+{\footnotesize\ttfamily std\+::string Cinema\+Service\+::format\+Cinema\+Data (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&}]{shows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Format complete cinema data for client transmission. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shows} & Vector of all available shows \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted cinema data string with headers and theater grouping 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Returns protocol-\/compliant cinema data stream 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Groups shows by theater for organized display 
+
+Includes availability information for each show 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{cinema_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{cinema_8cpp_source}{cinema.\+cpp}}.
+
+\Hypertarget{classCinemaService_af31ecc9a1e94c274c67fee9f8f9b5a0e}\label{classCinemaService_af31ecc9a1e94c274c67fee9f8f9b5a0e} 
+\index{CinemaService@{CinemaService}!formatUpdateData@{formatUpdateData}}
+\index{formatUpdateData@{formatUpdateData}!CinemaService@{CinemaService}}
+\doxysubsubsection{\texorpdfstring{formatUpdateData()}{formatUpdateData()}}
+{\footnotesize\ttfamily std\+::string Cinema\+Service\+::format\+Update\+Data (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&}]{shows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Format booking update data for client notification. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shows} & Vector of updated shows data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted update data string with booking update headers 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Returns protocol-\/compliant booking update stream 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Used for real-\/time client synchronization after bookings 
+
+Similar format to format\+Cinema\+Data but with update headers 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{cinema_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{cinema_8cpp_source}{cinema.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/lib/\mbox{\hyperlink{cinema_8hpp}{cinema.\+hpp}}\item 
+server/lib/\mbox{\hyperlink{cinema_8cpp}{cinema.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,105 @@
+\doxysection{websocket\+\_\+server.\+hpp}
+\hypertarget{websocket__server_8hpp_source}{}\label{websocket__server_8hpp_source}\index{server/lib/websocket\_server.hpp@{server/lib/websocket\_server.hpp}}
+\mbox{\hyperlink{websocket__server_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <boost/beast/core.hpp>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <boost/beast/websocket.hpp>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <boost/asio/ip/tcp.hpp>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <boost/asio/io\_context.hpp>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cinema_8hpp}{cinema.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00024}00024\ \textcolor{keyword}{namespace\ }beast\ =\ boost::beast;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00025}00025\ \textcolor{keyword}{namespace\ }websocket\ =\ beast::websocket;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00026}00026\ \textcolor{keyword}{namespace\ }net\ =\ boost::asio;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00027}\mbox{\hyperlink{websocket__server_8hpp_a60a92ea513bd2f25705cdd673983c5a8}{00027}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{websocket__server_8hpp_a60a92ea513bd2f25705cdd673983c5a8}{tcp}}\ =\ net::ip::tcp;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00035}\mbox{\hyperlink{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}{00035}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}{MessageCallback}}\ =\ std::function<std::string(\textcolor{keyword}{const}\ std::string\&,\ \textcolor{keywordtype}{bool}\&)>;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00041}\mbox{\hyperlink{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}{00041}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}{InitialDataCallback}}\ =\ std::function<std::string()>;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00047}\mbox{\hyperlink{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}{00047}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}{BroadcastDataCallback}}\ =\ std::function<std::string()>;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00055}00055\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceCinemaProtocol}{CinemaProtocol}}\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00056}\mbox{\hyperlink{namespaceCinemaProtocol_a3278e28df6cbbbd5a58a7c6815f5a1ae}{00056}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_a3278e28df6cbbbd5a58a7c6815f5a1ae}{CINEMA\_DATA\_HEADER}}\ =\ \textcolor{stringliteral}{"{}===\ CINEMA\ DATA\ STREAM\ ==="{}};\ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00057}\mbox{\hyperlink{namespaceCinemaProtocol_a159fb37cc43a258b9b18df876741ca6b}{00057}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_a159fb37cc43a258b9b18df876741ca6b}{CINEMA\_DATA\_FOOTER}}\ =\ \textcolor{stringliteral}{"{}===\ END\ CINEMA\ DATA\ ==="{}};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00058}\mbox{\hyperlink{namespaceCinemaProtocol_a673764efee158d859d4345b062e184b1}{00058}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_a673764efee158d859d4345b062e184b1}{UPDATE\_DATA\_HEADER}}\ =\ \textcolor{stringliteral}{"{}===\ UPDATED\ CINEMA\ DATA\ ==="{}};\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00059}\mbox{\hyperlink{namespaceCinemaProtocol_a9686bbab950f633fb2b6cd1aa7c26abe}{00059}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_a9686bbab950f633fb2b6cd1aa7c26abe}{UPDATE\_DATA\_FOOTER}}\ =\ \textcolor{stringliteral}{"{}===\ END\ UPDATED\ DATA\ ==="{}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00060}\mbox{\hyperlink{namespaceCinemaProtocol_a4fd91b771163635768adac048e58c7a0}{00060}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_a4fd91b771163635768adac048e58c7a0}{BOOKING\_UPDATE\_PREFIX}}\ =\ \textcolor{stringliteral}{"{}BOOKING\_UPDATE:\(\backslash\)n"{}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00061}\mbox{\hyperlink{namespaceCinemaProtocol_a5a4af08820b5d2fd7f41fda1acd5f375}{00061}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceCinemaProtocol_a5a4af08820b5d2fd7f41fda1acd5f375}{MAX\_SEATS}}\ =\ 20;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00064}00064\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWebSocketServer}{WebSocketServer}};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00091}\mbox{\hyperlink{classWebSocketSession}{00091}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWebSocketSession}{WebSocketSession}}\ :\ \textcolor{keyword}{public}\ std::enable\_shared\_from\_this<WebSocketSession>\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00092}00092\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00093}00093\ \ \ \ \ websocket::stream<tcp::socket>\ ws\_;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00094}00094\ \ \ \ \ beast::flat\_buffer\ buffer\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00095}00095\ \ \ \ \ \mbox{\hyperlink{classWebSocketServer}{WebSocketServer}}*\ server\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00096}00096\ \ \ \ \ std::queue<std::string>\ message\_queue\_;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ writing\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00099}00099\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classWebSocketSession}{WebSocketSession}}(tcp::socket\&\&\ socket,\ \mbox{\hyperlink{classWebSocketServer}{WebSocketServer}}*\ server);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00107}00107\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketSession_aa60a520432526e90b74fd97713469a56}{run}}();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00115}00115\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketSession_a88702fb69e3419d61df691e4cfd4dc17}{sendBroadcastMessage}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00125}00125\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_accept(beast::error\_code\ ec);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00133}00133\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00141}00141\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_write(beast::error\_code\ ec,\ std::size\_t\ bytes\_transferred);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00142}00142\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_read(beast::error\_code\ ec,\ std::size\_t\ bytes\_transferred);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00152}00152\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordtype}{void}\ do\_read();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00158}00158\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordtype}{void}\ do\_write();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00165}00165\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordtype}{void}\ send\_message(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00173}00173\ \};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00195}\mbox{\hyperlink{classWebSocketServer}{00195}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWebSocketServer}{WebSocketServer}}\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00196}00196\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00197}00197\ \ \ \ \ net::io\_context\&\ ioc\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00198}00198\ \ \ \ \ tcp::acceptor\ acceptor\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00199}00199\ \ \ \ \ std::set<std::shared\_ptr<WebSocketSession>>\ sessions\_;\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00200}00200\ \ \ \ \ \mbox{\hyperlink{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}{MessageCallback}}\ messageCallback\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00201}00201\ \ \ \ \ \mbox{\hyperlink{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}{InitialDataCallback}}\ initialDataCallback\_;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00202}00202\ \ \ \ \ \mbox{\hyperlink{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}{BroadcastDataCallback}}\ broadcastDataCallback\_;\ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00204}00204\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00214}00214\ \ \ \ \ \mbox{\hyperlink{classWebSocketServer}{WebSocketServer}}(net::io\_context\&\ ioc,\ \textcolor{keyword}{const}\ tcp::endpoint\&\ endpoint,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}{MessageCallback}}\ messageCallback,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}{InitialDataCallback}}\ initialDataCallback,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}{BroadcastDataCallback}}\ broadcastDataCallback);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00218}00218\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00224}00224\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketServer_a2c749866a6dbd92e4b54a422d1b58de9}{run}}();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00225}00225\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00232}00232\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketServer_a436a43d835c5d0214efff05879270e7e}{addSession}}(std::shared\_ptr<WebSocketSession>\ session);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00233}00233\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00240}00240\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02}{removeSession}}(std::shared\_ptr<WebSocketSession>\ session);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00241}00241\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00248}00248\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketServer_aff37a8c105d99d0b697c65ba6a65ab6a}{broadcastUpdate}}();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00249}00249\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00257}00257\ \ \ \ \ std::string\ \mbox{\hyperlink{classWebSocketServer_a982ef3503a26a2ff46b78b3881acd9a3}{handleMessage}}(\textcolor{keyword}{const}\ std::string\&\ message,\ \textcolor{keywordtype}{bool}\&\ shouldBroadcast);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00258}00258\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00264}00264\ \ \ \ \ std::string\ \mbox{\hyperlink{classWebSocketServer_a0b0f779e1fd7fcbbd1a90ae4a5cfe964}{getInitialData}}();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00266}00266\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00271}00271\ \ \ \ \ \textcolor{keywordtype}{void}\ do\_accept();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00272}00272\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00280}00280\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_accept(beast::error\_code\ ec,\ tcp::socket\ socket);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8hpp_source_l00281}00281\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,36 @@
+\doxysection{cinema\+\_\+\+Client.\+hpp}
+\hypertarget{cinema__Client_8hpp_source}{}\label{cinema__Client_8hpp_source}\index{client/lib/cinema\_Client.hpp@{client/lib/cinema\_Client.hpp}}
+\mbox{\hyperlink{cinema__Client_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <shared\_mutex>}}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00038}00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classShows}{Shows}}\ \{}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00039}00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00040}00040\ \ \ \ \ std::string\ \mbox{\hyperlink{classShows_ac66deff59bf9b575e9411f2abbfdfe44}{movie}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00041}00041\ \ \ \ \ std::string\ \mbox{\hyperlink{classShows_aa3029f8077eac66fe23e7dde84c6eed7}{dateTime}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00042}00042\ \ \ \ \ std::string\ \mbox{\hyperlink{classShows_a18c835bed25fe99897ed3faf4630928a}{theater}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00043}00043\ \ \ \ \ std::vector<bool>\ \mbox{\hyperlink{classShows_acd90049507025da9543ca6368bf7b94a}{seats}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00044}00044\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00045}00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{mutable}\ std::shared\_ptr<std::shared\_mutex>\ seatsMutex;\ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00047}00047\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00048}00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00057}\mbox{\hyperlink{classShows_ab22e6e80615b6f55caeba06d0c44c441}{00057}}\ \ \ \ \ \mbox{\hyperlink{classShows_ab22e6e80615b6f55caeba06d0c44c441}{Shows}}(\textcolor{keyword}{const}\ std::string\&\ m,\ \textcolor{keyword}{const}\ std::string\&\ dt,\ \textcolor{keyword}{const}\ std::string\&\ t);}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00058}00058\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00065}\mbox{\hyperlink{classShows_a7bf2a153739b052b5111ab41cd617c75}{00065}}\ \ \ \ \ std::vector<uint8\_t>\ \mbox{\hyperlink{classShows_a7bf2a153739b052b5111ab41cd617c75}{getAvailableSeats}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00066}00066\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00078}\mbox{\hyperlink{classShows_a856e1c1d150710939d04e621c668ef8d}{00078}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classShows_a856e1c1d150710939d04e621c668ef8d}{bookSeats}}(\textcolor{keyword}{const}\ std::vector<uint8\_t>\&\ seatNumbers);}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00079}00079\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classShows_affca55c4878789522ee7b18a1e16f1a6}{updateSeatAvailability}}(\textcolor{keyword}{const}\ std::vector<bool>\&\ seatStatus);}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00090}00090\ \};}
+\DoxyCodeLine{\Hypertarget{cinema__Client_8hpp_source_l00091}00091\ }
+
+\end{DoxyCode}

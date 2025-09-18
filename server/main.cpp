@@ -1,3 +1,42 @@
+/**
+ * @file main.cpp
+ * @brief Cinema Server Application Entry Point
+ * @author Your Name
+ * @date 2025-09-18
+ * @version 1.0
+ * 
+ * @brief Main application for Cinema booking system server
+ * 
+ * This application provides the main entry point for the Cinema booking server.
+ * It initializes the cinema data, sets up the WebSocket server infrastructure,
+ * and manages real-time communication with multiple cinema booking clients.
+ * 
+ * @par Application Architecture
+ * - Creates initial cinema data with predefined shows and seat patterns
+ * - Configures WebSocket server with callback handlers
+ * - Manages concurrent client connections
+ * - Coordinates booking operations and real-time updates
+ * 
+ * @par Data Initialization
+ * Creates 9 shows (3 movies × 3 theaters) with different seat availability patterns:
+ * - Movies: Inception, Interstellar, Tenet
+ * - Theaters: PVR, IMAX, Cinepolis
+ * - Each show has 20 seats with predefined booking patterns
+ * 
+ * @par Server Features
+ * - Multi-client WebSocket communication
+ * - Real-time booking updates
+ * - Thread-safe seat management
+ * - Broadcast notifications for booking changes
+ * - Comprehensive error handling
+ * 
+ * @par Architecture Role
+ * Serves as the main business logic coordinator, integrating:
+ * - Cinema data management (Shows)
+ * - WebSocket communication (WebSocketServer)
+ * - Business services (CinemaService, BookingService, MessageHandler)
+ */
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -13,6 +52,34 @@
 
 namespace net = boost::asio;
 using tcp = net::ip::tcp;
+
+/**
+ * @brief Main server application entry point
+ * @return 0 on successful execution
+ * 
+ * @par Initialization Process
+ * 1. Create cinema data with movies, theaters, and seat patterns
+ * 2. Configure WebSocket server with callback handlers
+ * 3. Start server on localhost:8080
+ * 4. Display initial cinema state
+ * 5. Enter serving loop for client connections
+ * 
+ * @par Callback Configuration
+ * - Message Callback: Routes client messages to MessageHandler
+ * - Initial Data Callback: Provides current cinema state to new clients
+ * - Broadcast Callback: Supplies update data for booking notifications
+ * 
+ * @par Threading Model
+ * - Main thread: Handles initialization and display
+ * - WebSocket thread: Manages async I/O operations
+ * - Server supports multiple concurrent client connections
+ * 
+ * @par Data Patterns
+ * Uses three predefined seat patterns to simulate different booking states:
+ * - Pattern 1: Mixed availability (50% occupied)
+ * - Pattern 2: Sparse availability (45% occupied)  
+ * - Pattern 3: High availability (25% occupied)
+ */
 
 int main() {
 

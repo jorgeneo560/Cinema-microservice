@@ -1,0 +1,329 @@
+\doxysection{Shows Class Reference}
+\hypertarget{classShows}{}\label{classShows}\index{Shows@{Shows}}
+
+
+Server-\/side movie show data structure with thread-\/safe seat management.  
+
+
+
+
+{\ttfamily \#include $<$cinema.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classShows_ab22e6e80615b6f55caeba06d0c44c441}{Shows}} (const std\+::string \&m, const std\+::string \&dt, const std\+::string \&t)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{classShows_a7bf2a153739b052b5111ab41cd617c75}{get\+Available\+Seats}} () const
+\begin{DoxyCompactList}\small\item\em Get list of available seat numbers. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classShows_a856e1c1d150710939d04e621c668ef8d}{book\+Seats}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&seat\+Numbers)
+\begin{DoxyCompactList}\small\item\em Book specific seats atomically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classShows_ab22e6e80615b6f55caeba06d0c44c441}{Shows}} (const std\+::string \&m, const std\+::string \&dt, const std\+::string \&t)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{classShows_a7bf2a153739b052b5111ab41cd617c75}{get\+Available\+Seats}} () const
+\begin{DoxyCompactList}\small\item\em Get list of available seat numbers. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classShows_a856e1c1d150710939d04e621c668ef8d}{book\+Seats}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&seat\+Numbers)
+\begin{DoxyCompactList}\small\item\em Book specific seats atomically. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classShows_affca55c4878789522ee7b18a1e16f1a6}{update\+Seat\+Availability}} (const std\+::vector$<$ bool $>$ \&seat\+Status)
+\begin{DoxyCompactList}\small\item\em Update seat availability from external source. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classShows_ac66deff59bf9b575e9411f2abbfdfe44}{movie}}
+\begin{DoxyCompactList}\small\item\em Movie title. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classShows_aa3029f8077eac66fe23e7dde84c6eed7}{date\+Time}}
+\begin{DoxyCompactList}\small\item\em Show date and time. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classShows_a18c835bed25fe99897ed3faf4630928a}{theater}}
+\begin{DoxyCompactList}\small\item\em Theater name. \end{DoxyCompactList}\item 
+std\+::vector$<$ bool $>$ \mbox{\hyperlink{classShows_acd90049507025da9543ca6368bf7b94a}{seats}}
+\begin{DoxyCompactList}\small\item\em Seat availability (false=available, true=booked) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Server-\/side movie show data structure with thread-\/safe seat management. 
+
+Represents a movie show with thread-\/safe seat management.
+
+Identical to client-\/side \doxylink{classShows}{Shows} class but used in server context. Provides thread-\/safe operations for managing seat availability and bookings.
+
+\begin{DoxyParagraph}{Thread Safety}
+All operations are thread-\/safe using shared\+\_\+mutex for concurrent access.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classShows}{Shows} in \doxylink{cinema__Client_8hpp}{cinema\+\_\+\+Client.\+hpp} for detailed documentation
+\end{DoxySeeAlso}
+This class serves as the core data structure for the Cinema booking system. It provides thread-\/safe operations for managing seat availability and bookings for individual movie shows.
+
+\begin{DoxyParagraph}{Thread Safety}
+All operations are thread-\/safe using shared\+\_\+mutex for concurrent access. Multiple readers can access seat data simultaneously, but write operations are exclusive.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Seat Numbering}
+Seats are numbered 1-\/20 inclusive. Internal storage uses 0-\/based indexing.
+\end{DoxyParagraph}
+\begin{DoxyInvariant}{Invariant}
+Total seats is always 20 
+
+Seat numbers are 1-\/20 inclusive 
+
+seats vector size is always 20 
+\end{DoxyInvariant}
+
+
+Definition at line \mbox{\hyperlink{cinema_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{cinema_8hpp_source}{cinema.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classShows_ab22e6e80615b6f55caeba06d0c44c441}\label{classShows_ab22e6e80615b6f55caeba06d0c44c441} 
+\index{Shows@{Shows}!Shows@{Shows}}
+\index{Shows@{Shows}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{Shows()}{Shows()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Shows\+::\+Shows (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{m,  }\item[{const std\+::string \&}]{dt,  }\item[{const std\+::string \&}]{t }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Movie title \\
+\hline
+{\em dt} & Date and time string \\
+\hline
+{\em t} & Theater name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+All 20 seats are initially available 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{cinema_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{cinema_8cpp_source}{cinema.\+cpp}}.
+
+\Hypertarget{classShows_ab22e6e80615b6f55caeba06d0c44c441}\label{classShows_ab22e6e80615b6f55caeba06d0c44c441} 
+\index{Shows@{Shows}!Shows@{Shows}}
+\index{Shows@{Shows}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{Shows()}{Shows()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Shows\+::\+Shows (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{m,  }\item[{const std\+::string \&}]{dt,  }\item[{const std\+::string \&}]{t }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Movie title \\
+\hline
+{\em dt} & Date and time string \\
+\hline
+{\em t} & Theater name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+All 20 seats are initially available (false) 
+
+seats\+Mutex is initialized and ready for use 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classShows_a856e1c1d150710939d04e621c668ef8d}\label{classShows_a856e1c1d150710939d04e621c668ef8d} 
+\index{Shows@{Shows}!bookSeats@{bookSeats}}
+\index{bookSeats@{bookSeats}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{bookSeats()}{bookSeats()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Shows\+::book\+Seats (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{seat\+Numbers }\end{DoxyParamCaption})}
+
+
+
+Book specific seats atomically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seat\+Numbers} & Vector of seat numbers to book (1-\/20) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if ALL seats were successfully booked 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em false} & if ANY seat is already booked, invalid, or operation fails \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation (exclusive lock) 
+
+All-\/or-\/nothing operation -\/ either all seats book or none 
+\end{DoxyNote}
+\begin{DoxyPrecond}{Precondition}
+All seat numbers must be in range \mbox{[}1,20\mbox{]} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+On success\+: specified seats are marked as booked 
+
+On failure\+: no seats are modified 
+\end{DoxyPostcond}
+\Hypertarget{classShows_a856e1c1d150710939d04e621c668ef8d}\label{classShows_a856e1c1d150710939d04e621c668ef8d} 
+\index{Shows@{Shows}!bookSeats@{bookSeats}}
+\index{bookSeats@{bookSeats}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{bookSeats()}{bookSeats()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Shows\+::book\+Seats (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{seat\+Numbers }\end{DoxyParamCaption})}
+
+
+
+Book specific seats atomically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seat\+Numbers} & Vector of seat numbers to book (1-\/20) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if ALL seats were successfully booked 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+
+All-\/or-\/nothing operation 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{cinema_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{cinema_8cpp_source}{cinema.\+cpp}}.
+
+\Hypertarget{classShows_a7bf2a153739b052b5111ab41cd617c75}\label{classShows_a7bf2a153739b052b5111ab41cd617c75} 
+\index{Shows@{Shows}!getAvailableSeats@{getAvailableSeats}}
+\index{getAvailableSeats@{getAvailableSeats}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{getAvailableSeats()}{getAvailableSeats()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Shows\+::get\+Available\+Seats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get list of available seat numbers. 
+
+\begin{DoxyReturn}{Returns}
+Vector of available seat numbers (1-\/20) 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation (shared lock) 
+
+Returns 1-\/based seat numbers for user display 
+\end{DoxyNote}
+\Hypertarget{classShows_a7bf2a153739b052b5111ab41cd617c75}\label{classShows_a7bf2a153739b052b5111ab41cd617c75} 
+\index{Shows@{Shows}!getAvailableSeats@{getAvailableSeats}}
+\index{getAvailableSeats@{getAvailableSeats}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{getAvailableSeats()}{getAvailableSeats()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Shows\+::get\+Available\+Seats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get list of available seat numbers. 
+
+\begin{DoxyReturn}{Returns}
+Vector of available seat numbers (1-\/20) 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{cinema_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{cinema_8cpp_source}{cinema.\+cpp}}.
+
+\Hypertarget{classShows_affca55c4878789522ee7b18a1e16f1a6}\label{classShows_affca55c4878789522ee7b18a1e16f1a6} 
+\index{Shows@{Shows}!updateSeatAvailability@{updateSeatAvailability}}
+\index{updateSeatAvailability@{updateSeatAvailability}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{updateSeatAvailability()}{updateSeatAvailability()}}
+{\footnotesize\ttfamily void Shows\+::update\+Seat\+Availability (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ bool $>$ \&}]{seat\+Status }\end{DoxyParamCaption})}
+
+
+
+Update seat availability from external source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seat\+Status} & New seat status vector (false=available, true=booked) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+seat\+Status.\+size() must equal 20 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+If precondition met\+: seats vector is updated with new status 
+
+If precondition not met\+: no changes made 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation (exclusive lock) 
+
+Used for synchronizing with server updates 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{cinema__Client_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{cinema__Client_8cpp_source}{cinema\+\_\+\+Client.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classShows_aa3029f8077eac66fe23e7dde84c6eed7}\label{classShows_aa3029f8077eac66fe23e7dde84c6eed7} 
+\index{Shows@{Shows}!dateTime@{dateTime}}
+\index{dateTime@{dateTime}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{dateTime}{dateTime}}
+{\footnotesize\ttfamily std\+::string Shows\+::date\+Time}
+
+
+
+Show date and time. 
+
+Show date and time (e.\+g., "{}2025-\/09-\/11 19\+:30"{}) 
+
+Definition at line \mbox{\hyperlink{cinema_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{cinema_8hpp_source}{cinema.\+hpp}}.
+
+\Hypertarget{classShows_ac66deff59bf9b575e9411f2abbfdfe44}\label{classShows_ac66deff59bf9b575e9411f2abbfdfe44} 
+\index{Shows@{Shows}!movie@{movie}}
+\index{movie@{movie}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{movie}{movie}}
+{\footnotesize\ttfamily std\+::string Shows\+::movie}
+
+
+
+Movie title. 
+
+
+
+Definition at line \mbox{\hyperlink{cinema_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{cinema_8hpp_source}{cinema.\+hpp}}.
+
+\Hypertarget{classShows_acd90049507025da9543ca6368bf7b94a}\label{classShows_acd90049507025da9543ca6368bf7b94a} 
+\index{Shows@{Shows}!seats@{seats}}
+\index{seats@{seats}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{seats}{seats}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ Shows\+::seats}
+
+
+
+Seat availability (false=available, true=booked) 
+
+
+
+Definition at line \mbox{\hyperlink{cinema_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{cinema_8hpp_source}{cinema.\+hpp}}.
+
+\Hypertarget{classShows_a18c835bed25fe99897ed3faf4630928a}\label{classShows_a18c835bed25fe99897ed3faf4630928a} 
+\index{Shows@{Shows}!theater@{theater}}
+\index{theater@{theater}!Shows@{Shows}}
+\doxysubsubsection{\texorpdfstring{theater}{theater}}
+{\footnotesize\ttfamily std\+::string Shows\+::theater}
+
+
+
+Theater name. 
+
+Theater name (e.\+g., "{}\+PVR"{}, "{}\+IMAX"{}) 
+
+Definition at line \mbox{\hyperlink{cinema_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{cinema_8hpp_source}{cinema.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/lib/\mbox{\hyperlink{cinema_8hpp}{cinema.\+hpp}}\item 
+client/lib/\mbox{\hyperlink{cinema__Client_8hpp}{cinema\+\_\+\+Client.\+hpp}}\item 
+server/lib/\mbox{\hyperlink{cinema_8cpp}{cinema.\+cpp}}\item 
+client/lib/\mbox{\hyperlink{cinema__Client_8cpp}{cinema\+\_\+\+Client.\+cpp}}\end{DoxyCompactItemize}

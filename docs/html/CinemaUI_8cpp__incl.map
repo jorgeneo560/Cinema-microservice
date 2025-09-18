@@ -1,0 +1,31 @@
+<map id="client/lib/CinemaUI.cpp" name="client/lib/CinemaUI.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="307,5,480,31"/>
+<area shape="rect" id="Node000002" href="$CinemaUI_8hpp.html" title=" " alt="" coords="161,79,276,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="366,33,261,76,259,71,364,28"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="300,79,380,104"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="387,33,359,69,355,66,382,29"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="404,79,489,104"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="404,29,432,66,428,69,400,33"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="513,79,572,104"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="418,28,507,70,505,75,416,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,225,64,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="198,106,162,127,123,154,87,186,56,217,53,213,83,182,120,150,159,123,196,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="89,225,151,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="195,106,165,126,138,153,127,182,123,212,117,211,122,181,134,151,161,122,192,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="315,152,389,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="241,102,319,143,317,148,239,106"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="414,152,501,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="258,101,406,145,405,151,256,107"/>
+<area shape="rect" id="Node000007" href="$cinema__Client_8hpp.html" title="Data structures for Cinema booking system." alt="" coords="147,152,290,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="221,104,221,138,216,138,216,104"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="190,180,78,223,76,218,188,175"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="204,180,149,219,146,215,201,175"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="365,225,432,251"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="249,175,358,218,356,223,247,180"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="456,225,571,251"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="267,175,453,219,452,225,265,180"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="176,225,240,251"/>
+<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="220,178,214,212,209,211,214,177"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="264,225,341,251"/>
+<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="234,175,280,214,277,218,230,179"/>
+</map>

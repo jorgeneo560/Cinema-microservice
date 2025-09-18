@@ -1,0 +1,241 @@
+\chapter{Cinema Microservice}
+\hypertarget{md_README}{}\label{md_README}\index{Cinema Microservice@{Cinema Microservice}}
+\label{md_README_autotoc_md0}%
+\Hypertarget{md_README_autotoc_md0}%
+ A real-\/time cinema booking system built with C++ and Web\+Socket technology.\hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Overview}{Overview}}\label{md_README_autotoc_md1}
+This project implements a cinema booking system with a server-\/client architecture. The server manages movie shows and seat availability, while the client provides an interactive booking interface. Communication happens in real-\/time through Web\+Socket connections.\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md_README_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Real-\/time seat availability updates
+\item Multiple theater and movie support
+\item Interactive booking interface
+\item Thread-\/safe seat management
+\item Web\+Socket-\/based communication
+\item Clean architecture with separated business logic
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md3}{}\doxysection{\texorpdfstring{Architecture}{Architecture}}\label{md_README_autotoc_md3}
+\hypertarget{md_README_autotoc_md4}{}\doxysubsection{\texorpdfstring{Server Components}{Server Components}}\label{md_README_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Main server application with hardcoded movie data
+\item Web\+Socket server for real-\/time communication
+\item Cinema library with business logic services
+\item Thread-\/safe \doxylink{classShows}{Shows} class for seat management
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysubsection{\texorpdfstring{Client Components}{Client Components}}\label{md_README_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Interactive command-\/line interface
+\item Web\+Socket client for server communication
+\item Real-\/time seat availability display
+\item Booking confirmation system
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysection{\texorpdfstring{Project Structure}{Project Structure}}\label{md_README_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Cinema-\/microservice/}
+\DoxyCodeLine{├──\ server/}
+\DoxyCodeLine{│\ \ \ ├──\ main.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Server\ entry\ point}
+\DoxyCodeLine{│\ \ \ └──\ lib/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ cinema.cpp\ \ \ \ \ \ \ \ \ \ \#\ Business\ logic\ implementation}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ cinema.hpp\ \ \ \ \ \ \ \ \ \ \#\ Business\ logic\ headers}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ websocket\_server.cpp\ \#\ WebSocket\ networking}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ websocket\_server.hpp\ \#\ WebSocket\ headers}
+\DoxyCodeLine{├──\ client/}
+\DoxyCodeLine{│\ \ \ ├──\ main.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Client\ entry\ point}
+\DoxyCodeLine{│\ \ \ └──\ lib/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ cinema\_Client.cpp\ \ \ \#\ Shows\ data\ model}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ cinema\_Client.hpp\ \ \ \#\ Shows\ data\ headers}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ websocket\_client.cpp\ \#\ WebSocket\ client}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ websocket\_client.hpp\ \#\ WebSocket\ client\ headers}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ CinemaUI.cpp\ \ \ \ \ \ \ \ \#\ User\ interface}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ CinemaUI.hpp\ \ \ \ \ \ \ \ \#\ User\ interface\ headers}
+\DoxyCodeLine{├──\ build/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Build\ output\ directory}
+\DoxyCodeLine{├──\ CMakeLists.txt\ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Main\ build\ configuration}
+\DoxyCodeLine{└──\ README.md\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ This\ file}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md7}{}\doxysection{\texorpdfstring{Requirements}{Requirements}}\label{md_README_autotoc_md7}
+
+\begin{DoxyItemize}
+\item C++20 compiler
+\item CMake 3.\+15 or higher
+\item Conan package manager
+\item Boost libraries (system, websocket)
+\item Linux environment
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md8}{}\doxysection{\texorpdfstring{Building and Running}{Building and Running}}\label{md_README_autotoc_md8}
+\hypertarget{md_README_autotoc_md9}{}\doxysubsection{\texorpdfstring{Option 1\+: Using Docker (\+Recommended)}{Option 1: Using Docker (Recommended)}}\label{md_README_autotoc_md9}
+Docker provides the easiest way to build and run the Cinema microservice without dealing with dependencies.\hypertarget{md_README_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md_README_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Docker
+\item Docker Compose
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md11}{}\doxysubsubsection{\texorpdfstring{Quick Start}{Quick Start}}\label{md_README_autotoc_md11}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Make\ the\ script\ executable\ and\ run\ everything}
+\DoxyCodeLine{chmod\ +x\ start-\/docker.sh}
+\DoxyCodeLine{./start-\/docker.sh}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md12}{}\doxysubsubsection{\texorpdfstring{Manual Docker Commands}{Manual Docker Commands}}\label{md_README_autotoc_md12}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Build\ containers}
+\DoxyCodeLine{docker-\/compose\ build}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Start\ server\ only}
+\DoxyCodeLine{docker-\/compose\ up\ -\/d\ cinema-\/server}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Test\ with\ wscat\ in\ client\ container}
+\DoxyCodeLine{docker\ exec\ -\/it\ cinema-\/client\ wscat\ -\/c\ ws://cinema-\/server:8080}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Use\ C++\ client}
+\DoxyCodeLine{docker-\/compose\ run\ -\/-\/rm\ cinema-\/client\ ./build/client/cinema\_client}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ View\ server\ logs}
+\DoxyCodeLine{docker-\/compose\ logs\ cinema-\/server}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Stop\ everything}
+\DoxyCodeLine{docker-\/compose\ down}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md13}{}\doxysubsection{\texorpdfstring{Option 2\+: Local Build}{Option 2: Local Build}}\label{md_README_autotoc_md13}
+\hypertarget{md_README_autotoc_md14}{}\doxysubsubsection{\texorpdfstring{Building the Project}{Building the Project}}\label{md_README_autotoc_md14}
+
+\begin{DoxyEnumerate}
+\item Install dependencies using Conan\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{conan\ install\ .\ -\/-\/output-\/folder=build\ -\/-\/build=missing}
+
+\end{DoxyCode}
+
+\item Build the project\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ -\/C\ build}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md15}{}\doxysubsubsection{\texorpdfstring{Running the Application}{Running the Application}}\label{md_README_autotoc_md15}
+\hypertarget{md_README_autotoc_md16}{}\doxyparagraph{\texorpdfstring{Start the Server}{Start the Server}}\label{md_README_autotoc_md16}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./build/cinema}
+
+\end{DoxyCode}
+ The server will start on localhost\+:8080 and display available shows.\hypertarget{md_README_autotoc_md17}{}\doxyparagraph{\texorpdfstring{Start the Client}{Start the Client}}\label{md_README_autotoc_md17}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./build/client/cinema\_client}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md18}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_README_autotoc_md18}
+\hypertarget{md_README_autotoc_md19}{}\doxysubsection{\texorpdfstring{Server}{Server}}\label{md_README_autotoc_md19}
+The server automatically starts with predefined movie data\+:
+\begin{DoxyItemize}
+\item 3 theaters\+: PVR, IMAX, Cinepolis
+\item 3 movies\+: Inception, Interstellar, Tenet
+\item 20 seats per show with different occupancy patterns
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md20}{}\doxysubsection{\texorpdfstring{Client Menu Options}{Client Menu Options}}\label{md_README_autotoc_md20}
+
+\begin{DoxyEnumerate}
+\item View Movies -\/ Display all available shows and seats
+\item Book Seats -\/ Interactive booking process
+\item Help -\/ Booking instructions
+\item Exit -\/ Close the application
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md21}{}\doxysubsection{\texorpdfstring{Booking Process}{Booking Process}}\label{md_README_autotoc_md21}
+
+\begin{DoxyEnumerate}
+\item Select a theater from the available list
+\item Choose a movie and showtime
+\item View seat layout and availability
+\item Select desired seats (comma or space separated)
+\item Confirm booking
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md22}{}\doxysection{\texorpdfstring{Web\+Socket Testing}{WebSocket Testing}}\label{md_README_autotoc_md22}
+You can also interact directly with the server using Web\+Socket tools to see real-\/time data and make custom reservations.\hypertarget{md_README_autotoc_md23}{}\doxysubsection{\texorpdfstring{Using wscat for Testing}{Using wscat for Testing}}\label{md_README_autotoc_md23}
+Install wscat globally\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/g\ wscat}
+
+\end{DoxyCode}
+
+
+Connect to the server\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npx\ wscat\ -\/c\ ws://localhost:8080}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md24}{}\doxysubsection{\texorpdfstring{Available Commands}{Available Commands}}\label{md_README_autotoc_md24}
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+\_\+data} -\/ Get current cinema data and seat availability
+\item {\ttfamily refresh} -\/ Refresh cinema data
+\item {\ttfamily theater,movie,seat1,seat2,...} -\/ Make a reservation
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md25}{}\doxysubsection{\texorpdfstring{Example Reservation}{Example Reservation}}\label{md_README_autotoc_md25}
+To book seats 3 and 4 for Inception at PVR theater\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PVR,Inception,3,4}
+
+\end{DoxyCode}
+
+
+The server will respond with either\+:
+\begin{DoxyItemize}
+\item {\ttfamily SUCCESS\+: Booked seats 3, 4 for Inception at PVR} (if successful)
+\item {\ttfamily ERROR\+: One or more seats are already booked or invalid} (if failed)
+\end{DoxyItemize}
+
+After successful bookings, all connected clients receive real-\/time updates showing the new seat availability.\hypertarget{md_README_autotoc_md26}{}\doxysection{\texorpdfstring{Technical Details}{Technical Details}}\label{md_README_autotoc_md26}
+\hypertarget{md_README_autotoc_md27}{}\doxysubsection{\texorpdfstring{Communication Protocol}{Communication Protocol}}\label{md_README_autotoc_md27}
+
+\begin{DoxyItemize}
+\item Web\+Socket-\/based real-\/time communication
+\item JSON-\/like message format for data exchange
+\item Automatic seat availability updates
+\item Broadcast updates to all connected clients
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md28}{}\doxysubsection{\texorpdfstring{Seat Management}{Seat Management}}\label{md_README_autotoc_md28}
+
+\begin{DoxyItemize}
+\item Thread-\/safe operations using shared\+\_\+mutex
+\item 20 seats per show (numbered 1-\/20)
+\item Real-\/time availability tracking
+\item Atomic booking operations
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md29}{}\doxysubsection{\texorpdfstring{Data Models}{Data Models}}\label{md_README_autotoc_md29}
+
+\begin{DoxyItemize}
+\item \doxylink{classShows}{Shows} class\+: Manages movie, theater, datetime, and seat data
+\item \doxylink{classCinemaService}{Cinema\+Service}\+: Formats and processes cinema data
+\item \doxylink{classBookingService}{Booking\+Service}\+: Handles seat reservation logic
+\item \doxylink{classMessageHandler}{Message\+Handler}\+: Processes client-\/server communication
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md30}{}\doxysection{\texorpdfstring{Error Handling}{Error Handling}}\label{md_README_autotoc_md30}
+The system includes comprehensive error handling for\+:
+\begin{DoxyItemize}
+\item Network connection failures
+\item Invalid booking requests
+\item Seat unavailability
+\item Client disconnections
+\item Malformed messages
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md31}{}\doxysection{\texorpdfstring{Development}{Development}}\label{md_README_autotoc_md31}
+\hypertarget{md_README_autotoc_md32}{}\doxysubsection{\texorpdfstring{Code Organization}{Code Organization}}\label{md_README_autotoc_md32}
+
+\begin{DoxyItemize}
+\item Business logic separated from networking code
+\item Clean architecture with service classes
+\item Header-\/implementation file separation
+\item Comment-\/free codebase for clarity
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md33}{}\doxysubsection{\texorpdfstring{Thread Safety}{Thread Safety}}\label{md_README_autotoc_md33}
+
+\begin{DoxyItemize}
+\item Shared mutexes for concurrent read access
+\item Exclusive locks for seat modifications
+\item Atomic boolean flags for connection state
+\item Thread-\/safe message queuing
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md34}{}\doxysection{\texorpdfstring{Future Enhancements}{Future Enhancements}}\label{md_README_autotoc_md34}
+Potential improvements could include\+:
+\begin{DoxyItemize}
+\item Database integration for persistent data
+\item User authentication system
+\item Payment processing integration
+\item REST API endpoints
+\item Web-\/based client interface
+\item Show scheduling system
+\item Advanced seat selection features
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md35}{}\doxysection{\texorpdfstring{License}{License}}\label{md_README_autotoc_md35}
+This project is a coding test implementation. 

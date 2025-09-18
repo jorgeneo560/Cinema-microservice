@@ -1,0 +1,84 @@
+\doxysection{Message\+Handler Class Reference}
+\hypertarget{classMessageHandler}{}\label{classMessageHandler}\index{MessageHandler@{MessageHandler}}
+
+
+High-\/level message routing and processing service.  
+
+
+
+
+{\ttfamily \#include $<$cinema.\+hpp$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classMessageHandler_a9b7139e4f0ab61f942c052faa39674dc}{handle\+Message}} (const std\+::string \&received, std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&shows, bool \&should\+Broadcast)
+\begin{DoxyCompactList}\small\item\em Handle any client message and generate appropriate response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+High-\/level message routing and processing service. 
+
+Provides unified interface for handling all types of client messages. Routes messages to appropriate services and coordinates responses. Acts as the main entry point for server message processing. 
+
+Definition at line \mbox{\hyperlink{cinema_8hpp_source_l00158}{158}} of file \mbox{\hyperlink{cinema_8hpp_source}{cinema.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMessageHandler_a9b7139e4f0ab61f942c052faa39674dc}\label{classMessageHandler_a9b7139e4f0ab61f942c052faa39674dc} 
+\index{MessageHandler@{MessageHandler}!handleMessage@{handleMessage}}
+\index{handleMessage@{handleMessage}!MessageHandler@{MessageHandler}}
+\doxysubsubsection{\texorpdfstring{handleMessage()}{handleMessage()}}
+{\footnotesize\ttfamily std\+::string Message\+Handler\+::handle\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{received,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&}]{shows,  }\item[{bool \&}]{should\+Broadcast }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle any client message and generate appropriate response. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received} & Raw message received from client \\
+\hline
+{\em shows} & Reference to shows vector (may be modified) \\
+\hline
+{\em should\+Broadcast} & Output parameter indicating if response should be broadcast \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response message to send back to client 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+received contains valid client message 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+should\+Broadcast indicates whether other clients should receive response 
+
+shows vector may be modified for booking operations
+\end{DoxyPostcond}
+\begin{DoxyParagraph}{Message Types Handled}
+
+\begin{DoxyItemize}
+\item "{}get\+\_\+data"{} -\/ Returns formatted cinema data
+\item Booking requests -\/ Processes seat bookings
+\item Unknown messages -\/ Returns error response
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Broadcast Logic}
+
+\begin{DoxyItemize}
+\item Data requests\+: no broadcast needed
+\item Successful bookings\+: broadcast update to all clients
+\item Failed bookings\+: no broadcast needed 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{cinema_8cpp_source_l00159}{159}} of file \mbox{\hyperlink{cinema_8cpp_source}{cinema.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/lib/\mbox{\hyperlink{cinema_8hpp}{cinema.\+hpp}}\item 
+server/lib/\mbox{\hyperlink{cinema_8cpp}{cinema.\+cpp}}\end{DoxyCompactItemize}

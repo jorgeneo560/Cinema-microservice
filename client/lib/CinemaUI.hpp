@@ -29,18 +29,18 @@ namespace UIConstants {
 class CinemaUI {
 public:
     /**
-     * brief Constructor
+     * @brief Constructor
      */
     CinemaUI();
 
     /**
-     * brief Display welcome message
+     * @brief Display welcome message
      */
     void displayWelcome();
 
     /**
-     * brief Display main menu and get user choice
-     * return User's menu selection (1-4)
+     * @brief Display main menu and get user choice
+     * @return User's menu selection (1-4)
      */
     int showMainMenu();
 

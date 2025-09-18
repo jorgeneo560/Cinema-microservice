@@ -1,0 +1,85 @@
+\doxysection{websocket\+\_\+client.\+hpp}
+\hypertarget{websocket__client_8hpp_source}{}\label{websocket__client_8hpp_source}\index{client/lib/websocket\_client.hpp@{client/lib/websocket\_client.hpp}}
+\mbox{\hyperlink{websocket__client_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <boost/beast/core.hpp>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <boost/beast/websocket.hpp>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <boost/asio/ip/tcp.hpp>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cinema__Client_8hpp}{cinema\_Client.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00023}00023\ \textcolor{keyword}{namespace\ }beast\ =\ boost::beast;}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00024}00024\ \textcolor{keyword}{namespace\ }websocket\ =\ beast::websocket;}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00025}00025\ \textcolor{keyword}{namespace\ }net\ =\ boost::asio;}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00026}\mbox{\hyperlink{websocket__client_8hpp_a60a92ea513bd2f25705cdd673983c5a8}{00026}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{websocket__server_8hpp_a60a92ea513bd2f25705cdd673983c5a8}{tcp}}\ =\ net::ip::tcp;}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00035}00035\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceCinemaProtocol}{CinemaProtocol}}\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00036}\mbox{\hyperlink{namespaceCinemaProtocol_ab99e835bfac794677a397ff5363ece9c}{00036}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_ab99e835bfac794677a397ff5363ece9c}{THEATER\_PREFIX}}\ =\ \textcolor{stringliteral}{"{}Theater:\ "{}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00037}\mbox{\hyperlink{namespaceCinemaProtocol_a93491886d23147f5263bacc9f0dfc373}{00037}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_a93491886d23147f5263bacc9f0dfc373}{MOVIE\_PREFIX}}\ =\ \textcolor{stringliteral}{"{}\ \ Movie:\ "{}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00038}\mbox{\hyperlink{namespaceCinemaProtocol_ae899ccb0c5df4d860e27a36769d450cc}{00038}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_ae899ccb0c5df4d860e27a36769d450cc}{CINEMA\_DATA\_STREAM}}\ =\ \textcolor{stringliteral}{"{}===\ CINEMA\ DATA\ STREAM\ ==="{}};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00039}\mbox{\hyperlink{namespaceCinemaProtocol_ad52987512df0107778ae91d4369d154c}{00039}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_ad52987512df0107778ae91d4369d154c}{UPDATED\_CINEMA\_DATA}}\ =\ \textcolor{stringliteral}{"{}===\ UPDATED\ CINEMA\ DATA\ ==="{}};\ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00040}\mbox{\hyperlink{namespaceCinemaProtocol_a4d6e3d0185b8f59df6e8f35861f4a0ff}{00040}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespaceCinemaProtocol_a4d6e3d0185b8f59df6e8f35861f4a0ff}{BOOKING\_UPDATE}}\ =\ \textcolor{stringliteral}{"{}BOOKING\_UPDATE:"{}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00041}\mbox{\hyperlink{namespaceCinemaProtocol_a3ef56653567eac679673bb17df4dac7a}{00041}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespaceCinemaProtocol_a3ef56653567eac679673bb17df4dac7a}{THEATER\_PREFIX\_LEN}}\ =\ 9;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00042}\mbox{\hyperlink{namespaceCinemaProtocol_a0bd4be7d4cd4bc2b218677fa56b2d5c3}{00042}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespaceCinemaProtocol_a0bd4be7d4cd4bc2b218677fa56b2d5c3}{MOVIE\_PREFIX\_LEN}}\ =\ 9;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00071}\mbox{\hyperlink{classCinemaClient}{00071}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCinemaClient}{CinemaClient}}\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00072}00072\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00078}00078\ \ \ \ \ \mbox{\hyperlink{classCinemaClient_a9bf5ecec92acfa234ef43b4445e4d661}{CinemaClient}}();}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00079}00079\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{classCinemaClient_abdafdc6675f38216403c0b82c7b9b058}{\string~CinemaClient}}();}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00087}00087\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCinemaClient_a1f89a855f15fbe3b9a321927522e7a68}{connect}}(\textcolor{keyword}{const}\ std::string\&\ host,\ \textcolor{keyword}{const}\ std::string\&\ port);}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00099}00099\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCinemaClient_a08575ad7810a6a5ae067d4285c258b31}{disconnect}}();}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00109}00109\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCinemaClient_a54069df6a3209421ff102d98b9f206fe}{isConnected}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00116}00116\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887}{sendMessage}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00126}00126\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00133}00133\ \ \ \ \ std::string\ \mbox{\hyperlink{classCinemaClient_a727eae2dcf7eff6b750338a87cd1627d}{getLastResponse}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00134}00134\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00141}00141\ \ \ \ \ std::string\ \mbox{\hyperlink{classCinemaClient_a0adfb58fe004d003d23f8c5485dc76e8}{getLastBookingResponse}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00142}00142\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCinemaClient_a6f0cc74d3bac915baad0d19f98d8cb34}{parseAndUpdateShows}}(\textcolor{keyword}{const}\ std::string\&\ response);}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00151}00151\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00159}00159\ \ \ \ \ std::vector<Shows>\ \mbox{\hyperlink{classCinemaClient_ae2639bd1a1bd0cabd48c7fe7bba103a5}{getShows}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00161}00161\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00162}00162\ \ \ \ \ net::io\_context\ ioc\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00163}00163\ \ \ \ \ websocket::stream<tcp::socket>\ ws\_;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00164}00164\ \ \ \ \ std::atomic<bool>\ connected\_\{\textcolor{keyword}{false}\};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00166}00166\ \ \ \ \ std::unique\_ptr<std::thread>\ listenerThread\_;\ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00167}00167\ \ \ \ \ std::atomic<bool>\ shouldStop\_\{\textcolor{keyword}{false}\};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00169}00169\ \ \ \ \ std::string\ lastResponse\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00170}00170\ \ \ \ \ std::string\ lastBookingResponse\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00171}00171\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ responseMutex\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00173}00173\ \ \ \ \ std::vector<Shows>\ shows\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00174}00174\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ showsMutex\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00181}00181\ \ \ \ \ \textcolor{keywordtype}{void}\ startMessageListener();}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00182}00182\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00188}00188\ \ \ \ \ \textcolor{keywordtype}{void}\ stopMessageListener();}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00189}00189\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordtype}{void}\ processMessage(\textcolor{keyword}{const}\ std::string\&\ response);}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00197}00197\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00204}00204\ \ \ \ \ \textcolor{keywordtype}{bool}\ isCinemaDataStream(\textcolor{keyword}{const}\ std::string\&\ response)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00205}00205\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00212}00212\ \ \ \ \ \textcolor{keywordtype}{void}\ handleBookingUpdate(\textcolor{keyword}{const}\ std::string\&\ response);}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00213}00213\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00220}00220\ \ \ \ \ \textcolor{keywordtype}{void}\ handleServerMessage(\textcolor{keyword}{const}\ std::string\&\ response);}
+\DoxyCodeLine{\Hypertarget{websocket__client_8hpp_source_l00221}00221\ \};}
+
+\end{DoxyCode}

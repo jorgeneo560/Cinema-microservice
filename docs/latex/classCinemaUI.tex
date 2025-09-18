@@ -1,0 +1,200 @@
+\doxysection{Cinema\+UI Class Reference}
+\hypertarget{classCinemaUI}{}\label{classCinemaUI}\index{CinemaUI@{CinemaUI}}
+
+
+User interface class for Cinema booking system.  
+
+
+
+
+{\ttfamily \#include $<$Cinema\+UI.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCinemaUI_a0f4522b066ad53e11296f923180c060d}{Cinema\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCinemaUI_a0610f429be32b3ba5990247257be41c2}{display\+Welcome}} ()
+\begin{DoxyCompactList}\small\item\em Display welcome message. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCinemaUI_a87e3f26302c615f05fe89670ab2d9350}{show\+Main\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Display main menu and get user choice. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCinemaUI_af5aa381f91b761ca7282cc2c33abe61f}{view\+Movies}} (const std\+::string \&cinema\+Data)
+\begin{DoxyCompactList}\small\item\em View all movies and theaters. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classCinemaUI_afa5699559e718f3b9b961bb04133f463}{perform\+Booking}} (const std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&shows)
+\begin{DoxyCompactList}\small\item\em Perform complete booking process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCinemaUI_a7256ecdaed7d867944b2c5df45823e3d}{show\+Booking\+Help}} ()
+\begin{DoxyCompactList}\small\item\em Show booking help. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCinemaUI_aae1c991fa7dda3161567b49043edd772}{show\+Booking\+Result}} (bool success)
+\begin{DoxyCompactList}\small\item\em Display booking result to user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCinemaUI_a2e10d6efc81fb16d2d1f91f3274ee7d4}{display\+Goodbye}} ()
+\begin{DoxyCompactList}\small\item\em Display goodbye message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCinemaUI_a203e68f9647d74428d7cce463f89cd22}{wait\+For\+Enter}} ()
+\begin{DoxyCompactList}\small\item\em Wait for user to press Enter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+User interface class for Cinema booking system. 
+
+Pure UI class that handles display and user input collection only. All data is passed via parameters, no direct client communication. 
+
+Definition at line \mbox{\hyperlink{CinemaUI_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{CinemaUI_8hpp_source}{Cinema\+UI.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCinemaUI_a0f4522b066ad53e11296f923180c060d}\label{classCinemaUI_a0f4522b066ad53e11296f923180c060d} 
+\index{CinemaUI@{CinemaUI}!CinemaUI@{CinemaUI}}
+\index{CinemaUI@{CinemaUI}!CinemaUI@{CinemaUI}}
+\doxysubsubsection{\texorpdfstring{CinemaUI()}{CinemaUI()}}
+{\footnotesize\ttfamily Cinema\+UI\+::\+Cinema\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{CinemaUI_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{CinemaUI_8cpp_source}{Cinema\+UI.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCinemaUI_a2e10d6efc81fb16d2d1f91f3274ee7d4}\label{classCinemaUI_a2e10d6efc81fb16d2d1f91f3274ee7d4} 
+\index{CinemaUI@{CinemaUI}!displayGoodbye@{displayGoodbye}}
+\index{displayGoodbye@{displayGoodbye}!CinemaUI@{CinemaUI}}
+\doxysubsubsection{\texorpdfstring{displayGoodbye()}{displayGoodbye()}}
+{\footnotesize\ttfamily void Cinema\+UI\+::display\+Goodbye (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display goodbye message. 
+
+
+
+Definition at line \mbox{\hyperlink{CinemaUI_8cpp_source_l00310}{310}} of file \mbox{\hyperlink{CinemaUI_8cpp_source}{Cinema\+UI.\+cpp}}.
+
+\Hypertarget{classCinemaUI_a0610f429be32b3ba5990247257be41c2}\label{classCinemaUI_a0610f429be32b3ba5990247257be41c2} 
+\index{CinemaUI@{CinemaUI}!displayWelcome@{displayWelcome}}
+\index{displayWelcome@{displayWelcome}!CinemaUI@{CinemaUI}}
+\doxysubsubsection{\texorpdfstring{displayWelcome()}{displayWelcome()}}
+{\footnotesize\ttfamily void Cinema\+UI\+::display\+Welcome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display welcome message. 
+
+
+
+Definition at line \mbox{\hyperlink{CinemaUI_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{CinemaUI_8cpp_source}{Cinema\+UI.\+cpp}}.
+
+\Hypertarget{classCinemaUI_afa5699559e718f3b9b961bb04133f463}\label{classCinemaUI_afa5699559e718f3b9b961bb04133f463} 
+\index{CinemaUI@{CinemaUI}!performBooking@{performBooking}}
+\index{performBooking@{performBooking}!CinemaUI@{CinemaUI}}
+\doxysubsubsection{\texorpdfstring{performBooking()}{performBooking()}}
+{\footnotesize\ttfamily std\+::string Cinema\+UI\+::perform\+Booking (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&}]{shows }\end{DoxyParamCaption})}
+
+
+
+Perform complete booking process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shows} & Vector of available shows \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Booking data string if successful, empty string if cancelled 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{CinemaUI_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{CinemaUI_8cpp_source}{Cinema\+UI.\+cpp}}.
+
+\Hypertarget{classCinemaUI_a7256ecdaed7d867944b2c5df45823e3d}\label{classCinemaUI_a7256ecdaed7d867944b2c5df45823e3d} 
+\index{CinemaUI@{CinemaUI}!showBookingHelp@{showBookingHelp}}
+\index{showBookingHelp@{showBookingHelp}!CinemaUI@{CinemaUI}}
+\doxysubsubsection{\texorpdfstring{showBookingHelp()}{showBookingHelp()}}
+{\footnotesize\ttfamily void Cinema\+UI\+::show\+Booking\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Show booking help. 
+
+
+
+Definition at line \mbox{\hyperlink{CinemaUI_8cpp_source_l00275}{275}} of file \mbox{\hyperlink{CinemaUI_8cpp_source}{Cinema\+UI.\+cpp}}.
+
+\Hypertarget{classCinemaUI_aae1c991fa7dda3161567b49043edd772}\label{classCinemaUI_aae1c991fa7dda3161567b49043edd772} 
+\index{CinemaUI@{CinemaUI}!showBookingResult@{showBookingResult}}
+\index{showBookingResult@{showBookingResult}!CinemaUI@{CinemaUI}}
+\doxysubsubsection{\texorpdfstring{showBookingResult()}{showBookingResult()}}
+{\footnotesize\ttfamily void Cinema\+UI\+::show\+Booking\+Result (\begin{DoxyParamCaption}\item[{bool}]{success }\end{DoxyParamCaption})}
+
+
+
+Display booking result to user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em success} & Whether the booking was successful \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{CinemaUI_8cpp_source_l00296}{296}} of file \mbox{\hyperlink{CinemaUI_8cpp_source}{Cinema\+UI.\+cpp}}.
+
+\Hypertarget{classCinemaUI_a87e3f26302c615f05fe89670ab2d9350}\label{classCinemaUI_a87e3f26302c615f05fe89670ab2d9350} 
+\index{CinemaUI@{CinemaUI}!showMainMenu@{showMainMenu}}
+\index{showMainMenu@{showMainMenu}!CinemaUI@{CinemaUI}}
+\doxysubsubsection{\texorpdfstring{showMainMenu()}{showMainMenu()}}
+{\footnotesize\ttfamily int Cinema\+UI\+::show\+Main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display main menu and get user choice. 
+
+\begin{DoxyReturn}{Returns}
+User\textquotesingle{}s menu selection (1-\/4) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{CinemaUI_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{CinemaUI_8cpp_source}{Cinema\+UI.\+cpp}}.
+
+\Hypertarget{classCinemaUI_af5aa381f91b761ca7282cc2c33abe61f}\label{classCinemaUI_af5aa381f91b761ca7282cc2c33abe61f} 
+\index{CinemaUI@{CinemaUI}!viewMovies@{viewMovies}}
+\index{viewMovies@{viewMovies}!CinemaUI@{CinemaUI}}
+\doxysubsubsection{\texorpdfstring{viewMovies()}{viewMovies()}}
+{\footnotesize\ttfamily void Cinema\+UI\+::view\+Movies (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cinema\+Data }\end{DoxyParamCaption})}
+
+
+
+View all movies and theaters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cinema\+Data} & The complete cinema data string from server \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{CinemaUI_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{CinemaUI_8cpp_source}{Cinema\+UI.\+cpp}}.
+
+\Hypertarget{classCinemaUI_a203e68f9647d74428d7cce463f89cd22}\label{classCinemaUI_a203e68f9647d74428d7cce463f89cd22} 
+\index{CinemaUI@{CinemaUI}!waitForEnter@{waitForEnter}}
+\index{waitForEnter@{waitForEnter}!CinemaUI@{CinemaUI}}
+\doxysubsubsection{\texorpdfstring{waitForEnter()}{waitForEnter()}}
+{\footnotesize\ttfamily void Cinema\+UI\+::wait\+For\+Enter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Wait for user to press Enter. 
+
+
+
+Definition at line \mbox{\hyperlink{CinemaUI_8cpp_source_l00327}{327}} of file \mbox{\hyperlink{CinemaUI_8cpp_source}{Cinema\+UI.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/lib/\mbox{\hyperlink{CinemaUI_8hpp}{Cinema\+UI.\+hpp}}\item 
+client/lib/\mbox{\hyperlink{CinemaUI_8cpp}{Cinema\+UI.\+cpp}}\end{DoxyCompactItemize}
