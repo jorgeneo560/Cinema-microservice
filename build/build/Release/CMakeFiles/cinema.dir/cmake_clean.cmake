@@ -1,10 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cinema.dir/src/cinema.cpp.o"
-  "CMakeFiles/cinema.dir/src/cinema.cpp.o.d"
-  "CMakeFiles/cinema.dir/src/main.cpp.o"
-  "CMakeFiles/cinema.dir/src/main.cpp.o.d"
-  "CMakeFiles/cinema.dir/src/websocket_server.cpp.o"
-  "CMakeFiles/cinema.dir/src/websocket_server.cpp.o.d"
+  "CMakeFiles/cinema.dir/server/main.cpp.o"
+  "CMakeFiles/cinema.dir/server/main.cpp.o.d"
   "cinema"
   "cinema.pdb"
 )

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libCinemaClientLib.a CMakeFiles/CinemaClientLib.dir/lib/cinema_Client.cpp.o CMakeFiles/CinemaClientLib.dir/lib/websocket_client.cpp.o CMakeFiles/CinemaClientLib.dir/lib/CinemaUI.cpp.o
+/usr/bin/ranlib libCinemaClientLib.a

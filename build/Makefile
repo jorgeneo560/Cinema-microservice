@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/ros2/Documents/beamtrail/Cinema-microservice/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -117,6 +127,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named cinema_lib
+
+# Build rule for target.
+cinema_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cinema_lib
+.PHONY : cinema_lib
+
+# fast build rule for target.
+cinema_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema_lib.dir/build.make CMakeFiles/cinema_lib.dir/build
+.PHONY : cinema_lib/fast
+
+#=============================================================================
 # Target rules for targets named cinema
 
 # Build rule for target.
@@ -129,77 +152,129 @@ cinema/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/build
 .PHONY : cinema/fast
 
-src/cinema.o: src/cinema.cpp.o
-.PHONY : src/cinema.o
+#=============================================================================
+# Target rules for targets named CinemaClientLib
+
+# Build rule for target.
+CinemaClientLib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CinemaClientLib
+.PHONY : CinemaClientLib
+
+# fast build rule for target.
+CinemaClientLib/fast:
+	$(MAKE) $(MAKESILENT) -f client/CMakeFiles/CinemaClientLib.dir/build.make client/CMakeFiles/CinemaClientLib.dir/build
+.PHONY : CinemaClientLib/fast
+
+#=============================================================================
+# Target rules for targets named cinema_client
+
+# Build rule for target.
+cinema_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cinema_client
+.PHONY : cinema_client
+
+# fast build rule for target.
+cinema_client/fast:
+	$(MAKE) $(MAKESILENT) -f client/CMakeFiles/cinema_client.dir/build.make client/CMakeFiles/cinema_client.dir/build
+.PHONY : cinema_client/fast
+
+#=============================================================================
+# Target rules for targets named cinema_tests
+
+# Build rule for target.
+cinema_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cinema_tests
+.PHONY : cinema_tests
+
+# fast build rule for target.
+cinema_tests/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/cinema_tests.dir/build.make tests/CMakeFiles/cinema_tests.dir/build
+.PHONY : cinema_tests/fast
+
+#=============================================================================
+# Target rules for targets named run_tests
+
+# Build rule for target.
+run_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 run_tests
+.PHONY : run_tests
+
+# fast build rule for target.
+run_tests/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/run_tests.dir/build.make tests/CMakeFiles/run_tests.dir/build
+.PHONY : run_tests/fast
+
+server/lib/cinema.o: server/lib/cinema.cpp.o
+.PHONY : server/lib/cinema.o
 
 # target to build an object file
-src/cinema.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/src/cinema.cpp.o
-.PHONY : src/cinema.cpp.o
+server/lib/cinema.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema_lib.dir/build.make CMakeFiles/cinema_lib.dir/server/lib/cinema.cpp.o
+.PHONY : server/lib/cinema.cpp.o
 
-src/cinema.i: src/cinema.cpp.i
-.PHONY : src/cinema.i
+server/lib/cinema.i: server/lib/cinema.cpp.i
+.PHONY : server/lib/cinema.i
 
 # target to preprocess a source file
-src/cinema.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/src/cinema.cpp.i
-.PHONY : src/cinema.cpp.i
+server/lib/cinema.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema_lib.dir/build.make CMakeFiles/cinema_lib.dir/server/lib/cinema.cpp.i
+.PHONY : server/lib/cinema.cpp.i
 
-src/cinema.s: src/cinema.cpp.s
-.PHONY : src/cinema.s
+server/lib/cinema.s: server/lib/cinema.cpp.s
+.PHONY : server/lib/cinema.s
 
 # target to generate assembly for a file
-src/cinema.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/src/cinema.cpp.s
-.PHONY : src/cinema.cpp.s
+server/lib/cinema.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema_lib.dir/build.make CMakeFiles/cinema_lib.dir/server/lib/cinema.cpp.s
+.PHONY : server/lib/cinema.cpp.s
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+server/lib/websocket_server.o: server/lib/websocket_server.cpp.o
+.PHONY : server/lib/websocket_server.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+server/lib/websocket_server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema_lib.dir/build.make CMakeFiles/cinema_lib.dir/server/lib/websocket_server.cpp.o
+.PHONY : server/lib/websocket_server.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+server/lib/websocket_server.i: server/lib/websocket_server.cpp.i
+.PHONY : server/lib/websocket_server.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+server/lib/websocket_server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema_lib.dir/build.make CMakeFiles/cinema_lib.dir/server/lib/websocket_server.cpp.i
+.PHONY : server/lib/websocket_server.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+server/lib/websocket_server.s: server/lib/websocket_server.cpp.s
+.PHONY : server/lib/websocket_server.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+server/lib/websocket_server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema_lib.dir/build.make CMakeFiles/cinema_lib.dir/server/lib/websocket_server.cpp.s
+.PHONY : server/lib/websocket_server.cpp.s
 
-src/websocket_server.o: src/websocket_server.cpp.o
-.PHONY : src/websocket_server.o
+server/main.o: server/main.cpp.o
+.PHONY : server/main.o
 
 # target to build an object file
-src/websocket_server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/src/websocket_server.cpp.o
-.PHONY : src/websocket_server.cpp.o
+server/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/server/main.cpp.o
+.PHONY : server/main.cpp.o
 
-src/websocket_server.i: src/websocket_server.cpp.i
-.PHONY : src/websocket_server.i
+server/main.i: server/main.cpp.i
+.PHONY : server/main.i
 
 # target to preprocess a source file
-src/websocket_server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/src/websocket_server.cpp.i
-.PHONY : src/websocket_server.cpp.i
+server/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/server/main.cpp.i
+.PHONY : server/main.cpp.i
 
-src/websocket_server.s: src/websocket_server.cpp.s
-.PHONY : src/websocket_server.s
+server/main.s: server/main.cpp.s
+.PHONY : server/main.s
 
 # target to generate assembly for a file
-src/websocket_server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/src/websocket_server.cpp.s
-.PHONY : src/websocket_server.cpp.s
+server/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinema.dir/build.make CMakeFiles/cinema.dir/server/main.cpp.s
+.PHONY : server/main.cpp.s
 
 # Help Target
 help:
@@ -209,16 +284,22 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... run_tests"
+	@echo "... CinemaClientLib"
 	@echo "... cinema"
-	@echo "... src/cinema.o"
-	@echo "... src/cinema.i"
-	@echo "... src/cinema.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/websocket_server.o"
-	@echo "... src/websocket_server.i"
-	@echo "... src/websocket_server.s"
+	@echo "... cinema_client"
+	@echo "... cinema_lib"
+	@echo "... cinema_tests"
+	@echo "... server/lib/cinema.o"
+	@echo "... server/lib/cinema.i"
+	@echo "... server/lib/cinema.s"
+	@echo "... server/lib/websocket_server.o"
+	@echo "... server/lib/websocket_server.i"
+	@echo "... server/lib/websocket_server.s"
+	@echo "... server/main.o"
+	@echo "... server/main.i"
+	@echo "... server/main.s"
 .PHONY : help
 
 

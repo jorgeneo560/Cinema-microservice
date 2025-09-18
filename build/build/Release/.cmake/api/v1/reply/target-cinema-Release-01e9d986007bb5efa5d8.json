@@ -1,0 +1,877 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "cinema"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"set_property",
+			"include",
+			"find_package",
+			"find_dependency"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"build/build/Release/generators/Boost-Target-release.cmake",
+			"build/build/Release/generators/BoostTargets.cmake",
+			"build/build/Release/generators/BoostConfig.cmake",
+			"build/build/Release/generators/BZip2-Target-release.cmake",
+			"build/build/Release/generators/BZip2Targets.cmake",
+			"build/build/Release/generators/BZip2Config.cmake",
+			"/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake",
+			"build/build/Release/generators/ZLIB-Target-release.cmake",
+			"build/build/Release/generators/ZLIBTargets.cmake",
+			"build/build/Release/generators/ZLIBConfig.cmake",
+			"build/build/Release/generators/libbacktrace-Target-release.cmake",
+			"build/build/Release/generators/libbacktraceTargets.cmake",
+			"build/build/Release/generators/libbacktrace-config.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 21,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 25,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 4,
+				"parent" : 0
+			},
+			{
+				"file" : 3,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 3,
+				"line" : 16,
+				"parent" : 4
+			},
+			{
+				"file" : 2,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 24,
+				"parent" : 6
+			},
+			{
+				"file" : 1,
+				"parent" : 7
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 73,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 133,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 193,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 253,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 313,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 373,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 433,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 493,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 553,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 613,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 673,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 733,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 793,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 853,
+				"parent" : 8
+			},
+			{
+				"command" : 5,
+				"file" : 3,
+				"line" : 24,
+				"parent" : 4
+			},
+			{
+				"command" : 4,
+				"file" : 7,
+				"line" : 76,
+				"parent" : 23
+			},
+			{
+				"file" : 6,
+				"parent" : 24
+			},
+			{
+				"command" : 3,
+				"file" : 6,
+				"line" : 16,
+				"parent" : 25
+			},
+			{
+				"file" : 5,
+				"parent" : 26
+			},
+			{
+				"command" : 3,
+				"file" : 5,
+				"line" : 24,
+				"parent" : 27
+			},
+			{
+				"file" : 4,
+				"parent" : 28
+			},
+			{
+				"command" : 2,
+				"file" : 4,
+				"line" : 38,
+				"parent" : 29
+			},
+			{
+				"command" : 5,
+				"file" : 3,
+				"line" : 24,
+				"parent" : 4
+			},
+			{
+				"command" : 4,
+				"file" : 7,
+				"line" : 76,
+				"parent" : 31
+			},
+			{
+				"file" : 10,
+				"parent" : 32
+			},
+			{
+				"command" : 3,
+				"file" : 10,
+				"line" : 16,
+				"parent" : 33
+			},
+			{
+				"file" : 9,
+				"parent" : 34
+			},
+			{
+				"command" : 3,
+				"file" : 9,
+				"line" : 24,
+				"parent" : 35
+			},
+			{
+				"file" : 8,
+				"parent" : 36
+			},
+			{
+				"command" : 2,
+				"file" : 8,
+				"line" : 38,
+				"parent" : 37
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 913,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 973,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1033,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1093,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1213,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1273,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1333,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1393,
+				"parent" : 8
+			},
+			{
+				"command" : 5,
+				"file" : 3,
+				"line" : 24,
+				"parent" : 4
+			},
+			{
+				"command" : 4,
+				"file" : 7,
+				"line" : 76,
+				"parent" : 47
+			},
+			{
+				"file" : 13,
+				"parent" : 48
+			},
+			{
+				"command" : 3,
+				"file" : 13,
+				"line" : 16,
+				"parent" : 49
+			},
+			{
+				"file" : 12,
+				"parent" : 50
+			},
+			{
+				"command" : 3,
+				"file" : 12,
+				"line" : 24,
+				"parent" : 51
+			},
+			{
+				"file" : 11,
+				"parent" : 52
+			},
+			{
+				"command" : 2,
+				"file" : 11,
+				"line" : 38,
+				"parent" : 53
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1453,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1251,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1513,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1573,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1633,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1693,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1753,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1813,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1873,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1933,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1993,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2053,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2113,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2173,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2353,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2413,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2473,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2593,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2653,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2713,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2773,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2833,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2893,
+				"parent" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2931,
+				"parent" : 8
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-m64 -O3 -DNDEBUG -std=gnu++17"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "BOOST_STACKTRACE_ADDR2LINE_LOCATION=\"/usr/bin/addr2line\""
+				},
+				{
+					"backtrace" : 2,
+					"define" : "BOOST_STACKTRACE_USE_ADDR2LINE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "BOOST_STACKTRACE_USE_BACKTRACE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "BOOST_STACKTRACE_USE_NOOP"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/home/ros2/Documents/beamtrail/Cinema-microservice/server/lib"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/ros2/.conan2/p/b/libbac79622c356c1d/p/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "cinema_lib::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "cinema::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-m64 -O3 -DNDEBUG",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-m64",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-L/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-L/home/ros2/.conan2/p/b/bzip244b1833eac77b/p/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-L/home/ros2/.conan2/p/b/zlibc1e23a9c53ec8/p/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-L/home/ros2/.conan2/p/b/libbac79622c356c1d/p/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib:/home/ros2/.conan2/p/b/bzip244b1833eac77b/p/lib:/home/ros2/.conan2/p/b/zlibc1e23a9c53ec8/p/lib:/home/ros2/.conan2/p/b/libbac79622c356c1d/p/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libcinema_lib.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 9,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_log_setup.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_unit_test_framework.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 11,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_type_erasure.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 12,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_log.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 13,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_locale.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 14,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_fiber_numa.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_contract.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 16,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_wave.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 17,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_thread.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 18,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_test_exec_monitor.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 19,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_process.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 20,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_prg_exec_monitor.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 21,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_nowide.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 22,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_iostreams.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 30,
+				"fragment" : "/home/ros2/.conan2/p/b/bzip244b1833eac77b/p/lib/libbz2.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 38,
+				"fragment" : "/home/ros2/.conan2/p/b/zlibc1e23a9c53ec8/p/lib/libz.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 39,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_graph.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 40,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_fiber.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 41,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_wserialization.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 42,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_url.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 43,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_stacktrace_noop.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 44,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_stacktrace_from_exception.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 45,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_stacktrace_basic.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 46,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_stacktrace_backtrace.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 54,
+				"fragment" : "/home/ros2/.conan2/p/b/libbac79622c356c1d/p/lib/libbacktrace.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 55,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_stacktrace_addr2line.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 56,
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 57,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_random.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 58,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_math_tr1l.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 59,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_math_tr1f.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 60,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_math_tr1.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 61,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_math_c99l.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 62,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_math_c99f.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 63,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_math_c99.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 64,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_json.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 65,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_filesystem.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 66,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_coroutine.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 67,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_chrono.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 68,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_timer.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 69,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_serialization.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 70,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_regex.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 71,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_program_options.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 72,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_exception.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 73,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_date_time.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 74,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_context.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 75,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_container.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 76,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_charconv.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 77,
+				"fragment" : "/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_atomic.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 78,
+				"fragment" : "-lrt",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 78,
+				"fragment" : "-lpthread",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "cinema",
+	"nameOnDisk" : "cinema",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "server/main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

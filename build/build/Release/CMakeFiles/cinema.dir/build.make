@@ -69,61 +69,30 @@ include CMakeFiles/cinema.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cinema.dir/flags.make
 
-CMakeFiles/cinema.dir/src/main.cpp.o: CMakeFiles/cinema.dir/flags.make
-CMakeFiles/cinema.dir/src/main.cpp.o: /home/ros2/Documents/beamtrail/Cinema-microservice/src/main.cpp
-CMakeFiles/cinema.dir/src/main.cpp.o: CMakeFiles/cinema.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ros2/Documents/beamtrail/Cinema-microservice/build/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cinema.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cinema.dir/src/main.cpp.o -MF CMakeFiles/cinema.dir/src/main.cpp.o.d -o CMakeFiles/cinema.dir/src/main.cpp.o -c /home/ros2/Documents/beamtrail/Cinema-microservice/src/main.cpp
+CMakeFiles/cinema.dir/server/main.cpp.o: CMakeFiles/cinema.dir/flags.make
+CMakeFiles/cinema.dir/server/main.cpp.o: /home/ros2/Documents/beamtrail/Cinema-microservice/server/main.cpp
+CMakeFiles/cinema.dir/server/main.cpp.o: CMakeFiles/cinema.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ros2/Documents/beamtrail/Cinema-microservice/build/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cinema.dir/server/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cinema.dir/server/main.cpp.o -MF CMakeFiles/cinema.dir/server/main.cpp.o.d -o CMakeFiles/cinema.dir/server/main.cpp.o -c /home/ros2/Documents/beamtrail/Cinema-microservice/server/main.cpp
 
-CMakeFiles/cinema.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cinema.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ros2/Documents/beamtrail/Cinema-microservice/src/main.cpp > CMakeFiles/cinema.dir/src/main.cpp.i
+CMakeFiles/cinema.dir/server/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cinema.dir/server/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ros2/Documents/beamtrail/Cinema-microservice/server/main.cpp > CMakeFiles/cinema.dir/server/main.cpp.i
 
-CMakeFiles/cinema.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cinema.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ros2/Documents/beamtrail/Cinema-microservice/src/main.cpp -o CMakeFiles/cinema.dir/src/main.cpp.s
-
-CMakeFiles/cinema.dir/src/cinema.cpp.o: CMakeFiles/cinema.dir/flags.make
-CMakeFiles/cinema.dir/src/cinema.cpp.o: /home/ros2/Documents/beamtrail/Cinema-microservice/src/cinema.cpp
-CMakeFiles/cinema.dir/src/cinema.cpp.o: CMakeFiles/cinema.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ros2/Documents/beamtrail/Cinema-microservice/build/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cinema.dir/src/cinema.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cinema.dir/src/cinema.cpp.o -MF CMakeFiles/cinema.dir/src/cinema.cpp.o.d -o CMakeFiles/cinema.dir/src/cinema.cpp.o -c /home/ros2/Documents/beamtrail/Cinema-microservice/src/cinema.cpp
-
-CMakeFiles/cinema.dir/src/cinema.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cinema.dir/src/cinema.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ros2/Documents/beamtrail/Cinema-microservice/src/cinema.cpp > CMakeFiles/cinema.dir/src/cinema.cpp.i
-
-CMakeFiles/cinema.dir/src/cinema.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cinema.dir/src/cinema.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ros2/Documents/beamtrail/Cinema-microservice/src/cinema.cpp -o CMakeFiles/cinema.dir/src/cinema.cpp.s
-
-CMakeFiles/cinema.dir/src/websocket_server.cpp.o: CMakeFiles/cinema.dir/flags.make
-CMakeFiles/cinema.dir/src/websocket_server.cpp.o: /home/ros2/Documents/beamtrail/Cinema-microservice/src/websocket_server.cpp
-CMakeFiles/cinema.dir/src/websocket_server.cpp.o: CMakeFiles/cinema.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ros2/Documents/beamtrail/Cinema-microservice/build/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cinema.dir/src/websocket_server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cinema.dir/src/websocket_server.cpp.o -MF CMakeFiles/cinema.dir/src/websocket_server.cpp.o.d -o CMakeFiles/cinema.dir/src/websocket_server.cpp.o -c /home/ros2/Documents/beamtrail/Cinema-microservice/src/websocket_server.cpp
-
-CMakeFiles/cinema.dir/src/websocket_server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cinema.dir/src/websocket_server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ros2/Documents/beamtrail/Cinema-microservice/src/websocket_server.cpp > CMakeFiles/cinema.dir/src/websocket_server.cpp.i
-
-CMakeFiles/cinema.dir/src/websocket_server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cinema.dir/src/websocket_server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ros2/Documents/beamtrail/Cinema-microservice/src/websocket_server.cpp -o CMakeFiles/cinema.dir/src/websocket_server.cpp.s
+CMakeFiles/cinema.dir/server/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cinema.dir/server/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ros2/Documents/beamtrail/Cinema-microservice/server/main.cpp -o CMakeFiles/cinema.dir/server/main.cpp.s
 
 # Object files for target cinema
 cinema_OBJECTS = \
-"CMakeFiles/cinema.dir/src/main.cpp.o" \
-"CMakeFiles/cinema.dir/src/cinema.cpp.o" \
-"CMakeFiles/cinema.dir/src/websocket_server.cpp.o"
+"CMakeFiles/cinema.dir/server/main.cpp.o"
 
 # External object files for target cinema
 cinema_EXTERNAL_OBJECTS =
 
-cinema: CMakeFiles/cinema.dir/src/main.cpp.o
-cinema: CMakeFiles/cinema.dir/src/cinema.cpp.o
-cinema: CMakeFiles/cinema.dir/src/websocket_server.cpp.o
+cinema: CMakeFiles/cinema.dir/server/main.cpp.o
 cinema: CMakeFiles/cinema.dir/build.make
+cinema: libcinema_lib.a
 cinema: /home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_log_setup.a
 cinema: /home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_unit_test_framework.a
 cinema: /home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_type_erasure.a
@@ -172,7 +141,7 @@ cinema: /home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_container.a
 cinema: /home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_charconv.a
 cinema: /home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib/libboost_atomic.a
 cinema: CMakeFiles/cinema.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ros2/Documents/beamtrail/Cinema-microservice/build/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable cinema"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ros2/Documents/beamtrail/Cinema-microservice/build/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable cinema"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cinema.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

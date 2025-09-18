@@ -8,9 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ros2/Documents/beamtrail/Cinema-microservice/src/cinema.cpp" "CMakeFiles/cinema.dir/src/cinema.cpp.o" "gcc" "CMakeFiles/cinema.dir/src/cinema.cpp.o.d"
-  "/home/ros2/Documents/beamtrail/Cinema-microservice/src/main.cpp" "CMakeFiles/cinema.dir/src/main.cpp.o" "gcc" "CMakeFiles/cinema.dir/src/main.cpp.o.d"
-  "/home/ros2/Documents/beamtrail/Cinema-microservice/src/websocket_server.cpp" "CMakeFiles/cinema.dir/src/websocket_server.cpp.o" "gcc" "CMakeFiles/cinema.dir/src/websocket_server.cpp.o.d"
+  "/home/ros2/Documents/beamtrail/Cinema-microservice/server/main.cpp" "CMakeFiles/cinema.dir/server/main.cpp.o" "gcc" "CMakeFiles/cinema.dir/server/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

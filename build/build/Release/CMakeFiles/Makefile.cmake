@@ -34,6 +34,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "generators/libbacktrace-config.cmake"
   "generators/libbacktrace-release-x86_64-data.cmake"
   "generators/libbacktraceTargets.cmake"
+  "/home/ros2/Documents/beamtrail/Cinema-microservice/client/CMakeLists.txt"
+  "/home/ros2/Documents/beamtrail/Cinema-microservice/tests/CMakeLists.txt"
   "/usr/share/cmake-3.28/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
@@ -43,10 +45,17 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake"
+  "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake"
+  "/usr/share/cmake-3.28/Modules/CheckIncludeFile.cmake"
+  "/usr/share/cmake-3.28/Modules/CheckLibraryExists.cmake"
   "/usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/usr/share/cmake-3.28/Modules/Compiler/GNU-C.cmake"
   "/usr/share/cmake-3.28/Modules/Compiler/GNU-CXX.cmake"
   "/usr/share/cmake-3.28/Modules/Compiler/GNU.cmake"
+  "/usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake"
+  "/usr/share/cmake-3.28/Modules/FindPackageMessage.cmake"
+  "/usr/share/cmake-3.28/Modules/FindThreads.cmake"
+  "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake"
   "/usr/share/cmake-3.28/Modules/Platform/Linux-GNU-C.cmake"
   "/usr/share/cmake-3.28/Modules/Platform/Linux-GNU-CXX.cmake"
   "/usr/share/cmake-3.28/Modules/Platform/Linux-GNU.cmake"
@@ -64,9 +73,16 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "client/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "tests/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/cinema_lib.dir/DependInfo.cmake"
   "CMakeFiles/cinema.dir/DependInfo.cmake"
+  "client/CMakeFiles/CinemaClientLib.dir/DependInfo.cmake"
+  "client/CMakeFiles/cinema_client.dir/DependInfo.cmake"
+  "tests/CMakeFiles/cinema_tests.dir/DependInfo.cmake"
+  "tests/CMakeFiles/run_tests.dir/DependInfo.cmake"
   )

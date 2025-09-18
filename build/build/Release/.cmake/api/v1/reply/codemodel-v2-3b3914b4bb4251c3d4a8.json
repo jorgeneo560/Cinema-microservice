@@ -1,0 +1,154 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1,
+						3
+					]
+				},
+				{
+					"build" : "client",
+					"jsonFile" : "directory-client-Release-eda4c8a4dacec2844350.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "client",
+					"targetIndexes" : 
+					[
+						0,
+						2
+					]
+				},
+				{
+					"build" : "tests",
+					"jsonFile" : "directory-tests-Release-b01f6abb0ab61427ef3b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tests",
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						2
+					],
+					"name" : "cinema",
+					"targetIndexes" : 
+					[
+						1,
+						3,
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "CinemaClient",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "CinemaClientLib::@b0c487aac068df482bf0",
+					"jsonFile" : "target-CinemaClientLib-Release-16bd8a1c85ebcc8a602b.json",
+					"name" : "CinemaClientLib",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cinema::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cinema-Release-01e9d986007bb5efa5d8.json",
+					"name" : "cinema",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "cinema_client::@b0c487aac068df482bf0",
+					"jsonFile" : "target-cinema_client-Release-7b22679741159e06d103.json",
+					"name" : "cinema_client",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cinema_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cinema_lib-Release-b6018cf246ba7d54e08e.json",
+					"name" : "cinema_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "cinema_tests::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-cinema_tests-Release-98036c2d6c650805a351.json",
+					"name" : "cinema_tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "run_tests::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-run_tests-Release-9821f46bd32663b7d81c.json",
+					"name" : "run_tests",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ros2/Documents/beamtrail/Cinema-microservice/build/build/Release",
+		"source" : "/home/ros2/Documents/beamtrail/Cinema-microservice"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
