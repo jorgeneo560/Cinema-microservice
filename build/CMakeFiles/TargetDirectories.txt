@@ -1,0 +1,15 @@
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/CMakeFiles/cinema_lib.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/CMakeFiles/cinema.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/CMakeFiles/test.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/CMakeFiles/edit_cache.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/CMakeFiles/rebuild_cache.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/client/CMakeFiles/CinemaClientLib.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/client/CMakeFiles/cinema_client.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/client/CMakeFiles/test.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/client/CMakeFiles/edit_cache.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/client/CMakeFiles/rebuild_cache.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/tests/CMakeFiles/cinema_tests.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/tests/CMakeFiles/run_tests.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/tests/CMakeFiles/test.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/tests/CMakeFiles/edit_cache.dir
+/home/ros2/Documents/beamtrail/Cinema-microservice/build/tests/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,30 @@
+services:
+  cinema-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "8080:8080"
+    container_name: cinema-server
+    networks:
+      - cinema-network
+    restart: unless-stopped
+
+  cinema-client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    depends_on:
+      - cinema-server
+    container_name: cinema-client
+    stdin_open: true
+    tty: true
+    networks:
+      - cinema-network
+    environment:
+      - SERVER_HOST=cinema-server
+      - SERVER_PORT=8080
+
+networks:
+  cinema-network:
+    driver: bridge

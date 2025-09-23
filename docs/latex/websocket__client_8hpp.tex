@@ -1,0 +1,98 @@
+\doxysection{client/lib/websocket\+\_\+client.hpp File Reference}
+\hypertarget{websocket__client_8hpp}{}\label{websocket__client_8hpp}\index{client/lib/websocket\_client.hpp@{client/lib/websocket\_client.hpp}}
+
+
+Web\+Socket client for Cinema booking system communication.  
+
+
+{\ttfamily \#include $<$boost/beast/core.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/beast/websocket.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/asio/ip/tcp.\+hpp$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include "{}cinema\+\_\+\+Client.\+hpp"{}}\newline
+Include dependency graph for websocket\+\_\+client.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{websocket__client_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{websocket__client_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classCinemaClient}{Cinema\+Client}}
+\begin{DoxyCompactList}\small\item\em Web\+Socket client for Cinema booking system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceCinemaProtocol}{Cinema\+Protocol}}
+\begin{DoxyCompactList}\small\item\em Server-\/side protocol constants for Cinema communication. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{websocket__client_8hpp_a60a92ea513bd2f25705cdd673983c5a8}{tcp}} = net\+::ip\+::tcp
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_ab99e835bfac794677a397ff5363ece9c}{Cinema\+Protocol\+::\+THEATER\+\_\+\+PREFIX}} = "{}Theater\+: "{}
+\begin{DoxyCompactList}\small\item\em Prefix for theater lines. \end{DoxyCompactList}\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_a93491886d23147f5263bacc9f0dfc373}{Cinema\+Protocol\+::\+MOVIE\+\_\+\+PREFIX}} = "{} Movie\+: "{}
+\begin{DoxyCompactList}\small\item\em Prefix for movie lines ~\newline
+ \end{DoxyCompactList}\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_ae899ccb0c5df4d860e27a36769d450cc}{Cinema\+Protocol\+::\+CINEMA\+\_\+\+DATA\+\_\+\+STREAM}} = "{}=== CINEMA DATA STREAM ==="{}
+\begin{DoxyCompactList}\small\item\em Cinema data header. \end{DoxyCompactList}\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_ad52987512df0107778ae91d4369d154c}{Cinema\+Protocol\+::\+UPDATED\+\_\+\+CINEMA\+\_\+\+DATA}} = "{}=== UPDATED CINEMA DATA ==="{}
+\begin{DoxyCompactList}\small\item\em Update data header. \end{DoxyCompactList}\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_a4d6e3d0185b8f59df6e8f35861f4a0ff}{Cinema\+Protocol\+::\+BOOKING\+\_\+\+UPDATE}} = "{}BOOKING\+\_\+\+UPDATE\+:"{}
+\begin{DoxyCompactList}\small\item\em Booking update prefix. \end{DoxyCompactList}\item 
+constexpr size\+\_\+t \mbox{\hyperlink{namespaceCinemaProtocol_a3ef56653567eac679673bb17df4dac7a}{Cinema\+Protocol\+::\+THEATER\+\_\+\+PREFIX\+\_\+\+LEN}} = 9
+\begin{DoxyCompactList}\small\item\em Length of theater prefix. \end{DoxyCompactList}\item 
+constexpr size\+\_\+t \mbox{\hyperlink{namespaceCinemaProtocol_a0bd4be7d4cd4bc2b218677fa56b2d5c3}{Cinema\+Protocol\+::\+MOVIE\+\_\+\+PREFIX\+\_\+\+LEN}} = 9
+\begin{DoxyCompactList}\small\item\em Length of movie prefix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Web\+Socket client for Cinema booking system communication. 
+
+\begin{DoxyAuthor}{Author}
+Jorge Royon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/09-\/18 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+Definition in file \mbox{\hyperlink{websocket__client_8hpp_source}{websocket\+\_\+client.\+hpp}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{websocket__client_8hpp_a60a92ea513bd2f25705cdd673983c5a8}\label{websocket__client_8hpp_a60a92ea513bd2f25705cdd673983c5a8} 
+\index{websocket\_client.hpp@{websocket\_client.hpp}!tcp@{tcp}}
+\index{tcp@{tcp}!websocket\_client.hpp@{websocket\_client.hpp}}
+\doxysubsubsection{\texorpdfstring{tcp}{tcp}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{websocket__server_8hpp_a60a92ea513bd2f25705cdd673983c5a8}{tcp}} =  net\+::ip\+::tcp}
+
+
+
+Definition at line \mbox{\hyperlink{websocket__client_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{websocket__client_8hpp_source}{websocket\+\_\+client.\+hpp}}.
+

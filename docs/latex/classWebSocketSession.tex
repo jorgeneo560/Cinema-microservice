@@ -1,0 +1,157 @@
+\doxysection{Web\+Socket\+Session Class Reference}
+\hypertarget{classWebSocketSession}{}\label{classWebSocketSession}\index{WebSocketSession@{WebSocketSession}}
+
+
+Represents an individual client Web\+Socket connection.  
+
+
+
+
+{\ttfamily \#include $<$websocket\+\_\+server.\+hpp$>$}
+
+
+
+Inheritance diagram for Web\+Socket\+Session\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classWebSocketSession__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Web\+Socket\+Session\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classWebSocketSession__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWebSocketSession_a640794f15691c5e68cb934c2c9b79d78}{Web\+Socket\+Session}} (tcp\+::socket \&\&socket, \mbox{\hyperlink{classWebSocketServer}{Web\+Socket\+Server}} \texorpdfstring{$\ast$}{*}server)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWebSocketSession_aa60a520432526e90b74fd97713469a56}{run}} ()
+\begin{DoxyCompactList}\small\item\em Start the Web\+Socket session. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWebSocketSession_a88702fb69e3419d61df691e4cfd4dc17}{send\+Broadcast\+Message}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Send broadcast message to this client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an individual client Web\+Socket connection. 
+
+Manages the lifecycle of a single Web\+Socket connection from client acceptance through message handling to disconnection. Each connected client gets its own \doxylink{classWebSocketSession}{Web\+Socket\+Session} instance.
+
+\begin{DoxyParagraph}{Connection Lifecycle}
+
+\begin{DoxyEnumerate}
+\item Created when client connects to server
+\item Web\+Socket handshake performed
+\item Initial cinema data sent to client
+\item Continuous message processing loop
+\item Cleanup on disconnection or error
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Message Flow}
+
+\begin{DoxyItemize}
+\item Receives messages from client asynchronously
+\item Forwards messages to server for processing
+\item Sends responses back to client
+\item Participates in broadcast messages to all clients
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+Uses Boost.\+Beast\textquotesingle{}s async operations for thread-\/safe message handling. Write operations are queued to prevent overlapping sends. 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{websocket__server_8hpp_source}{websocket\+\_\+server.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classWebSocketSession_a640794f15691c5e68cb934c2c9b79d78}\label{classWebSocketSession_a640794f15691c5e68cb934c2c9b79d78} 
+\index{WebSocketSession@{WebSocketSession}!WebSocketSession@{WebSocketSession}}
+\index{WebSocketSession@{WebSocketSession}!WebSocketSession@{WebSocketSession}}
+\doxysubsubsection{\texorpdfstring{WebSocketSession()}{WebSocketSession()}}
+{\footnotesize\ttfamily Web\+Socket\+Session\+::\+Web\+Socket\+Session (\begin{DoxyParamCaption}\item[{tcp\+::socket \&\&}]{socket,  }\item[{\mbox{\hyperlink{classWebSocketServer}{Web\+Socket\+Server}} \texorpdfstring{$\ast$}{*}}]{server }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket} & TCP socket from accepted connection \\
+\hline
+{\em server} & Pointer to parent Web\+Socket server \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Session is ready to begin Web\+Socket handshake 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classWebSocketSession_aa60a520432526e90b74fd97713469a56}\label{classWebSocketSession_aa60a520432526e90b74fd97713469a56} 
+\index{WebSocketSession@{WebSocketSession}!run@{run}}
+\index{run@{run}!WebSocketSession@{WebSocketSession}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Web\+Socket\+Session\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Start the Web\+Socket session. 
+
+\begin{DoxyPostcond}{Postcondition}
+Web\+Socket handshake initiated 
+
+On success\+: initial data sent, read loop started 
+
+On failure\+: session cleans up automatically 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+\Hypertarget{classWebSocketSession_a88702fb69e3419d61df691e4cfd4dc17}\label{classWebSocketSession_a88702fb69e3419d61df691e4cfd4dc17} 
+\index{WebSocketSession@{WebSocketSession}!sendBroadcastMessage@{sendBroadcastMessage}}
+\index{sendBroadcastMessage@{sendBroadcastMessage}!WebSocketSession@{WebSocketSession}}
+\doxysubsubsection{\texorpdfstring{sendBroadcastMessage()}{sendBroadcastMessage()}}
+{\footnotesize\ttfamily void Web\+Socket\+Session\+::send\+Broadcast\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Send broadcast message to this client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Message to broadcast \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Message is queued for transmission 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Thread-\/safe operation 
+
+Used for notifying client of booking updates 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/lib/\mbox{\hyperlink{websocket__server_8hpp}{websocket\+\_\+server.\+hpp}}\item 
+server/lib/\mbox{\hyperlink{websocket__server_8cpp}{websocket\+\_\+server.\+cpp}}\end{DoxyCompactItemize}

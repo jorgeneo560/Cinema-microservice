@@ -1,0 +1,12 @@
+<map id="server/lib/cinema.hpp" name="server/lib/cinema.hpp">
+<area shape="rect" id="Node000001" title="Core business logic and services for Cinema booking system." alt="" coords="189,5,352,31"/>
+<area shape="rect" id="Node000002" href="$cinema_8cpp.html" title=" " alt="" coords="5,86,168,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,38,114,88,112,84,231,33"/>
+<area shape="rect" id="Node000003" href="$websocket__server_8hpp.html" title="WebSocket server infrastructure for Cinema booking system." alt="" coords="193,79,349,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="273,44,273,79,268,79,268,44"/>
+<area shape="rect" id="Node000005" href="$server_2main_8cpp.html" title="Cinema Server Application Entry Point." alt="" coords="323,174,450,199"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="312,35,340,53,363,77,376,102,384,129,389,174,384,174,379,130,372,104,359,80,336,57,309,39"/>
+<area shape="rect" id="Node000004" href="$websocket__server_8cpp.html" title=" " alt="" coords="143,167,299,207"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="255,132,235,168,230,165,251,129"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="309,125,373,172,369,176,306,129"/>
+</map>

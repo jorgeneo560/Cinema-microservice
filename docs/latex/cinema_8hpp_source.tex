@@ -1,0 +1,59 @@
+\doxysection{cinema.\+hpp}
+\hypertarget{cinema_8hpp_source}{}\label{cinema_8hpp_source}\index{server/lib/cinema.hpp@{server/lib/cinema.hpp}}
+\mbox{\hyperlink{cinema_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <shared\_mutex>}}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00032}\mbox{\hyperlink{classShows}{00032}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classShows}{Shows}}\ \{}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00033}00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00034}\mbox{\hyperlink{classShows_ac66deff59bf9b575e9411f2abbfdfe44}{00034}}\ \ \ \ \ std::string\ \mbox{\hyperlink{classShows_ac66deff59bf9b575e9411f2abbfdfe44}{movie}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00035}\mbox{\hyperlink{classShows_aa3029f8077eac66fe23e7dde84c6eed7}{00035}}\ \ \ \ \ std::string\ \mbox{\hyperlink{classShows_aa3029f8077eac66fe23e7dde84c6eed7}{dateTime}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00036}\mbox{\hyperlink{classShows_a18c835bed25fe99897ed3faf4630928a}{00036}}\ \ \ \ \ std::string\ \mbox{\hyperlink{classShows_a18c835bed25fe99897ed3faf4630928a}{theater}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00037}\mbox{\hyperlink{classShows_acd90049507025da9543ca6368bf7b94a}{00037}}\ \ \ \ \ std::vector<bool>\ \mbox{\hyperlink{classShows_acd90049507025da9543ca6368bf7b94a}{seats}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00038}00038\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00039}00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{mutable}\ std::shared\_ptr<std::shared\_mutex>\ seatsMutex;\ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00041}00041\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00042}00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{classShows}{Shows}}(\textcolor{keyword}{const}\ std::string\&\ m,\ \textcolor{keyword}{const}\ std::string\&\ dt,\ \textcolor{keyword}{const}\ std::string\&\ t);}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00057}00057\ \ \ \ \ std::vector<uint8\_t>\ \mbox{\hyperlink{classShows_a7bf2a153739b052b5111ab41cd617c75}{getAvailableSeats}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00058}00058\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classShows_a856e1c1d150710939d04e621c668ef8d}{bookSeats}}(\textcolor{keyword}{const}\ std::vector<uint8\_t>\&\ seatNumbers);}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00067}00067\ \};}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00081}\mbox{\hyperlink{classCinemaService}{00081}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCinemaService}{CinemaService}}\ \{}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00082}00082\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classCinemaService_a82faa92b2b8f1d1034ba62eb8aca7405}{formatCinemaData}}(\textcolor{keyword}{const}\ std::vector<Shows>\&\ shows);}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00092}00092\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classCinemaService_af31ecc9a1e94c274c67fee9f8f9b5a0e}{formatUpdateData}}(\textcolor{keyword}{const}\ std::vector<Shows>\&\ shows);}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00102}00102\ \};}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00112}\mbox{\hyperlink{classBookingService}{00112}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBookingService}{BookingService}}\ \{}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00113}00113\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00121}\mbox{\hyperlink{structBookingService_1_1BookingResult}{00121}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBookingService_1_1BookingResult}{BookingResult}}\ \{}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00122}\mbox{\hyperlink{structBookingService_1_1BookingResult_a865a3a5168b5bed80f3543fe3fb255bf}{00122}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structBookingService_1_1BookingResult_a865a3a5168b5bed80f3543fe3fb255bf}{success}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00123}\mbox{\hyperlink{structBookingService_1_1BookingResult_aae011c4a85672e11842876520e3d488b}{00123}}\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structBookingService_1_1BookingResult_aae011c4a85672e11842876520e3d488b}{message}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00124}\mbox{\hyperlink{structBookingService_1_1BookingResult_ae6c40452d85e15a661a21d76b0721d30}{00124}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structBookingService_1_1BookingResult_ae6c40452d85e15a661a21d76b0721d30}{shouldBroadcast}};\ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00125}00125\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00126}00126\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00147}00147\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structBookingService_1_1BookingResult}{BookingResult}}\ \mbox{\hyperlink{classBookingService_a314fd2b2e87e9002ea9d106136c5379b}{processBooking}}(\textcolor{keyword}{const}\ std::string\&\ message,\ std::vector<Shows>\&\ shows);}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00148}00148\ \};}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00158}\mbox{\hyperlink{classMessageHandler}{00158}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMessageHandler}{MessageHandler}}\ \{}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00159}00159\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00180}00180\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classMessageHandler_a9b7139e4f0ab61f942c052faa39674dc}{handleMessage}}(\textcolor{keyword}{const}\ std::string\&\ received,\ std::vector<Shows>\&\ shows,\ \textcolor{keywordtype}{bool}\&\ shouldBroadcast);}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00181}00181\ \};}
+\DoxyCodeLine{\Hypertarget{cinema_8hpp_source_l00182}00182\ }
+
+\end{DoxyCode}

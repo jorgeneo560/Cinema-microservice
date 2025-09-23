@@ -1,0 +1,236 @@
+\doxysection{Web\+Socket\+Server Class Reference}
+\hypertarget{classWebSocketServer}{}\label{classWebSocketServer}\index{WebSocketServer@{WebSocketServer}}
+
+
+Main Web\+Socket server for Cinema booking system.  
+
+
+
+
+{\ttfamily \#include $<$websocket\+\_\+server.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWebSocketServer_a0d96cbff463fb53408d0e3cbd394c6f0}{Web\+Socket\+Server}} (net\+::io\+\_\+context \&ioc, const tcp\+::endpoint \&endpoint, \mbox{\hyperlink{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}{Message\+Callback}} message\+Callback, \mbox{\hyperlink{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}{Initial\+Data\+Callback}} initial\+Data\+Callback, \mbox{\hyperlink{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}{Broadcast\+Data\+Callback}} broadcast\+Data\+Callback)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWebSocketServer_a2c749866a6dbd92e4b54a422d1b58de9}{run}} ()
+\begin{DoxyCompactList}\small\item\em Start accepting client connections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWebSocketServer_a436a43d835c5d0214efff05879270e7e}{add\+Session}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$ session)
+\begin{DoxyCompactList}\small\item\em Add new session to active sessions set. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02}{remove\+Session}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$ session)
+\begin{DoxyCompactList}\small\item\em Remove session from active sessions set. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWebSocketServer_aff37a8c105d99d0b697c65ba6a65ab6a}{broadcast\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Send update to all connected clients. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classWebSocketServer_a982ef3503a26a2ff46b78b3881acd9a3}{handle\+Message}} (const std\+::string \&message, bool \&should\+Broadcast)
+\begin{DoxyCompactList}\small\item\em Handle message from client (delegates to callback) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classWebSocketServer_a0b0f779e1fd7fcbbd1a90ae4a5cfe964}{get\+Initial\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Get initial data for new client (delegates to callback) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main Web\+Socket server for Cinema booking system. 
+
+Manages multiple client connections, handles message routing, and coordinates broadcast notifications. Provides the main server infrastructure for real-\/time communication with Cinema booking clients.
+
+\begin{DoxyParagraph}{Server Architecture}
+
+\begin{DoxyItemize}
+\item Accepts new client connections continuously
+\item Maintains set of active sessions
+\item Routes messages to business logic via callbacks
+\item Coordinates broadcast updates to all clients
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Callback System}
+Uses function callbacks to decouple server infrastructure from business logic\+:
+\begin{DoxyItemize}
+\item Message\+Callback\+: Handle individual client messages
+\item Initial\+Data\+Callback\+: Get data for new clients
+\item Broadcast\+Data\+Callback\+: Get update data for broadcasts 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8hpp_source_l00195}{195}} of file \mbox{\hyperlink{websocket__server_8hpp_source}{websocket\+\_\+server.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classWebSocketServer_a0d96cbff463fb53408d0e3cbd394c6f0}\label{classWebSocketServer_a0d96cbff463fb53408d0e3cbd394c6f0} 
+\index{WebSocketServer@{WebSocketServer}!WebSocketServer@{WebSocketServer}}
+\index{WebSocketServer@{WebSocketServer}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{WebSocketServer()}{WebSocketServer()}}
+{\footnotesize\ttfamily Web\+Socket\+Server\+::\+Web\+Socket\+Server (\begin{DoxyParamCaption}\item[{net\+::io\+\_\+context \&}]{ioc,  }\item[{const tcp\+::endpoint \&}]{endpoint,  }\item[{\mbox{\hyperlink{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}{Message\+Callback}}}]{message\+Callback,  }\item[{\mbox{\hyperlink{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}{Initial\+Data\+Callback}}}]{initial\+Data\+Callback,  }\item[{\mbox{\hyperlink{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}{Broadcast\+Data\+Callback}}}]{broadcast\+Data\+Callback }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ioc} & Boost.\+Asio I/O context for async operations \\
+\hline
+{\em endpoint} & TCP endpoint to bind and listen on \\
+\hline
+{\em message\+Callback} & Function to handle client messages \\
+\hline
+{\em initial\+Data\+Callback} & Function to get initial data for new clients \\
+\hline
+{\em broadcast\+Data\+Callback} & Function to get broadcast update data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Server is configured but not yet accepting connections 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classWebSocketServer_a436a43d835c5d0214efff05879270e7e}\label{classWebSocketServer_a436a43d835c5d0214efff05879270e7e} 
+\index{WebSocketServer@{WebSocketServer}!addSession@{addSession}}
+\index{addSession@{addSession}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{addSession()}{addSession()}}
+{\footnotesize\ttfamily void Web\+Socket\+Server\+::add\+Session (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$}]{session }\end{DoxyParamCaption})}
+
+
+
+Add new session to active sessions set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & Shared pointer to new Web\+Socket session \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Session is tracked and will receive broadcast messages 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Called automatically when new clients connect 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+\Hypertarget{classWebSocketServer_aff37a8c105d99d0b697c65ba6a65ab6a}\label{classWebSocketServer_aff37a8c105d99d0b697c65ba6a65ab6a} 
+\index{WebSocketServer@{WebSocketServer}!broadcastUpdate@{broadcastUpdate}}
+\index{broadcastUpdate@{broadcastUpdate}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{broadcastUpdate()}{broadcastUpdate()}}
+{\footnotesize\ttfamily void Web\+Socket\+Server\+::broadcast\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Send update to all connected clients. 
+
+\begin{DoxyPostcond}{Postcondition}
+Broadcast message sent to all active sessions 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Uses broadcast\+Data\+Callback\+\_\+ to get current data 
+
+Called after successful booking operations 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+\Hypertarget{classWebSocketServer_a0b0f779e1fd7fcbbd1a90ae4a5cfe964}\label{classWebSocketServer_a0b0f779e1fd7fcbbd1a90ae4a5cfe964} 
+\index{WebSocketServer@{WebSocketServer}!getInitialData@{getInitialData}}
+\index{getInitialData@{getInitialData}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{getInitialData()}{getInitialData()}}
+{\footnotesize\ttfamily std\+::string Web\+Socket\+Server\+::get\+Initial\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get initial data for new client (delegates to callback) 
+
+\begin{DoxyReturn}{Returns}
+Initial cinema data string 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Delegates to initial\+Data\+Callback\+\_\+ for current data 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00188}{188}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+\Hypertarget{classWebSocketServer_a982ef3503a26a2ff46b78b3881acd9a3}\label{classWebSocketServer_a982ef3503a26a2ff46b78b3881acd9a3} 
+\index{WebSocketServer@{WebSocketServer}!handleMessage@{handleMessage}}
+\index{handleMessage@{handleMessage}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{handleMessage()}{handleMessage()}}
+{\footnotesize\ttfamily std\+::string Web\+Socket\+Server\+::handle\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{bool \&}]{should\+Broadcast }\end{DoxyParamCaption})}
+
+
+
+Handle message from client (delegates to callback) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Message received from client \\
+\hline
+{\em should\+Broadcast} & Output indicating if update should be broadcast \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response message for client 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Delegates to message\+Callback\+\_\+ for business logic 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+\Hypertarget{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02}\label{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02} 
+\index{WebSocketServer@{WebSocketServer}!removeSession@{removeSession}}
+\index{removeSession@{removeSession}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{removeSession()}{removeSession()}}
+{\footnotesize\ttfamily void Web\+Socket\+Server\+::remove\+Session (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$}]{session }\end{DoxyParamCaption})}
+
+
+
+Remove session from active sessions set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & Shared pointer to session being removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Session no longer receives broadcast messages 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Called automatically when clients disconnect 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+\Hypertarget{classWebSocketServer_a2c749866a6dbd92e4b54a422d1b58de9}\label{classWebSocketServer_a2c749866a6dbd92e4b54a422d1b58de9} 
+\index{WebSocketServer@{WebSocketServer}!run@{run}}
+\index{run@{run}!WebSocketServer@{WebSocketServer}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Web\+Socket\+Server\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Start accepting client connections. 
+
+\begin{DoxyPostcond}{Postcondition}
+Server begins accepting connections on configured endpoint 
+
+New sessions created for each client connection 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8cpp_source_l00144}{144}} of file \mbox{\hyperlink{websocket__server_8cpp_source}{websocket\+\_\+server.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/lib/\mbox{\hyperlink{websocket__server_8hpp}{websocket\+\_\+server.\+hpp}}\item 
+server/lib/\mbox{\hyperlink{websocket__server_8cpp}{websocket\+\_\+server.\+cpp}}\end{DoxyCompactItemize}

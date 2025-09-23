@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  cinema-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "8080:8080"
+    container_name: cinema-server
+    networks:
+      - cinema-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  cinema-client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    depends_on:
+      cinema-server:
+        condition: service_healthy
+    container_name: cinema-client
+    stdin_open: true
+    tty: true
+    networks:
+      - cinema-network
+    environment:
+      - SERVER_HOST=cinema-server
+      - SERVER_PORT=8080
+    profiles:
+      - client  # Optional profile - start with docker-compose --profile client up
+
+networks:
+  cinema-network:
+    driver: bridge
+
+# Usage examples:
+# docker-compose up -d                    # Start server only
+# docker-compose --profile client up      # Start both server and client
+# docker-compose run --rm cinema-client ./build/client/cinema_client  # Run client manually

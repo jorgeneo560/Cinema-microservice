@@ -1,0 +1,196 @@
+\doxysection{websocket\+\_\+server.\+cpp}
+\hypertarget{websocket__server_8cpp_source}{}\label{websocket__server_8cpp_source}\index{server/lib/websocket\_server.cpp@{server/lib/websocket\_server.cpp}}
+\mbox{\hyperlink{websocket__server_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{websocket__server_8hpp}{websocket\_server.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00006}\mbox{\hyperlink{classWebSocketSession_a640794f15691c5e68cb934c2c9b79d78}{00006}}\ \mbox{\hyperlink{classWebSocketSession_a640794f15691c5e68cb934c2c9b79d78}{WebSocketSession::WebSocketSession}}(tcp::socket\&\&\ socket,\ \mbox{\hyperlink{classWebSocketServer}{WebSocketServer}}*\ server)}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00007}00007\ \ \ \ \ :\ ws\_(std::move(socket)),\ server\_(server),\ writing\_(false)\ \{\}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00009}\mbox{\hyperlink{classWebSocketSession_aa60a520432526e90b74fd97713469a56}{00009}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketSession_aa60a520432526e90b74fd97713469a56}{WebSocketSession::run}}()\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00010}00010\ \ \ \ \ server\_-\/>\mbox{\hyperlink{classWebSocketServer_a436a43d835c5d0214efff05879270e7e}{addSession}}(shared\_from\_this());}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00011}00011\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00012}00012\ \ \ \ \ ws\_.async\_accept(}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ beast::bind\_front\_handler(}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \&WebSocketSession::on\_accept,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ shared\_from\_this()));}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00018}\mbox{\hyperlink{classWebSocketSession_a88702fb69e3419d61df691e4cfd4dc17}{00018}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketSession_a88702fb69e3419d61df691e4cfd4dc17}{WebSocketSession::sendBroadcastMessage}}(\textcolor{keyword}{const}\ std::string\&\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00019}00019\ \ \ \ \ send\_message(message);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00022}00022\ \textcolor{keywordtype}{void}\ WebSocketSession::send\_message(\textcolor{keyword}{const}\ std::string\&\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00023}00023\ \ \ \ \ message\_queue\_.push(message);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00024}00024\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (!writing\_)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ do\_write();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00030}00030\ \textcolor{keywordtype}{void}\ WebSocketSession::do\_write()\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (message\_queue\_.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ writing\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00035}00035\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00036}00036\ \ \ \ \ writing\_\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00037}00037\ \ \ \ \ std::string\ message\ =\ message\_queue\_.front();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00038}00038\ \ \ \ \ message\_queue\_.pop();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00039}00039\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00040}00040\ \ \ \ \ ws\_.async\_write(}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ net::buffer(message),}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ beast::bind\_front\_handler(}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \&WebSocketSession::on\_write,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ shared\_from\_this()));}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00047}00047\ \textcolor{keywordtype}{void}\ WebSocketSession::do\_read()\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00048}00048\ \ \ \ \ ws\_.async\_read(}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ buffer\_,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ beast::bind\_front\_handler(}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \&WebSocketSession::on\_read,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ shared\_from\_this()));}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00055}00055\ \textcolor{keywordtype}{void}\ WebSocketSession::on\_accept(beast::error\_code\ ec)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (ec)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}WebSocket\ accept\ error:\ "{}}\ <<\ ec.message()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ server\_-\/>\mbox{\hyperlink{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02}{removeSession}}(shared\_from\_this());}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00062}00062\ \ \ \ \ send\_message(server\_-\/>\mbox{\hyperlink{classWebSocketServer_a0b0f779e1fd7fcbbd1a90ae4a5cfe964}{getInitialData}}());}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00063}00063\ \ \ \ \ do\_read();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00066}00066\ \textcolor{keywordtype}{void}\ WebSocketSession::on\_write(beast::error\_code\ ec,\ std::size\_t\ bytes\_transferred)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00067}00067\ \ \ \ \ boost::ignore\_unused(bytes\_transferred);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00068}00068\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{if}\ (ec)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}WebSocket\ write\ error:\ "{}}\ <<\ ec.message()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ server\_-\/>\mbox{\hyperlink{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02}{removeSession}}(shared\_from\_this());}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00075}00075\ \ \ \ \ do\_write();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00078}00078\ \textcolor{keywordtype}{void}\ WebSocketSession::on\_read(beast::error\_code\ ec,\ std::size\_t\ bytes\_transferred)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00079}00079\ \ \ \ \ boost::ignore\_unused(bytes\_transferred);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00080}00080\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (ec\ ==\ websocket::error::closed)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ server\_-\/>\mbox{\hyperlink{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02}{removeSession}}(shared\_from\_this());}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{if}\ (ec)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}WebSocket\ read\ error:\ "{}}\ <<\ ec.message()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ server\_-\/>\mbox{\hyperlink{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02}{removeSession}}(shared\_from\_this());}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00092}00092\ \ \ \ \ std::string\ received\ =\ beast::buffers\_to\_string(buffer\_.data());}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00093}00093\ \ \ \ \ buffer\_.consume(buffer\_.size());}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00094}00094\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00095}00095\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}WebSocket\ received:\ "{}}\ <<\ received\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00096}00096\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ shouldBroadcast\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00098}00098\ \ \ \ \ std::string\ response\ =\ server\_-\/>\mbox{\hyperlink{classWebSocketServer_a982ef3503a26a2ff46b78b3881acd9a3}{handleMessage}}(received,\ shouldBroadcast);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00099}00099\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00100}00100\ \ \ \ \ send\_message(response);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00101}00101\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (shouldBroadcast)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ server\_-\/>\mbox{\hyperlink{classWebSocketServer_aff37a8c105d99d0b697c65ba6a65ab6a}{broadcastUpdate}}();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00105}00105\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00106}00106\ \ \ \ \ do\_read();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00109}\mbox{\hyperlink{classWebSocketServer_a0d96cbff463fb53408d0e3cbd394c6f0}{00109}}\ \mbox{\hyperlink{classWebSocketServer_a0d96cbff463fb53408d0e3cbd394c6f0}{WebSocketServer::WebSocketServer}}(net::io\_context\&\ ioc,\ \textcolor{keyword}{const}\ tcp::endpoint\&\ endpoint,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}{MessageCallback}}\ messageCallback,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}{InitialDataCallback}}\ initialDataCallback,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}{BroadcastDataCallback}}\ broadcastDataCallback)}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00113}00113\ \ \ \ \ :\ ioc\_(ioc),\ acceptor\_(ioc),\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00114}00114\ \ \ \ \ \ \ messageCallback\_(messageCallback),}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00115}00115\ \ \ \ \ \ \ initialDataCallback\_(initialDataCallback),}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00116}00116\ \ \ \ \ \ \ broadcastDataCallback\_(broadcastDataCallback)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00117}00117\ \ \ \ \ beast::error\_code\ ec;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00119}00119\ \ \ \ \ acceptor\_.open(endpoint.protocol(),\ ec);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (ec)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ open\ acceptor:\ "{}}\ <<\ ec.message()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00123}00123\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00125}00125\ \ \ \ \ acceptor\_.set\_option(net::socket\_base::reuse\_address(\textcolor{keyword}{true}),\ ec);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{if}\ (ec)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ set\ reuse\_address:\ "{}}\ <<\ ec.message()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00131}00131\ \ \ \ \ acceptor\_.bind(endpoint,\ ec);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (ec)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ bind:\ "{}}\ <<\ ec.message()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00135}00135\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00137}00137\ \ \ \ \ acceptor\_.listen(net::socket\_base::max\_listen\_connections,\ ec);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{if}\ (ec)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ listen:\ "{}}\ <<\ ec.message()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00141}00141\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00142}00142\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00144}\mbox{\hyperlink{classWebSocketServer_a2c749866a6dbd92e4b54a422d1b58de9}{00144}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketServer_a2c749866a6dbd92e4b54a422d1b58de9}{WebSocketServer::run}}()\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00145}00145\ \ \ \ \ do\_accept();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00146}00146\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00148}00148\ \textcolor{keywordtype}{void}\ WebSocketServer::do\_accept()\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00149}00149\ \ \ \ \ acceptor\_.async\_accept(}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ beast::bind\_front\_handler(}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \&WebSocketServer::on\_accept,}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this}));}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00153}00153\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00155}00155\ \textcolor{keywordtype}{void}\ WebSocketServer::on\_accept(beast::error\_code\ ec,\ tcp::socket\ socket)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{keywordflow}{if}\ (ec)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Accept\ error:\ "{}}\ <<\ ec.message()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00158}00158\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ std::make\_shared<WebSocketSession>(std::move(socket),\ \textcolor{keyword}{this})-\/>run();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00160}00160\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00162}00162\ \ \ \ \ do\_accept();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00163}00163\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00165}\mbox{\hyperlink{classWebSocketServer_a436a43d835c5d0214efff05879270e7e}{00165}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketServer_a436a43d835c5d0214efff05879270e7e}{WebSocketServer::addSession}}(std::shared\_ptr<WebSocketSession>\ session)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00166}00166\ \ \ \ \ sessions\_.insert(session);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00167}00167\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}WebSocket\ client\ connected.\ Total\ clients:\ "{}}\ <<\ sessions\_.size()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00168}00168\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00170}\mbox{\hyperlink{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02}{00170}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketServer_a95b8049db4bae9c7ca7157b1dcfe0f02}{WebSocketServer::removeSession}}(std::shared\_ptr<WebSocketSession>\ session)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00171}00171\ \ \ \ \ sessions\_.erase(session);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00172}00172\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}WebSocket\ client\ disconnected.\ Total\ clients:\ "{}}\ <<\ sessions\_.size()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00173}00173\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00175}\mbox{\hyperlink{classWebSocketServer_aff37a8c105d99d0b697c65ba6a65ab6a}{00175}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWebSocketServer_aff37a8c105d99d0b697c65ba6a65ab6a}{WebSocketServer::broadcastUpdate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00176}00176\ \ \ \ \ std::string\ updateMessage\ =\ broadcastDataCallback\_();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00177}00177\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00178}00178\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Broadcasting\ update\ to\ "{}}\ <<\ sessions\_.size()\ <<\ \textcolor{stringliteral}{"{}\ clients"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ session\ :\ sessions\_)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ session-\/>sendBroadcastMessage(updateMessage);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00181}00181\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00182}00182\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00184}\mbox{\hyperlink{classWebSocketServer_a982ef3503a26a2ff46b78b3881acd9a3}{00184}}\ std::string\ \mbox{\hyperlink{classWebSocketServer_a982ef3503a26a2ff46b78b3881acd9a3}{WebSocketServer::handleMessage}}(\textcolor{keyword}{const}\ std::string\&\ message,\ \textcolor{keywordtype}{bool}\&\ shouldBroadcast)\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00185}00185\ \ \ \ \ \textcolor{keywordflow}{return}\ messageCallback\_(message,\ shouldBroadcast);}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00186}00186\ \}}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00188}\mbox{\hyperlink{classWebSocketServer_a0b0f779e1fd7fcbbd1a90ae4a5cfe964}{00188}}\ std::string\ \mbox{\hyperlink{classWebSocketServer_a0b0f779e1fd7fcbbd1a90ae4a5cfe964}{WebSocketServer::getInitialData}}()\ \{}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordflow}{return}\ initialDataCallback\_();}
+\DoxyCodeLine{\Hypertarget{websocket__server_8cpp_source_l00190}00190\ \}}
+
+\end{DoxyCode}

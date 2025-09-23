@@ -1,0 +1,147 @@
+\chapter{Cinema Microservice -\/ Real-\/\+Time Booking System}
+\hypertarget{index}{}\label{index}\index{Cinema Microservice -\/ Real-\/Time Booking System@{Cinema Microservice -\/ Real-\/Time Booking System}}
+\hypertarget{index_intro_sec}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_intro_sec}
+The Cinema Microservice is a modern C++ application that provides real-\/time seat booking functionality for movie theaters. Built with clean architecture principles, it features Web\+Socket-\/based communication for instant updates across multiple clients.\hypertarget{index_features_sec}{}\doxysection{\texorpdfstring{Key Features}{Key Features}}\label{index_features_sec}
+
+\begin{DoxyItemize}
+\item {\bfseries{Real-\/\+Time Communication}}\+: Web\+Socket-\/based server-\/client architecture
+\item {\bfseries{Thread-\/\+Safe Operations}}\+: Concurrent seat booking with proper synchronization
+\item {\bfseries{Clean Architecture}}\+: Separation of concerns with distinct layers
+\item {\bfseries{Interactive UI}}\+: User-\/friendly booking interface with visual seat layouts
+\item {\bfseries{Multi-\/\+Client Support}}\+: Server handles multiple concurrent booking sessions
+\item {\bfseries{Comprehensive Testing}}\+: 111+ unit tests with 100\% pass rate
+\item {\bfseries{Professional Documentation}}\+: Complete API documentation with examples
+\end{DoxyItemize}\hypertarget{index_arch_sec}{}\doxysection{\texorpdfstring{Architecture Overview}{Architecture Overview}}\label{index_arch_sec}
+The system follows clean architecture principles with the following layers\+:\hypertarget{index_data_layer}{}\doxysubsection{\texorpdfstring{Data Layer}{Data Layer}}\label{index_data_layer}
+
+\begin{DoxyItemize}
+\item \doxylink{classShows}{Shows} class\+: Core entity representing movie shows with seat management
+\item Thread-\/safe operations using shared\+\_\+mutex for concurrent access
+\item 20-\/seat capacity per show with boolean seat availability tracking
+\end{DoxyItemize}\hypertarget{index_comm_layer}{}\doxysubsection{\texorpdfstring{Communication Layer}{Communication Layer}}\label{index_comm_layer}
+
+\begin{DoxyItemize}
+\item {\bfseries{Client Side}}\+: \doxylink{classCinemaClient}{Cinema\+Client} with Web\+Socket connection management
+\item {\bfseries{Server Side}}\+: \doxylink{classWebSocketServer}{Web\+Socket\+Server} with multi-\/session handling
+\item {\bfseries{Protocol}}\+: Structured message format for bookings and updates
+\item {\bfseries{Real-\/\+Time Updates}}\+: Broadcast notifications for booking changes
+\end{DoxyItemize}\hypertarget{index_business_layer}{}\doxysubsection{\texorpdfstring{Business Logic Layer}{Business Logic Layer}}\label{index_business_layer}
+
+\begin{DoxyItemize}
+\item \doxylink{classBookingService}{Booking\+Service}\+: Handles seat reservation logic and validation
+\item \doxylink{classCinemaService}{Cinema\+Service}\+: Manages data formatting and protocol compliance
+\item \doxylink{classMessageHandler}{Message\+Handler}\+: Processes client requests and coordinates responses
+\end{DoxyItemize}\hypertarget{index_ui_layer}{}\doxysubsection{\texorpdfstring{User Interface Layer}{User Interface Layer}}\label{index_ui_layer}
+
+\begin{DoxyItemize}
+\item \doxylink{classCinemaUI}{Cinema\+UI}\+: Pure presentation layer with no business logic coupling
+\item Interactive menus and seat selection interface
+\item Input validation and user experience optimization
+\end{DoxyItemize}\hypertarget{index_app_layer}{}\doxysubsection{\texorpdfstring{Application Layer}{Application Layer}}\label{index_app_layer}
+
+\begin{DoxyItemize}
+\item Client main\+: Coordinates UI and communication components
+\item Server main\+: Initializes data and manages Web\+Socket infrastructure
+\end{DoxyItemize}\hypertarget{index_tech_sec}{}\doxysection{\texorpdfstring{Technology Stack}{Technology Stack}}\label{index_tech_sec}
+
+\begin{DoxyItemize}
+\item {\bfseries{Language}}\+: C++17
+\item {\bfseries{Networking}}\+: Boost.\+Beast Web\+Socket library
+\item {\bfseries{Async I/O}}\+: Boost.\+Asio for non-\/blocking operations
+\item {\bfseries{Threading}}\+: std\+::shared\+\_\+mutex for thread-\/safe data access
+\item {\bfseries{Build System}}\+: CMake with Conan package management
+\item {\bfseries{Testing}}\+: Custom lightweight testing framework
+\item {\bfseries{Documentation}}\+: Doxygen with Plant\+UML diagrams
+\end{DoxyItemize}\hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{Quick Start Guide}{Quick Start Guide}}\label{index_usage_sec}
+\hypertarget{index_build_sec}{}\doxysubsection{\texorpdfstring{Building the Project}{Building the Project}}\label{index_build_sec}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Install\ dependencies}
+\DoxyCodeLine{conan\ install\ .\ -\/-\/output-\/folder=build\ -\/-\/build=missing}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Configure\ and\ build}
+\DoxyCodeLine{cmake\ -\/B\ build\ -\/S\ .\ -\/DCMAKE\_BUILD\_TYPE=Release\ -\/DCMAKE\_TOOLCHAIN\_FILE=build/Release/generators/conan\_toolchain.cmake}
+\DoxyCodeLine{cmake\ -\/-\/build\ build\ -\/-\/config\ Release}
+
+\end{DoxyCode}
+\hypertarget{index_run_sec}{}\doxysubsection{\texorpdfstring{Running the System}{Running the System}}\label{index_run_sec}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Start\ the\ server\ (Terminal\ 1)}
+\DoxyCodeLine{./build/cinema}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Start\ the\ client\ (Terminal\ 2)}
+\DoxyCodeLine{./build/client/cinema\_client}
+
+\end{DoxyCode}
+\hypertarget{index_test_sec}{}\doxysubsection{\texorpdfstring{Running Tests}{Running Tests}}\label{index_test_sec}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Run\ all\ tests}
+\DoxyCodeLine{cmake\ -\/-\/build\ build\ -\/-\/target\ run\_tests}
+
+\end{DoxyCode}
+\hypertarget{index_api_sec}{}\doxysection{\texorpdfstring{API Overview}{API Overview}}\label{index_api_sec}
+\hypertarget{index_core_classes}{}\doxysubsection{\texorpdfstring{Core Classes}{Core Classes}}\label{index_core_classes}
+
+\begin{DoxyItemize}
+\item \doxylink{classShows}{Shows}\+: Thread-\/safe movie show with seat management
+\item \doxylink{classCinemaClient}{Cinema\+Client}\+: Web\+Socket client for server communication
+\item \doxylink{classWebSocketServer}{Web\+Socket\+Server}\+: Multi-\/client Web\+Socket server
+\item \doxylink{classCinemaUI}{Cinema\+UI}\+: Interactive user interface
+\end{DoxyItemize}\hypertarget{index_key_operations}{}\doxysubsection{\texorpdfstring{Key Operations}{Key Operations}}\label{index_key_operations}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Thread-\/safe\ seat\ booking}}
+\DoxyCodeLine{\mbox{\hyperlink{classShows}{Shows}}\ show(\textcolor{stringliteral}{"{}Inception"{}},\ \textcolor{stringliteral}{"{}2025-\/09-\/18\ 19:30"{}},\ \textcolor{stringliteral}{"{}IMAX"{}});}
+\DoxyCodeLine{std::vector<uint8\_t>\ seats\ =\ \{1,\ 2,\ 3\};}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ success\ =\ show.bookSeats(seats);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ WebSocket\ client\ connection}}
+\DoxyCodeLine{\mbox{\hyperlink{classCinemaClient}{CinemaClient}}\ client;}
+\DoxyCodeLine{client.\mbox{\hyperlink{classCinemaClient_a1f89a855f15fbe3b9a321927522e7a68}{connect}}(\textcolor{stringliteral}{"{}localhost"{}},\ \textcolor{stringliteral}{"{}8080"{}});}
+\DoxyCodeLine{client.\mbox{\hyperlink{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887}{sendMessage}}(\textcolor{stringliteral}{"{}get\_data"{}});}
+
+\end{DoxyCode}
+\hypertarget{index_workflow_sec}{}\doxysection{\texorpdfstring{Booking Workflow}{Booking Workflow}}\label{index_workflow_sec}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Client Connection}}\+: Client connects to server via Web\+Socket
+\item {\bfseries{Data Sync}}\+: Server sends current cinema data to client
+\item {\bfseries{Show Selection}}\+: User selects theater, movie, and showtime
+\item {\bfseries{Seat Selection}}\+: Visual seat layout shows availability
+\item {\bfseries{Booking Request}}\+: Client sends booking data to server
+\item {\bfseries{Server Processing}}\+: Server validates and processes booking
+\item {\bfseries{Confirmation}}\+: Success/error response sent to client
+\item {\bfseries{Broadcast Update}}\+: All clients receive real-\/time updates
+\end{DoxyEnumerate}\hypertarget{index_components_sec}{}\doxysection{\texorpdfstring{Component Documentation}{Component Documentation}}\label{index_components_sec}
+For detailed API documentation, see\+:
+
+
+\begin{DoxyItemize}
+\item \doxylink{classShows}{Shows Class} -\/ Core data structure
+\item \doxylink{classCinemaClient}{Cinema\+Client Class} -\/ Web\+Socket client
+\item \doxylink{classWebSocketServer}{Web\+Socket\+Server Class} -\/ Server infrastructure
+\item \doxylink{classCinemaUI}{Cinema\+UI Class} -\/ User interface
+\item \doxylink{classBookingService}{Booking\+Service Class} -\/ Booking logic
+\item \doxylink{classCinemaService}{Cinema\+Service Class} -\/ Data formatting
+\end{DoxyItemize}\hypertarget{index_contrib_sec}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{index_contrib_sec}
+The codebase follows clean architecture principles\+:
+\begin{DoxyItemize}
+\item Maintain separation of concerns between layers
+\item Ensure thread safety for concurrent operations
+\item Add comprehensive tests for new functionality
+\item Update documentation for API changes
+\item Follow C++ best practices and coding standards
+\end{DoxyItemize}\hypertarget{index_license_sec}{}\doxysection{\texorpdfstring{License}{License}}\label{index_license_sec}
+This project is licensed under the terms specified in the LICENSE file.
+
+\begin{DoxyAuthor}{Author}
+Jorge Royon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+September 18, 2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}

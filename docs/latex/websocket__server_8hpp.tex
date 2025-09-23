@@ -1,0 +1,162 @@
+\doxysection{server/lib/websocket\+\_\+server.hpp File Reference}
+\hypertarget{websocket__server_8hpp}{}\label{websocket__server_8hpp}\index{server/lib/websocket\_server.hpp@{server/lib/websocket\_server.hpp}}
+
+
+Web\+Socket server infrastructure for Cinema booking system.  
+
+
+{\ttfamily \#include $<$boost/beast/core.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/beast/websocket.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/asio/ip/tcp.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/asio/io\+\_\+context.\+hpp$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include "{}cinema.\+hpp"{}}\newline
+Include dependency graph for websocket\+\_\+server.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{websocket__server_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{websocket__server_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}}
+\begin{DoxyCompactList}\small\item\em Represents an individual client Web\+Socket connection. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classWebSocketServer}{Web\+Socket\+Server}}
+\begin{DoxyCompactList}\small\item\em Main Web\+Socket server for Cinema booking system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceCinemaProtocol}{Cinema\+Protocol}}
+\begin{DoxyCompactList}\small\item\em Server-\/side protocol constants for Cinema communication. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{websocket__server_8hpp_a60a92ea513bd2f25705cdd673983c5a8}{tcp}} = net\+::ip\+::tcp
+\item 
+using \mbox{\hyperlink{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}{Message\+Callback}} = std\+::function$<$ std\+::string(const std\+::string \&, bool \&)$>$
+\begin{DoxyCompactList}\small\item\em Callback for handling client messages. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}{Initial\+Data\+Callback}} = std\+::function$<$ std\+::string()$>$
+\begin{DoxyCompactList}\small\item\em Callback for getting initial data to send to new clients. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}{Broadcast\+Data\+Callback}} = std\+::function$<$ std\+::string()$>$
+\begin{DoxyCompactList}\small\item\em Callback for getting broadcast data after updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_a3278e28df6cbbbd5a58a7c6815f5a1ae}{Cinema\+Protocol\+::\+CINEMA\+\_\+\+DATA\+\_\+\+HEADER}} = "{}=== CINEMA DATA STREAM ==="{}
+\begin{DoxyCompactList}\small\item\em Cinema data stream header. \end{DoxyCompactList}\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_a159fb37cc43a258b9b18df876741ca6b}{Cinema\+Protocol\+::\+CINEMA\+\_\+\+DATA\+\_\+\+FOOTER}} = "{}=== END CINEMA DATA ==="{}
+\begin{DoxyCompactList}\small\item\em Cinema data stream footer. \end{DoxyCompactList}\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_a673764efee158d859d4345b062e184b1}{Cinema\+Protocol\+::\+UPDATE\+\_\+\+DATA\+\_\+\+HEADER}} = "{}=== UPDATED CINEMA DATA ==="{}
+\begin{DoxyCompactList}\small\item\em Update data header. \end{DoxyCompactList}\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_a9686bbab950f633fb2b6cd1aa7c26abe}{Cinema\+Protocol\+::\+UPDATE\+\_\+\+DATA\+\_\+\+FOOTER}} = "{}=== END UPDATED DATA ==="{}
+\begin{DoxyCompactList}\small\item\em Update data footer. \end{DoxyCompactList}\item 
+constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceCinemaProtocol_a4fd91b771163635768adac048e58c7a0}{Cinema\+Protocol\+::\+BOOKING\+\_\+\+UPDATE\+\_\+\+PREFIX}} = "{}BOOKING\+\_\+\+UPDATE\+:\textbackslash{}n"{}
+\begin{DoxyCompactList}\small\item\em Booking update prefix. \end{DoxyCompactList}\item 
+constexpr int \mbox{\hyperlink{namespaceCinemaProtocol_a5a4af08820b5d2fd7f41fda1acd5f375}{Cinema\+Protocol\+::\+MAX\+\_\+\+SEATS}} = 20
+\begin{DoxyCompactList}\small\item\em Maximum seats per show. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Web\+Socket server infrastructure for Cinema booking system. 
+
+\begin{DoxyAuthor}{Author}
+Jorge Royon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/09-\/18 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+Definition in file \mbox{\hyperlink{websocket__server_8hpp_source}{websocket\+\_\+server.\+hpp}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}\label{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b} 
+\index{websocket\_server.hpp@{websocket\_server.hpp}!BroadcastDataCallback@{BroadcastDataCallback}}
+\index{BroadcastDataCallback@{BroadcastDataCallback}!websocket\_server.hpp@{websocket\_server.hpp}}
+\doxysubsubsection{\texorpdfstring{BroadcastDataCallback}{BroadcastDataCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{websocket__server_8hpp_ac25e214ac20260d647493b8989c0d74b}{Broadcast\+Data\+Callback}} =  std\+::function$<$std\+::string()$>$}
+
+
+
+Callback for getting broadcast data after updates. 
+
+\begin{DoxyReturn}{Returns}
+Broadcast data string 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{websocket__server_8hpp_source}{websocket\+\_\+server.\+hpp}}.
+
+\Hypertarget{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}\label{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976} 
+\index{websocket\_server.hpp@{websocket\_server.hpp}!InitialDataCallback@{InitialDataCallback}}
+\index{InitialDataCallback@{InitialDataCallback}!websocket\_server.hpp@{websocket\_server.hpp}}
+\doxysubsubsection{\texorpdfstring{InitialDataCallback}{InitialDataCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{websocket__server_8hpp_aed4ff2bcf0d6865f162afd0dd13ac976}{Initial\+Data\+Callback}} =  std\+::function$<$std\+::string()$>$}
+
+
+
+Callback for getting initial data to send to new clients. 
+
+\begin{DoxyReturn}{Returns}
+Initial data string 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{websocket__server_8hpp_source}{websocket\+\_\+server.\+hpp}}.
+
+\Hypertarget{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}\label{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810} 
+\index{websocket\_server.hpp@{websocket\_server.hpp}!MessageCallback@{MessageCallback}}
+\index{MessageCallback@{MessageCallback}!websocket\_server.hpp@{websocket\_server.hpp}}
+\doxysubsubsection{\texorpdfstring{MessageCallback}{MessageCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{websocket__server_8hpp_a98e31616dc8ac2e1447247063a02c810}{Message\+Callback}} =  std\+::function$<$std\+::string(const std\+::string\&, bool\&)$>$}
+
+
+
+Callback for handling client messages. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The received message \\
+\hline
+{\em should\+Broadcast} & Output parameter indicating if response should be broadcast \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response message to send back 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{websocket__server_8hpp_source}{websocket\+\_\+server.\+hpp}}.
+
+\Hypertarget{websocket__server_8hpp_a60a92ea513bd2f25705cdd673983c5a8}\label{websocket__server_8hpp_a60a92ea513bd2f25705cdd673983c5a8} 
+\index{websocket\_server.hpp@{websocket\_server.hpp}!tcp@{tcp}}
+\index{tcp@{tcp}!websocket\_server.hpp@{websocket\_server.hpp}}
+\doxysubsubsection{\texorpdfstring{tcp}{tcp}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{websocket__server_8hpp_a60a92ea513bd2f25705cdd673983c5a8}{tcp}} =  net\+::ip\+::tcp}
+
+
+
+Definition at line \mbox{\hyperlink{websocket__server_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{websocket__server_8hpp_source}{websocket\+\_\+server.\+hpp}}.
+

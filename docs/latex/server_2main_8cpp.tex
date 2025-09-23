@@ -1,0 +1,161 @@
+\doxysection{server/main.cpp File Reference}
+\hypertarget{server_2main_8cpp}{}\label{server_2main_8cpp}\index{server/main.cpp@{server/main.cpp}}
+
+
+Cinema Server Application Entry Point.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$boost/version.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/asio/ip/tcp.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/asio/io\+\_\+context.\+hpp$>$}\newline
+{\ttfamily \#include "{}lib/cinema.\+hpp"{}}\newline
+{\ttfamily \#include "{}lib/websocket\+\_\+server.\+hpp"{}}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_2main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{server_2main_8cpp_a60a92ea513bd2f25705cdd673983c5a8}{tcp}} = net\+::ip\+::tcp
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{server_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main server application entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cinema Server Application Entry Point. 
+
+\begin{DoxyAuthor}{Author}
+Jorge Royon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/09-\/18 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Main application for Cinema booking system server
+
+This application provides the main entry point for the Cinema booking server. It initializes the cinema data, sets up the Web\+Socket server infrastructure, and manages real-\/time communication with multiple cinema booking clients.
+
+\begin{DoxyParagraph}{Application Architecture}
+
+\begin{DoxyItemize}
+\item Creates initial cinema data with predefined shows and seat patterns
+\item Configures Web\+Socket server with callback handlers
+\item Manages concurrent client connections
+\item Coordinates booking operations and real-\/time updates
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Data Initialization}
+Creates 9 shows (3 movies × 3 theaters) with different seat availability patterns\+:
+\begin{DoxyItemize}
+\item Movies\+: Inception, Interstellar, Tenet
+\item Theaters\+: PVR, IMAX, Cinepolis
+\item Each show has 20 seats with predefined booking patterns
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Server Features}
+
+\begin{DoxyItemize}
+\item Multi-\/client Web\+Socket communication
+\item Real-\/time booking updates
+\item Thread-\/safe seat management
+\item Broadcast notifications for booking changes
+\item Comprehensive error handling
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Architecture Role}
+Serves as the main business logic coordinator, integrating\+:
+\begin{DoxyItemize}
+\item Cinema data management (\doxylink{classShows}{Shows})
+\item Web\+Socket communication (\doxylink{classWebSocketServer}{Web\+Socket\+Server})
+\item Business services (\doxylink{classCinemaService}{Cinema\+Service}, \doxylink{classBookingService}{Booking\+Service}, \doxylink{classMessageHandler}{Message\+Handler}) 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+Definition in file \mbox{\hyperlink{server_2main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{server_2main_8cpp_a60a92ea513bd2f25705cdd673983c5a8}\label{server_2main_8cpp_a60a92ea513bd2f25705cdd673983c5a8} 
+\index{main.cpp@{main.cpp}!tcp@{tcp}}
+\index{tcp@{tcp}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{tcp}{tcp}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{websocket__server_8hpp_a60a92ea513bd2f25705cdd673983c5a8}{tcp}} =  net\+::ip\+::tcp}
+
+
+
+Definition at line \mbox{\hyperlink{server_2main_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{server_2main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{server_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{server_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main server application entry point. 
+
+\begin{DoxyReturn}{Returns}
+0 on successful execution
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Initialization Process}
+
+\begin{DoxyEnumerate}
+\item Create cinema data with movies, theaters, and seat patterns
+\item Configure Web\+Socket server with callback handlers
+\item Start server on localhost\+:8080
+\item Display initial cinema state
+\item Enter serving loop for client connections
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Callback Configuration}
+
+\begin{DoxyItemize}
+\item Message Callback\+: Routes client messages to \doxylink{classMessageHandler}{Message\+Handler}
+\item Initial Data Callback\+: Provides current cinema state to new clients
+\item Broadcast Callback\+: Supplies update data for booking notifications
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Threading Model}
+
+\begin{DoxyItemize}
+\item Main thread\+: Handles initialization and display
+\item Web\+Socket thread\+: Manages async I/O operations
+\item Server supports multiple concurrent client connections
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Data Patterns}
+Uses three predefined seat patterns to simulate different booking states\+:
+\begin{DoxyItemize}
+\item Pattern 1\+: Mixed availability (50\% occupied)
+\item Pattern 2\+: Sparse availability (45\% occupied) ~\newline
+
+\item Pattern 3\+: High availability (25\% occupied) 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{server_2main_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{server_2main_8cpp_source}{main.\+cpp}}.
+

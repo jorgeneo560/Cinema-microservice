@@ -1,0 +1,328 @@
+\chapter{README}
+\hypertarget{md_README}{}\label{md_README}\index{README@{README}}
+Cinema Microservice
+
+A real-\/time cinema booking system built with C++ and Web\+Socket technology.
+
+Overview
+
+This project implements a cinema booking system with a server-\/client architecture. The server manages movie shows and seat availability, while the client provides an interactive booking interface. Communication happens in real-\/time through Web\+Socket connections.
+
+Features
+
+
+\begin{DoxyItemize}
+\item Real-\/time seat availability updates
+\item Multiple theater and movie support
+\item Interactive booking interface
+\item Thread-\/safe seat management
+\item Web\+Socket-\/based communication
+\item Clean architecture with separated business logic
+
+Architecture
+
+Server Components
+\item Main server application with hardcoded movie data
+\item Web\+Socket server for real-\/time communication
+\item Cinema library with business logic services
+\item Thread-\/safe \doxylink{classShows}{Shows} class for seat management
+
+Client Components
+\item Interactive command-\/line interface
+\item Web\+Socket client for server communication
+\item Real-\/time seat availability display
+\item Booking confirmation system
+
+Project Structure
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Cinema-\/microservice/}
+\DoxyCodeLine{├──\ server/}
+\DoxyCodeLine{│\ \ \ ├──\ main.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Server\ entry\ point}
+\DoxyCodeLine{│\ \ \ └──\ lib/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ cinema.cpp\ \ \ \ \ \ \ \ \ \ \#\ Business\ logic\ implementation}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ cinema.hpp\ \ \ \ \ \ \ \ \ \ \#\ Business\ logic\ headers}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ websocket\_server.cpp\ \#\ WebSocket\ networking}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ websocket\_server.hpp\ \#\ WebSocket\ headers}
+\DoxyCodeLine{├──\ client/}
+\DoxyCodeLine{│\ \ \ ├──\ main.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Client\ entry\ point}
+\DoxyCodeLine{│\ \ \ └──\ lib/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ cinema\_Client.cpp\ \ \ \#\ Shows\ data\ model}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ cinema\_Client.hpp\ \ \ \#\ Shows\ data\ headers}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ websocket\_client.cpp\ \#\ WebSocket\ client}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ websocket\_client.hpp\ \#\ WebSocket\ client\ headers}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ CinemaUI.cpp\ \ \ \ \ \ \ \ \#\ User\ interface}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ CinemaUI.hpp\ \ \ \ \ \ \ \ \#\ User\ interface\ headers}
+\DoxyCodeLine{├──\ build/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Build\ output\ directory}
+\DoxyCodeLine{├──\ CMakeLists.txt\ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Main\ build\ configuration}
+\DoxyCodeLine{└──\ README.md\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ This\ file}
+
+\end{DoxyCode}
+
+
+Requirements
+
+
+\begin{DoxyItemize}
+\item C++20 compiler
+\item CMake 3.\+15 or higher
+\item Conan package manager
+\item Boost libraries (system, websocket)
+\item Linux environment
+
+Building and Running
+
+Option 1\+: Using Docker
+\end{DoxyItemize}
+
+Docker provides the easiest way to build and run the Cinema microservice without dealing with dependencies.
+
+Prerequisites
+\begin{DoxyItemize}
+\item Docker
+\item Docker Compose
+
+Quick Start 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ Make\ the\ script\ executable\ and\ run\ everything}
+\DoxyCodeLine{chmod\ +x\ start\_docker.sh}
+\DoxyCodeLine{./start-\/docker.sh}
+
+\end{DoxyCode}
+
+
+Manual Docker Commands 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ Build\ containers}
+\DoxyCodeLine{docker-\/compose\ build}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ Start\ server\ only}
+\DoxyCodeLine{docker-\/compose\ up\ -\/d\ cinema-\/server}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ Test\ with\ wscat\ in\ client\ container}
+\DoxyCodeLine{docker\ exec\ -\/it\ cinema-\/client\ wscat\ -\/c\ ws://cinema-\/server:8080}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ Use\ C++\ client}
+\DoxyCodeLine{docker-\/compose\ run\ -\/-\/rm\ cinema-\/client\ ./build/client/cinema\_client}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ View\ server\ logs}
+\DoxyCodeLine{docker-\/compose\ logs\ cinema-\/server}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ Stop\ everything}
+\DoxyCodeLine{docker-\/compose\ down}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md0}{}\doxysubsection{\texorpdfstring{Documentation}{Documentation}}\label{md_README_autotoc_md0}
+The project includes comprehensive Doxygen documentation for all classes and functions.\hypertarget{md_README_autotoc_md1}{}\doxysubsubsection{\texorpdfstring{Generating Documentation}{Generating Documentation}}\label{md_README_autotoc_md1}
+To generate the API documentation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Make\ the\ script\ executable}
+\DoxyCodeLine{chmod\ +x\ generate\_docs.sh}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Generate\ documentation}
+\DoxyCodeLine{./generate\_docs.sh}
+
+\end{DoxyCode}
+
+
+Alternatively, you can run Doxygen directly\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Install\ Doxygen\ (if\ not\ already\ installed)}
+\DoxyCodeLine{sudo\ apt\ install\ doxygen\ graphviz}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Generate\ documentation}
+\DoxyCodeLine{doxygen}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md2}{}\doxysubsubsection{\texorpdfstring{Viewing Documentation}{Viewing Documentation}}\label{md_README_autotoc_md2}
+After generating the documentation, you can view it in several ways\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Use\ the\ viewing\ script\ (opens\ in\ browser)}
+\DoxyCodeLine{chmod\ +x\ view\_docs.sh}
+\DoxyCodeLine{./view\_docs.sh}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Or\ open\ directly}
+\DoxyCodeLine{open\ docs/html/index.html\ \ \ \ \ \ \ \ \ \ \ \#\ macOS}
+\DoxyCodeLine{xdg-\/open\ docs/html/index.html\ \ \ \ \ \ \ \#\ Linux}
+
+\end{DoxyCode}
+
+
+The documentation includes\+:
+\begin{DoxyItemize}
+\item Class hierarchies and relationships
+\item Function and method descriptions
+\item Code examples and usage patterns
+\item Dependency graphs
+\item Source code cross-\/references
+
+Option 2\+: Local Build
+
+Building the Project
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Install dependencies using Conan\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{conan\ install\ .\ -\/-\/output-\/folder=build\ -\/-\/build=missing}
+
+\end{DoxyCode}
+
+\item Build the project\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/B\ build\ -\/S\ .\ -\/DCMAKE\_BUILD\_TYPE=Release\ -\/DCMAKE\_TOOLCHAIN\_FILE=build/Release/generators/conan\_toolchain.cmake}
+\DoxyCodeLine{cmake\ -\/-\/build\ build\ -\/-\/config\ Release}
+
+\end{DoxyCode}
+
+
+Running the Application
+
+Start the Server 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./build/cinema}
+
+\end{DoxyCode}
+ The server will start on localhost\+:8080 and display available shows.
+
+Start the Client 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./build/client/cinema\_client}
+
+\end{DoxyCode}
+
+
+Usage
+
+Server The server automatically starts with predefined movie data\+:
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item 3 theaters\+: PVR, IMAX, Cinepolis
+\item 3 movies\+: Inception, Interstellar, Tenet
+\item 20 seats per show with different occupancy patterns
+
+Client Menu Options
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item View Movies -\/ Display all available shows and seats
+\item Book Seats -\/ Interactive booking process
+\item Help -\/ Booking instructions
+\item Exit -\/ Close the application
+
+Booking Process
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Select a theater from the available list
+\item Choose a movie and showtime
+\item View seat layout and availability
+\item Select desired seats (comma or space separated)
+\item Confirm booking
+
+Web\+Socket Testing
+\end{DoxyEnumerate}
+
+You can also interact directly with the server using Web\+Socket tools to see real-\/time data and make custom reservations.
+
+Using wscat for Testing Install wscat globally\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/g\ wscat}
+
+\end{DoxyCode}
+
+
+Connect to the server\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npx\ wscat\ -\/c\ ws://localhost:8080}
+
+\end{DoxyCode}
+
+
+Available Commands
+\begin{DoxyItemize}
+\item {\ttfamily get\+\_\+data} -\/ Get current cinema data and seat availability
+\item {\ttfamily refresh} -\/ Refresh cinema data
+\item {\ttfamily theater,movie,seat1,seat2,...} -\/ Make a reservation
+
+Example Reservation To book seats 3 and 4 for Inception at PVR theater\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PVR,Inception,3,4}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+The server will respond with either\+:
+\begin{DoxyItemize}
+\item {\ttfamily SUCCESS\+: Booked seats 3, 4 for Inception at PVR} (if successful)
+\item {\ttfamily ERROR\+: One or more seats are already booked or invalid} (if failed)
+\end{DoxyItemize}
+
+After successful bookings, all connected clients receive real-\/time updates showing the new seat availability.
+
+Technical Details
+
+Communication Protocol
+\begin{DoxyItemize}
+\item Web\+Socket-\/based real-\/time communication
+\item JSON-\/like message format for data exchange
+\item Automatic seat availability updates
+\item Broadcast updates to all connected clients
+
+Seat Management
+\item Thread-\/safe operations using shared\+\_\+mutex
+\item 20 seats per show (numbered 1-\/20)
+\item Real-\/time availability tracking
+\item Atomic booking operations
+
+Data Models
+\item \doxylink{classShows}{Shows} class\+: Manages movie, theater, datetime, and seat data
+\item \doxylink{classCinemaService}{Cinema\+Service}\+: Formats and processes cinema data
+\item \doxylink{classBookingService}{Booking\+Service}\+: Handles seat reservation logic
+\item \doxylink{classMessageHandler}{Message\+Handler}\+: Processes client-\/server communication
+
+Error Handling
+\end{DoxyItemize}
+
+The system includes comprehensive error handling for\+:
+\begin{DoxyItemize}
+\item Network connection failures
+\item Invalid booking requests
+\item Seat unavailability
+\item Client disconnections
+\item Malformed messages
+
+Development
+
+Code Organization
+\item Business logic separated from networking code
+\item Clean architecture with service classes
+\item Header-\/implementation file separation
+
+Thread Safety
+\item Shared mutexes for concurrent read access
+\item Exclusive locks for seat modifications
+\item Thread-\/safe message queuing
+
+Future Enhancements
+\end{DoxyItemize}
+
+Potential improvements could include\+:
+\begin{DoxyItemize}
+\item Database integration for persistent data
+\item User authentication system
+\item Payment processing integration
+\item REST API endpoints
+\item Web-\/based client interface
+\item Show scheduling system
+\item Advanced seat selection features
+
+License
+\end{DoxyItemize}
+
+This project is a coding test implementation. 

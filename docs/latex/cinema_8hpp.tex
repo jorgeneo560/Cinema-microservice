@@ -1,0 +1,62 @@
+\doxysection{server/lib/cinema.hpp File Reference}
+\hypertarget{cinema_8hpp}{}\label{cinema_8hpp}\index{server/lib/cinema.hpp@{server/lib/cinema.hpp}}
+
+
+Core business logic and services for Cinema booking system.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$shared\+\_\+mutex$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+Include dependency graph for cinema.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cinema_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cinema_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classShows}{Shows}}
+\begin{DoxyCompactList}\small\item\em Server-\/side movie show data structure with thread-\/safe seat management. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCinemaService}{Cinema\+Service}}
+\begin{DoxyCompactList}\small\item\em Service for formatting cinema data for client communication. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classBookingService}{Booking\+Service}}
+\begin{DoxyCompactList}\small\item\em Service for processing seat booking requests. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structBookingService_1_1BookingResult}{Booking\+Service\+::\+Booking\+Result}}
+\begin{DoxyCompactList}\small\item\em Result of a booking operation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classMessageHandler}{Message\+Handler}}
+\begin{DoxyCompactList}\small\item\em High-\/level message routing and processing service. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core business logic and services for Cinema booking system. 
+
+\begin{DoxyAuthor}{Author}
+Jorge Royon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/09-\/18 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+Definition in file \mbox{\hyperlink{cinema_8hpp_source}{cinema.\+hpp}}.
+

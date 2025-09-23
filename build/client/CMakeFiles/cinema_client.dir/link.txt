@@ -1,0 +1,1 @@
+/usr/bin/c++ -m64 -O3 -DNDEBUG -m64 CMakeFiles/cinema_client.dir/main.cpp.o -o cinema_client   -L/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib  -Wl,-rpath,/home/ros2/.conan2/p/b/boostbb64941c3375d/p/lib libCinemaClientLib.a -lrt -lpthread 

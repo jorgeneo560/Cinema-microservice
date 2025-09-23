@@ -1,0 +1,109 @@
+\doxysection{main.\+cpp}
+\hypertarget{client_2main_8cpp_source}{}\label{client_2main_8cpp_source}\index{client/main.cpp@{client/main.cpp}}
+\mbox{\hyperlink{client_2main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{websocket__client_8hpp}{lib/websocket\_client.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{CinemaUI_8hpp}{lib/CinemaUI.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00066}\mbox{\hyperlink{client_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00066}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{client_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCinemaClient}{CinemaClient}}\ client;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCinemaUI}{CinemaUI}}\ ui;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ ui.\mbox{\hyperlink{classCinemaUI_a0610f429be32b3ba5990247257be41c2}{displayWelcome}}();}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ server\ host\ and\ port\ from\ environment\ variables\ (for\ Docker)}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Default\ to\ localhost:8080\ for\ local\ development}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ server\_host\ =\ std::getenv(\textcolor{stringliteral}{"{}SERVER\_HOST"{}});}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ server\_port\ =\ std::getenv(\textcolor{stringliteral}{"{}SERVER\_PORT"{}});}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ std::string\ host\ =\ server\_host\ ?\ server\_host\ :\ \textcolor{stringliteral}{"{}localhost"{}};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ std::string\ port\ =\ server\_port\ ?\ server\_port\ :\ \textcolor{stringliteral}{"{}8080"{}};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Starting\ Cinema\ Client..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Connecting\ to\ "{}}\ <<\ host\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ port\ <<\ \textcolor{stringliteral}{"{}..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!client.\mbox{\hyperlink{classCinemaClient_a1f89a855f15fbe3b9a321927522e7a68}{connect}}(host,\ port))\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nCannot\ connect\ to\ server\ at\ "{}}\ <<\ host\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ port\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Make\ sure\ the\ cinema\ server\ is\ running\ and\ try\ again."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Fetching\ initial\ cinema\ data..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ client.\mbox{\hyperlink{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887}{sendMessage}}(\textcolor{stringliteral}{"{}get\_data"{}});}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(500));}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (client.\mbox{\hyperlink{classCinemaClient_a54069df6a3209421ff102d98b9f206fe}{isConnected}}())\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ choice\ =\ ui.\mbox{\hyperlink{classCinemaUI_a87e3f26302c615f05fe89670ab2d9350}{showMainMenu}}();}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (choice)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Fetching\ current\ cinema\ data..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.\mbox{\hyperlink{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887}{sendMessage}}(\textcolor{stringliteral}{"{}get\_data"{}});}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(800));}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ cinemaData\ =\ client.\mbox{\hyperlink{classCinemaClient_a727eae2dcf7eff6b750338a87cd1627d}{getLastResponse}}();}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ui.\mbox{\hyperlink{classCinemaUI_af5aa381f91b761ca7282cc2c33abe61f}{viewMovies}}(cinemaData);}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Getting\ current\ cinema\ data..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.\mbox{\hyperlink{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887}{sendMessage}}(\textcolor{stringliteral}{"{}get\_data"{}});}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(800));}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Shows>\ shows\ =\ client.\mbox{\hyperlink{classCinemaClient_ae2639bd1a1bd0cabd48c7fe7bba103a5}{getShows}}();}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shows.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}No\ shows\ available\ for\ booking.\ Please\ try\ again."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ bookingData\ =\ ui.\mbox{\hyperlink{classCinemaUI_afa5699559e718f3b9b961bb04133f463}{performBooking}}(shows);}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!bookingData.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Processing\ your\ booking..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.\mbox{\hyperlink{classCinemaClient_acb6d41c939b3a8426d64c20b730c4887}{sendMessage}}(bookingData);}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(300));}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ serverResponse\ =\ client.\mbox{\hyperlink{classCinemaClient_a0adfb58fe004d003d23f8c5485dc76e8}{getLastBookingResponse}}();}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ success\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (serverResponse.find(\textcolor{stringliteral}{"{}SUCCESS:"{}})\ !=\ std::string::npos)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ success\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (serverResponse.find(\textcolor{stringliteral}{"{}ERROR:"{}})\ !=\ std::string::npos)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ success\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ui.\mbox{\hyperlink{classCinemaUI_aae1c991fa7dda3161567b49043edd772}{showBookingResult}}(success);}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ui.\mbox{\hyperlink{classCinemaUI_a203e68f9647d74428d7cce463f89cd22}{waitForEnter}}();}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ui.\mbox{\hyperlink{classCinemaUI_a7256ecdaed7d867944b2c5df45823e3d}{showBookingHelp}}();}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ui.\mbox{\hyperlink{classCinemaUI_a2e10d6efc81fb16d2d1f91f3274ee7d4}{displayGoodbye}}();}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.\mbox{\hyperlink{classCinemaClient_a08575ad7810a6a5ae067d4285c258b31}{disconnect}}();}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Invalid\ option!\ Please\ choose\ 1-\/4."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00154}00154\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ "{}}\ <<\ e.what()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00157}00157\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00158}00158\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00159}00159\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{client_2main_8cpp_source_l00160}00160\ \}}
+
+\end{DoxyCode}

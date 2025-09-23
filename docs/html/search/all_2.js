@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['cinema_20microservice_20real_20time_20booking_20system_0',['Cinema Microservice - Real-Time Booking System',['../index.html',1,'']]],
+  ['cinema_2ecpp_1',['cinema.cpp',['../cinema_8cpp.html',1,'']]],
+  ['cinema_2ehpp_2',['cinema.hpp',['../cinema_8hpp.html',1,'']]],
+  ['cinema_5fclient_2ecpp_3',['cinema_Client.cpp',['../cinema__Client_8cpp.html',1,'']]],
+  ['cinema_5fclient_2ehpp_4',['cinema_Client.hpp',['../cinema__Client_8hpp.html',1,'']]],
+  ['cinema_5fdata_5ffooter_5',['CINEMA_DATA_FOOTER',['../namespaceCinemaProtocol.html#a159fb37cc43a258b9b18df876741ca6b',1,'CinemaProtocol']]],
+  ['cinema_5fdata_5fheader_6',['CINEMA_DATA_HEADER',['../namespaceCinemaProtocol.html#a3278e28df6cbbbd5a58a7c6815f5a1ae',1,'CinemaProtocol']]],
+  ['cinema_5fdata_5fstream_7',['CINEMA_DATA_STREAM',['../namespaceCinemaProtocol.html#ae899ccb0c5df4d860e27a36769d450cc',1,'CinemaProtocol']]],
+  ['cinema_5frows_8',['CINEMA_ROWS',['../namespaceUIConstants.html#af213768ecc2590a3197a9959b0dcb1ec',1,'UIConstants']]],
+  ['cinemaclient_9',['cinemaclient',['../classCinemaClient.html#a9bf5ecec92acfa234ef43b4445e4d661',1,'CinemaClient::CinemaClient()'],['../classCinemaClient.html',1,'CinemaClient']]],
+  ['cinemaprotocol_10',['CinemaProtocol',['../namespaceCinemaProtocol.html',1,'']]],
+  ['cinemaservice_11',['CinemaService',['../classCinemaService.html',1,'']]],
+  ['cinemaui_12',['cinemaui',['../classCinemaUI.html#a0f4522b066ad53e11296f923180c060d',1,'CinemaUI::CinemaUI()'],['../classCinemaUI.html',1,'CinemaUI']]],
+  ['cinemaui_2ecpp_13',['CinemaUI.cpp',['../CinemaUI_8cpp.html',1,'']]],
+  ['cinemaui_2ehpp_14',['CinemaUI.hpp',['../CinemaUI_8hpp.html',1,'']]],
+  ['classes_15',['Core Classes',['../index.html#core_classes',1,'']]],
+  ['clear_5fscreen_16',['CLEAR_SCREEN',['../namespaceUIConstants.html#a827ebde8e1bd089f9ec867b8776baf10',1,'UIConstants']]],
+  ['communication_20layer_17',['Communication Layer',['../index.html#comm_layer',1,'']]],
+  ['component_20documentation_18',['Component Documentation',['../index.html#components_sec',1,'']]],
+  ['connect_19',['connect',['../classCinemaClient.html#a1f89a855f15fbe3b9a321927522e7a68',1,'CinemaClient']]],
+  ['contributing_20',['Contributing',['../index.html#contrib_sec',1,'']]],
+  ['core_20classes_21',['Core Classes',['../index.html#core_classes',1,'']]]
+];

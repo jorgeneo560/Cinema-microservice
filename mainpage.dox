@@ -1,0 +1,150 @@
+/**
+ * @mainpage Cinema Microservice - Real-Time Booking System
+ * 
+ * @section intro_sec Introduction
+ * 
+ * The Cinema Microservice is a modern C++ application that provides real-time seat booking 
+ * functionality for movie theaters. Built with clean architecture principles, it features 
+ * WebSocket-based communication for instant updates across multiple clients.
+ * 
+ * @section features_sec Key Features
+ * 
+ * - **Real-Time Communication**: WebSocket-based server-client architecture
+ * - **Thread-Safe Operations**: Concurrent seat booking with proper synchronization
+ * - **Clean Architecture**: Separation of concerns with distinct layers
+ * - **Interactive UI**: User-friendly booking interface with visual seat layouts
+ * - **Multi-Client Support**: Server handles multiple concurrent booking sessions
+ * - **Comprehensive Testing**: 111+ unit tests with 100% pass rate
+ * - **Professional Documentation**: Complete API documentation with examples
+ * 
+ * @section arch_sec Architecture Overview
+ * 
+ * The system follows clean architecture principles with the following layers:
+ * 
+ * @subsection data_layer Data Layer
+ * - Shows class: Core entity representing movie shows with seat management
+ * - Thread-safe operations using shared_mutex for concurrent access
+ * - 20-seat capacity per show with boolean seat availability tracking
+ * 
+ * @subsection comm_layer Communication Layer
+ * - **Client Side**: CinemaClient with WebSocket connection management
+ * - **Server Side**: WebSocketServer with multi-session handling
+ * - **Protocol**: Structured message format for bookings and updates
+ * - **Real-Time Updates**: Broadcast notifications for booking changes
+ * 
+ * @subsection business_layer Business Logic Layer
+ * - BookingService: Handles seat reservation logic and validation
+ * - CinemaService: Manages data formatting and protocol compliance
+ * - MessageHandler: Processes client requests and coordinates responses
+ * 
+ * @subsection ui_layer User Interface Layer
+ * - CinemaUI: Pure presentation layer with no business logic coupling
+ * - Interactive menus and seat selection interface
+ * - Input validation and user experience optimization
+ * 
+ * @subsection app_layer Application Layer
+ * - Client main: Coordinates UI and communication components
+ * - Server main: Initializes data and manages WebSocket infrastructure
+ * 
+ * @section tech_sec Technology Stack
+ * 
+ * - **Language**: C++17
+ * - **Networking**: Boost.Beast WebSocket library
+ * - **Async I/O**: Boost.Asio for non-blocking operations
+ * - **Threading**: std::shared_mutex for thread-safe data access
+ * - **Build System**: CMake with Conan package management
+ * - **Testing**: Custom lightweight testing framework
+ * - **Documentation**: Doxygen with PlantUML diagrams
+ * 
+ * @section usage_sec Quick Start Guide
+ * 
+ * @subsection build_sec Building the Project
+ * 
+ * @code{.sh}
+ * # Install dependencies
+ * conan install . --output-folder=build --build=missing
+ * 
+ * # Configure and build
+ * cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=build/Release/generators/conan_toolchain.cmake
+ * cmake --build build --config Release
+ * @endcode
+ * 
+ * @subsection run_sec Running the System
+ * 
+ * @code{.sh}
+ * # Start the server (Terminal 1)
+ * ./build/cinema
+ * 
+ * # Start the client (Terminal 2)
+ * ./build/client/cinema_client
+ * @endcode
+ * 
+ * @subsection test_sec Running Tests
+ * 
+ * @code{.sh}
+ * # Run all tests
+ * cmake --build build --target run_tests
+ * @endcode
+ * 
+ * @section api_sec API Overview
+ * 
+ * @subsection core_classes Core Classes
+ * 
+ * - Shows: Thread-safe movie show with seat management
+ * - CinemaClient: WebSocket client for server communication
+ * - WebSocketServer: Multi-client WebSocket server
+ * - CinemaUI: Interactive user interface
+ * 
+ * @subsection key_operations Key Operations
+ * 
+ * @code{.cpp}
+ * // Thread-safe seat booking
+ * Shows show("Inception", "2025-09-18 19:30", "IMAX");
+ * std::vector<uint8_t> seats = {1, 2, 3};
+ * bool success = show.bookSeats(seats);
+ * 
+ * // WebSocket client connection
+ * CinemaClient client;
+ * client.connect("localhost", "8080");
+ * client.sendMessage("get_data");
+ * @endcode
+ * 
+ * @section workflow_sec Booking Workflow
+ * 
+ * 1. **Client Connection**: Client connects to server via WebSocket
+ * 2. **Data Sync**: Server sends current cinema data to client
+ * 3. **Show Selection**: User selects theater, movie, and showtime
+ * 4. **Seat Selection**: Visual seat layout shows availability
+ * 5. **Booking Request**: Client sends booking data to server
+ * 6. **Server Processing**: Server validates and processes booking
+ * 7. **Confirmation**: Success/error response sent to client
+ * 8. **Broadcast Update**: All clients receive real-time updates
+ * 
+ * @section components_sec Component Documentation
+ * 
+ * For detailed API documentation, see:
+ * 
+ * - @ref Shows "Shows Class" - Core data structure
+ * - @ref CinemaClient "CinemaClient Class" - WebSocket client
+ * - @ref WebSocketServer "WebSocketServer Class" - Server infrastructure
+ * - @ref CinemaUI "CinemaUI Class" - User interface
+ * - @ref BookingService "BookingService Class" - Booking logic
+ * - @ref CinemaService "CinemaService Class" - Data formatting
+ * 
+ * @section contrib_sec Contributing
+ * 
+ * The codebase follows clean architecture principles:
+ * - Maintain separation of concerns between layers
+ * - Ensure thread safety for concurrent operations
+ * - Add comprehensive tests for new functionality
+ * - Update documentation for API changes
+ * - Follow C++ best practices and coding standards
+ * 
+ * @section license_sec License
+ * 
+ * This project is licensed under the terms specified in the LICENSE file.
+ * 
+ * @author Jorge Royon
+ * @date September 18, 2025
+ * @version 1.0
+ */

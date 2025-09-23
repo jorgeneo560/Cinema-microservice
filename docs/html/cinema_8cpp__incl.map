@@ -1,0 +1,27 @@
+<map id="server/lib/cinema.cpp" name="server/lib/cinema.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="447,5,610,31"/>
+<area shape="rect" id="Node000002" href="$cinema_8hpp.html" title="Core business logic and services for Cinema booking system." alt="" coords="330,79,429,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="506,33,417,75,415,70,504,28"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="453,79,517,104"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="524,32,501,68,497,66,519,30"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="541,79,607,104"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="538,30,562,66,557,69,534,32"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="631,79,711,104"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="553,28,637,70,635,75,550,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,68,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,104,82,155,81,149,329,99"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="93,152,151,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="339,107,166,154,164,149,337,101"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="175,152,242,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="353,106,250,149,248,144,351,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="266,152,381,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="372,106,343,143,339,140,368,103"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="405,152,469,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="391,103,421,139,417,143,387,106"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="493,152,570,177"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="405,102,495,144,493,149,403,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="594,152,669,177"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="421,101,581,147,580,152,419,107"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="693,152,778,177"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="429,100,679,149,678,154,428,105"/>
+</map>

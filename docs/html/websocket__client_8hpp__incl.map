@@ -1,0 +1,33 @@
+<map id="client/lib/websocket_client.hpp" name="client/lib/websocket_client.hpp">
+<area shape="rect" id="Node000001" title="WebSocket client for Cinema booking system communication." alt="" coords="632,5,783,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,164,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="632,39,178,96,177,90,631,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="188,93,387,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="632,43,362,93,361,88,631,38"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="411,93,569,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="656,48,536,91,534,86,654,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="533,167,591,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="691,48,584,158,581,155,687,44"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="615,167,679,192"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="702,47,659,155,654,153,697,45"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="964,93,1051,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="780,43,951,87,950,93,779,48"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="704,167,767,192"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="714,45,733,153,728,153,708,46"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="1075,93,1142,119"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="783,37,1062,91,1061,96,782,42"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1166,93,1230,119"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="783,33,949,55,1153,91,1152,96,948,61,782,38"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1021,167,1098,192"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="771,43,834,64,902,91,1028,158,1026,162,900,96,833,69,769,48"/>
+<area shape="rect" id="Node000012" href="$cinema__Client_8hpp.html" title="Data structures for Cinema booking system." alt="" coords="745,93,888,119"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="735,43,791,83,788,87,732,48"/>
+<area shape="poly" id="edge13_Node000012_Node000005" title=" " alt="" coords="776,121,606,169,604,164,775,116"/>
+<area shape="poly" id="edge16_Node000012_Node000006" title=" " alt="" coords="790,121,689,164,687,159,788,116"/>
+<area shape="poly" id="edge12_Node000012_Node000008" title=" " alt="" coords="805,121,761,160,757,156,802,117"/>
+<area shape="poly" id="edge17_Node000012_Node000011" title=" " alt="" coords="856,116,1008,160,1007,165,855,121"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="791,167,858,192"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="821,119,825,153,819,153,815,119"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="882,167,997,192"/>
+<area shape="poly" id="edge15_Node000012_Node000014" title=" " alt="" coords="838,116,909,157,906,162,835,121"/>
+</map>

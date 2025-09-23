@@ -1,0 +1,24 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install conan
+
+WORKDIR /app
+
+COPY . .
+
+RUN conan profile detect --force
+RUN conan install . --output-folder=build --build=missing
+
+RUN cd build && cmake .. -DCMAKE_TOOLCHAIN_FILE=build/Release/generators/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+RUN cd build && make cinema
+
+EXPOSE 8080
+
+CMD ["./build/cinema"]

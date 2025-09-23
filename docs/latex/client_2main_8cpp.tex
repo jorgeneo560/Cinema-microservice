@@ -1,0 +1,121 @@
+\doxysection{client/main.cpp File Reference}
+\hypertarget{client_2main_8cpp}{}\label{client_2main_8cpp}\index{client/main.cpp@{client/main.cpp}}
+
+
+Cinema Client Application Entry Point.  
+
+
+{\ttfamily \#include "{}lib/websocket\+\_\+client.\+hpp"{}}\newline
+{\ttfamily \#include "{}lib/\+Cinema\+UI.\+hpp"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{client_2main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{client_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main application entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cinema Client Application Entry Point. 
+
+\begin{DoxyAuthor}{Author}
+Jorge Royon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/09-\/18 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Main application for Cinema booking system client
+
+This application provides the main entry point for the Cinema booking client. It integrates the Web\+Socket communication layer (\doxylink{classCinemaClient}{Cinema\+Client}) with the user interface (\doxylink{classCinemaUI}{Cinema\+UI}) to provide a complete booking experience.
+
+\begin{DoxyParagraph}{Application Flow}
+
+\begin{DoxyEnumerate}
+\item Initialize client and UI components
+\item Connect to Cinema server via Web\+Socket
+\item Fetch initial cinema data from server
+\item Present interactive menu to user
+\item Handle user selections (view movies, book seats, help)
+\item Process booking requests with server communication
+\item Display booking results and confirmations
+\item Graceful shutdown on exit
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Key Features}
+
+\begin{DoxyItemize}
+\item Real-\/time server communication
+\item Interactive booking interface
+\item Error handling and connection management
+\item Booking confirmation system
+\item Help and guidance for users
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Architecture Role}
+Serves as the business logic coordinator in the client application, orchestrating communication between UI and Web\+Socket layers. 
+\end{DoxyParagraph}
+
+
+Definition in file \mbox{\hyperlink{client_2main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{client_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{client_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main application entry point. 
+
+\begin{DoxyReturn}{Returns}
+0 on successful execution, 1 on error
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Execution Flow}
+
+\begin{DoxyEnumerate}
+\item Creates \doxylink{classCinemaClient}{Cinema\+Client} and \doxylink{classCinemaUI}{Cinema\+UI} instances
+\item Establishes Web\+Socket connection to server
+\item Enters main interaction loop
+\item Handles user menu selections and booking operations
+\item Manages server communication and response processing
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Error Handling}
+
+\begin{DoxyItemize}
+\item Connection failures result in graceful exit with error message
+\item Server communication errors are handled with appropriate user feedback
+\item Exception handling provides error reporting
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{User Interaction}
+
+\begin{DoxyItemize}
+\item Menu option 1\+: View current movies and showtimes
+\item Menu option 2\+: Book seats for available shows
+\item Menu option 3\+: Display booking help and instructions
+\item Menu option 4\+: Exit application gracefully 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{client_2main_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{client_2main_8cpp_source}{main.\+cpp}}.
+

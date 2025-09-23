@@ -1,0 +1,85 @@
+\doxysection{Booking\+Service Class Reference}
+\hypertarget{classBookingService}{}\label{classBookingService}\index{BookingService@{BookingService}}
+
+
+Service for processing seat booking requests.  
+
+
+
+
+{\ttfamily \#include $<$cinema.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structBookingService_1_1BookingResult}{Booking\+Result}}
+\begin{DoxyCompactList}\small\item\em Result of a booking operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structBookingService_1_1BookingResult}{Booking\+Result}} \mbox{\hyperlink{classBookingService_a314fd2b2e87e9002ea9d106136c5379b}{process\+Booking}} (const std\+::string \&message, std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&shows)
+\begin{DoxyCompactList}\small\item\em Process a booking request message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service for processing seat booking requests. 
+
+Handles parsing of booking requests, validation of seat numbers, and execution of booking operations. Provides comprehensive error handling and user feedback. 
+
+Definition at line \mbox{\hyperlink{cinema_8hpp_source_l00112}{112}} of file \mbox{\hyperlink{cinema_8hpp_source}{cinema.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBookingService_a314fd2b2e87e9002ea9d106136c5379b}\label{classBookingService_a314fd2b2e87e9002ea9d106136c5379b} 
+\index{BookingService@{BookingService}!processBooking@{processBooking}}
+\index{processBooking@{processBooking}!BookingService@{BookingService}}
+\doxysubsubsection{\texorpdfstring{processBooking()}{processBooking()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structBookingService_1_1BookingResult}{Booking\+Service\+::\+Booking\+Result}} Booking\+Service\+::process\+Booking (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classShows}{Shows}} $>$ \&}]{shows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Process a booking request message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Raw booking request string from client \\
+\hline
+{\em shows} & Reference to shows vector to modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structBookingService_1_1BookingResult}{Booking\+Result} with operation outcome 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+message format\+: "{}theater,movie,seat1,seat2,..."{} 
+
+shows vector contains valid show data 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+On success\+: specified seats are booked, shows vector updated 
+
+On failure\+: no changes made to shows vector
+\end{DoxyPostcond}
+\begin{DoxyParagraph}{Message Format}
+Expected format\+: "{}\+Theater\+Name,\+Movie\+Title,\+Seat\+Number1,\+Seat\+Number2,..."{} Example\+: "{}\+PVR,\+Inception,1,2,3"{}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Validation}
+
+\begin{DoxyItemize}
+\item Verifies show exists (theater + movie combination)
+\item Validates all seat numbers are in range \mbox{[}1,20\mbox{]}
+\item Checks all seats are available before booking
+\item Provides detailed error messages for failures 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{cinema_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{cinema_8cpp_source}{cinema.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/lib/\mbox{\hyperlink{cinema_8hpp}{cinema.\+hpp}}\item 
+server/lib/\mbox{\hyperlink{cinema_8cpp}{cinema.\+cpp}}\end{DoxyCompactItemize}
